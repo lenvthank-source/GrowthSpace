@@ -35,5 +35,4 @@ jobs:
           port: ${{ secrets.FTP_PORT }}
           local-dir: dist/
           server-dir: /
-          delete: true
           dangerous-clean-slate: true
