@@ -48,14 +48,9 @@ export default function MobileAppsPage() {
                 From consumer apps to enterprise mobility solutions, we deliver mobile experiences
                 that drive engagement, retention, and revenue.
               </p>
-              <div className="flex gap-4">
-                <Link href="/contact" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3.5 rounded-xl transition-colors shadow-md">
-                  Start Your App Project
-                </Link>
-                <Link href="/pricing" className="border-2 border-gray-200 hover:border-gray-900 text-gray-700 font-semibold px-6 py-3.5 rounded-xl transition-colors">
-                  View Pricing
-                </Link>
-              </div>
+              <Link href="/contact" className="inline-flex bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3.5 rounded-xl transition-colors shadow-md">
+                Start Your App Project
+              </Link>
             </div>
             <img src="https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Mobile App Development" className="w-full rounded-3xl shadow-xl object-cover aspect-video" />
           </div>

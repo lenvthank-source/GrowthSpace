@@ -41,7 +41,7 @@ export default function WebDevelopmentPage() {
                 <Link href="/contact" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3.5 rounded-xl transition-colors shadow-md">
                   Get Free Quote
                 </Link>
-                <Link href="/projects" className="border-2 border-gray-200 hover:border-gray-900 text-gray-700 font-semibold px-6 py-3.5 rounded-xl transition-colors">
+                <Link href="/solutions/growth-marketing" className="border-2 border-gray-200 hover:border-gray-900 text-gray-700 font-semibold px-6 py-3.5 rounded-xl transition-colors">
                   View Our Work
                 </Link>
               </div>

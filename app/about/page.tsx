@@ -10,6 +10,13 @@ export const metadata: Metadata = {
 
 const team = [
   {
+    name: "Arun Khosla",
+    role: "Director",
+    bio: "Strategic advisor and Financial Consultant with extensive business experience. Guides company vision, partnerships, and long-term growth strategy.",
+    image: "/images/case-studies/arun.png",
+    accent: "Director",
+  },
+  {
     name: "Animesh Khosla",
     role: "Founder",
     bio: "Visionary leader with deep expertise in growth strategy, performance marketing, and business development. Driving GrowthSpare's mission to deliver end-to-end growth solutions.",
@@ -18,17 +25,10 @@ const team = [
   },
   {
     name: "Palak Katiyar",
-    role: "Operations & Technology",
+    role: "Operations Head",
     bio: "Technology and operations expert overseeing project delivery, software development, and AI implementations. Ensures seamless execution across all initiatives.",
     image: "/images/case-studies/palak.png",
-    accent: "Operations",
-  },
-  {
-    name: "Arun Khosla",
-    role: "Director",
-    bio: "Strategic advisor with extensive business experience. Guides company vision, partnerships, and long-term growth strategy.",
-    image: "/images/case-studies/arun.png",
-    accent: "Director",
+    accent: "Operation Head",
   },
 ];
 
@@ -225,7 +225,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="font-bold text-gray-900">{member.name}</h3>
                 <p className="text-amber-500 text-sm font-semibold mb-2">
-                  {member.accent}
+                  {member.role}
                 </p>
                 <p className="text-gray-500 text-sm leading-relaxed">{member.bio}</p>
               </div>
