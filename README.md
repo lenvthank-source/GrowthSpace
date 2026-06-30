@@ -21,22 +21,29 @@ This project is built using Next.js (App Router) configured for fully static exp
 
 ## 2. Cloudflare Pages Deployment Configuration
 
-Since this project uses static HTML exports, it is deployed directly on Cloudflare Pages.
+Because this project uses static HTML exports, it must be deployed as a **static asset site** (Pages) on Cloudflare, rather than a dynamic Next.js worker application.
 
 ### Environment Variables
 Configure the following Environment Variables in your Cloudflare Pages dashboard under **Settings > Variables**:
 
-| Variable | Description | Example |
+| Variable Name | Description | Example |
 |---|---|---|
 | `NEXT_PUBLIC_SANITY_PROJECT_ID` | Your Sanity Project ID | `yourProjectId` |
 | `NEXT_PUBLIC_SANITY_DATASET` | Dataset name | `production` |
 | `NEXT_PUBLIC_SITE_URL` | Production website base URL | `https://growthspace.co` |
 
-### Build Settings
-Configure the build settings in Cloudflare Pages as follows:
-- **Framework Preset**: `Next.js (Static HTML Export)`
+### Cloudflare Pages Settings (Git Integration)
+If linking repository directly:
+- **Framework Preset**: `None` (do not choose Next.js)
 - **Build Command**: `npm run build`
-- **Build Output Directory**: `out`
+- **Build Output Directory**: `out` (instead of `.next`)
+
+### Deployment via CLI (Wrangler)
+To push static builds manually:
+```bash
+npm run build
+npx wrangler pages deploy out --project-name=growthspace
+```
 
 ---
 
