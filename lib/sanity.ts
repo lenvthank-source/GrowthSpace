@@ -7,4 +7,14 @@ export const config = {
   useCdn: process.env.NODE_ENV === 'production',
 };
 
-export const sanityClient = createClient(config);
+const client = createClient(config);
+
+export const sanityClient = {
+  ...client,
+  fetch: async (query: string, params?: any, options?: any) => {
+    if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID === 'dummy-id') {
+      return query.trim().endsWith('}') ? [] : null;
+    }
+    return client.fetch(query, params, options);
+  }
+};
