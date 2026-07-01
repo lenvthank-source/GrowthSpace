@@ -1,6 +1,6 @@
 # GrowthSpare Next.js Blog & CMS Integration
 
-This project is built using Next.js (App Router) configured for fully static export (`output: 'export'`) and is deployed to **Cloudflare Pages**. It integrates **Sanity CMS** for dynamic content editing.
+This project is built using Next.js (App Router) version 14.2.35 and is deployed to **Cloudflare Pages** using the native Cloudflare Workers Edge runtime. It integrates **Sanity CMS** for dynamic content editing.
 
 ---
 
@@ -21,8 +21,6 @@ This project is built using Next.js (App Router) configured for fully static exp
 
 ## 2. Cloudflare Pages Deployment Configuration
 
-Because this project uses static HTML exports, it must be deployed as a **static asset site** (Pages) on Cloudflare, rather than a dynamic Next.js worker application.
-
 ### Environment Variables
 Configure the following Environment Variables in your Cloudflare Pages dashboard under **Settings > Variables**:
 
@@ -31,29 +29,19 @@ Configure the following Environment Variables in your Cloudflare Pages dashboard
 | `NEXT_PUBLIC_SANITY_PROJECT_ID` | Your Sanity Project ID | `yourProjectId` |
 | `NEXT_PUBLIC_SANITY_DATASET` | Dataset name | `production` |
 | `NEXT_PUBLIC_SITE_URL` | Production website base URL | `https://growthspace.co` |
+| `SANITY_REVALIDATE_SECRET` | Secret token verifying webhook calls | `yourSecretToken` |
 
 ### Cloudflare Pages Settings (Git Integration)
-If linking repository directly:
-- **Framework Preset**: `None` (do not choose Next.js)
-- **Build Command**: `npm run build`
-- **Build Output Directory**: `out` (instead of `.next`)
-
-### Deployment via CLI (Wrangler)
-To push static builds manually:
-```bash
-npm run build
-npx wrangler pages deploy out --project-name=growthspace
-```
+- **Framework Preset**: `Next.js`
+- **Build Command**: `npx @cloudflare/next-on-pages` (or `npm run build` with next-on-pages integration)
+- **Build Output Directory**: `.vercel/output` (automatically detected by the Cloudflare Pages builder)
 
 ---
 
-## 3. Sanity CMS Webhook Integration (Automatic Rebuilds)
+## 3. Sanity CMS Webhook Integration (On-Demand Cache Revalidation)
 
-To trigger automatic website updates when publishing posts inside Sanity Studio:
+Since we are running on the Cloudflare Edge runtime, we support **on-demand revalidation** via our webhook `/api/revalidate`. When you publish a post inside Sanity Studio, it will instantly refresh the website cache without needing a full site build!
 
-1. Go to your **Cloudflare Pages dashboard > Settings > Builds & deployments**.
-2. Under **Deploy webhooks**, click **Add webhook**.
-3. Name it (e.g. `Sanity Publish`) and select the branch you want to deploy (e.g. `main`).
-4. Copy the generated Webhook URL.
-5. In your **Sanity Management Console (sanity.io/manage)**, navigate to **Webhooks** and paste this URL.
-6. Configure the webhook to fire on `post` publish actions. Now, whenever you publish a post in Sanity, Cloudflare Pages will rebuild and deploy the live updates automatically.
+1. Go to your **Sanity Management Console (sanity.io/manage)**, navigate to **Webhooks**, and click **Create Webhook**.
+2. Set the **URL** to: `https://YOUR_DOMAIN.com/api/revalidate?secret=YOUR_SANITY_REVALIDATE_SECRET`.
+3. Configure the webhook to trigger on `post` publishing.
