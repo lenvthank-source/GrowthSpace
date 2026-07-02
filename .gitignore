@@ -5,6 +5,8 @@
 /studio-cms/node_modules
 /studio-cms/.sanity
 /studio-cms/dist
+/.sanity
+/.open-next
 /.pnp
 .pnp.js
 
