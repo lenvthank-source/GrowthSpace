@@ -114,7 +114,7 @@ export default function ContactPage() {
                     <div>
                       <p className="font-semibold text-gray-900 text-sm">Office</p>
                       <p className="text-gray-500 text-sm">
-                        Delhi NCR<br />New Delhi, India – 110001
+                        Indure House, 2nd Floor, Savitri Cinema Complex GK-II, New Delhi, Delhi 110048
                       </p>
                     </div>
                   </div>
@@ -302,7 +302,7 @@ export default function ContactPage() {
           <div className="bg-white rounded-2xl shadow-lg px-8 py-5 text-center">
             <MapPin className="w-6 h-6 text-amber-500 mx-auto mb-2" />
             <p className="font-bold text-gray-900">GrowthSpare HQ</p>
-            <p className="text-gray-500 text-sm">Delhi NCR, New Delhi, India</p>
+            <p className="text-gray-500 text-xs sm:text-sm">Indure House, 2nd Floor, Savitri Cinema Complex GK-II, New Delhi, Delhi 110048</p>
           </div>
         </div>
       </section>

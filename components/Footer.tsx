@@ -136,9 +136,9 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-amber-500" />
                 info@growthspare.com
               </a>
-              <div className="flex items-center gap-2.5 text-gray-400 text-sm">
-                <MapPin className="w-4 h-4 text-amber-500" />
-                Delhi NCR, India
+              <div className="flex items-start gap-2.5 text-gray-400 text-sm">
+                <MapPin className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+                <span>Indure House, 2nd Floor, Savitri Cinema Complex GK-II, New Delhi, Delhi 110048</span>
               </div>
             </div>
 
