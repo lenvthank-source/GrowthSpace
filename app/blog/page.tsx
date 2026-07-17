@@ -52,16 +52,18 @@ async function readSanityPosts() {
       featured
     }`;
     const sanityPosts = await sanityClient.fetch(query);
-    return sanityPosts.map((p: any) => ({
-      ...p,
-      date: p.date
-        ? new Date(p.date).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })
-        : "",
-    }));
+    return sanityPosts
+      .filter((p: any) => p.slug)
+      .map((p: any) => ({
+        ...p,
+        date: p.date
+          ? new Date(p.date).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })
+          : "",
+      }));
   } catch (e) {
     console.error("Error loading posts from Sanity", e);
     return [];

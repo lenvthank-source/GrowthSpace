@@ -30,12 +30,14 @@ async function readSanityPosts() {
       "date": publishedAt
     }`;
     const results = await sanityClient.fetch(query);
-    return results.map((p: any) => ({
-      title: p.title,
-      excerpt: p.excerpt || '',
-      slug: p.slug,
-      date: p.date ? new Date(p.date) : new Date(),
-    }));
+    return results
+      .filter((p: any) => p.slug)
+      .map((p: any) => ({
+        title: p.title,
+        excerpt: p.excerpt || '',
+        slug: p.slug,
+        date: p.date ? new Date(p.date) : new Date(),
+      }));
   } catch (e) {
     console.error('Error fetching RSS feeds from Sanity', e);
     return [];

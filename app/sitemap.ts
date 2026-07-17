@@ -32,12 +32,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     localSlugs.push(...files.map((file) => file.replace(/\.mdx?$/, '')));
   }
 
-  // Fetch Sanity blog slugs
   let sanitySlugs: string[] = [];
   try {
     const query = `*[_type == "post"] { "slug": slug.current }`;
     const results = await sanityClient.fetch(query);
-    sanitySlugs = results.map((p: any) => p.slug);
+    sanitySlugs = results
+      .filter((p: any) => p.slug)
+      .map((p: any) => p.slug);
   } catch (e) {
     console.error('Error fetching sitemap slugs from Sanity', e);
   }
