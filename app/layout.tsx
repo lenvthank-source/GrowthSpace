@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Script from "next/script";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,6 +32,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" id="top" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <head>
+        {/* Google tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-VSM8RB2D66"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-VSM8RB2D66');
+          `}
+        </Script>
+      </head>
       <body className="font-sans antialiased">
         <Navbar />
         <main>{children}</main>
