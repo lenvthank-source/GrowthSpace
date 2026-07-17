@@ -46,7 +46,10 @@ export async function generateStaticParams() {
   try {
     const query = `*[_type == "post"] { "slug": slug.current }`;
     const sanitySlugs = await sanityClient.fetch(query);
-    localSlugs.push(...sanitySlugs);
+    const validSanitySlugs = (sanitySlugs || [])
+      .filter((s: any) => s && typeof s.slug === 'string' && s.slug.trim() !== '')
+      .map((s: any) => ({ slug: s.slug }));
+    localSlugs.push(...validSanitySlugs);
   } catch (e) {
     console.error('Error fetching static params from Sanity', e);
   }
