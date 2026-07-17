@@ -150,14 +150,16 @@ export default async function BlogPage() {
                     {post.excerpt}
                   </p>
                   <div className="flex items-center gap-3 text-xs text-gray-400">
-                    <span>{post.author}</span>
-                    <span>&middot;</span>
-                    <span>{post.date}</span>
-                    <span>&middot;</span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
-                      {post.readTime}
-                    </span>
+                    {post.author && <span>{post.author}</span>}
+                    {post.author && post.date && <span>&middot;</span>}
+                    {post.date && <span>{post.date}</span>}
+                    {((post.author || post.date) && post.readTime) && <span>&middot;</span>}
+                    {post.readTime && (
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-3 h-3" />
+                        {post.readTime}
+                      </span>
+                    )}
                   </div>
                 </div>
               </Link>
@@ -190,12 +192,16 @@ export default async function BlogPage() {
                     {post.excerpt}
                   </p>
                   <div className="flex items-center gap-2 text-xs text-gray-400">
-                    <span>{post.author}</span>
-                    <span>&middot;</span>
-                    <span>{post.date}</span>
-                    <span>&middot;</span>
-                    <Clock className="w-3 h-3" />
-                    <span>{post.readTime}</span>
+                    {post.author && <span>{post.author}</span>}
+                    {post.author && post.date && <span>&middot;</span>}
+                    {post.date && <span>{post.date}</span>}
+                    {((post.author || post.date) && post.readTime) && <span>&middot;</span>}
+                    {post.readTime && (
+                      <>
+                        <Clock className="w-3 h-3" />
+                        <span>{post.readTime}</span>
+                      </>
+                    )}
                   </div>
                 </div>
               </Link>

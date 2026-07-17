@@ -234,19 +234,25 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             <ArrowLeft className="w-4 h-4" /> Back to Blog
           </Link>
 
-          <div className="mb-6">
-            <span className="bg-amber-50 text-amber-700 text-xs font-semibold px-3 py-1.5 rounded-full border border-amber-200">
-              {postData.category}
-            </span>
-          </div>
+           {postData.category && (
+            <div className="mb-6">
+              <span className="bg-amber-50 text-amber-700 text-xs font-semibold px-3 py-1.5 rounded-full border border-amber-200">
+                {postData.category}
+              </span>
+            </div>
+          )}
 
           <h1 className="text-3xl md:text-5xl font-black text-gray-900 leading-tight mb-6">{postData.title}</h1>
 
           <div className="flex items-center gap-4 text-sm text-gray-500 mb-8 pb-8 border-b border-gray-100">
-            <img src="/growthspare-logo-final-H33coufZj8jv5cgL.avif" alt="Author" className="w-10 h-10 rounded-full object-cover" />
+            <img src="/logosmall.png" alt="Author" className="w-10 h-10 rounded-full object-cover" />
             <div>
               <p className="font-semibold text-gray-900">{postData.author}</p>
-              <p className="flex items-center gap-1.5 text-gray-400">{displayDate} &middot; {postData.readTime}</p>
+              <p className="flex items-center gap-1.5 text-gray-400">
+                {displayDate && <span>{displayDate}</span>}
+                {displayDate && postData.readTime && <span>&middot;</span>}
+                {postData.readTime && <span>{postData.readTime}</span>}
+              </p>
             </div>
           </div>
 
