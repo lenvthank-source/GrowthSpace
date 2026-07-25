@@ -1,10 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Bot, ArrowRight, CheckCircle2, MessageCircle, Phone, Zap } from "lucide-react";
+import SoftwareSchema from "@/components/schema/SoftwareSchema";
 
 export const metadata: Metadata = {
-  title: "AI Chatbots & Conversational AI — GrowthSpare",
-  description: "GrowthSpare builds custom AI chatbots, customer support agents, WhatsApp automation bots, and voice AI agents that work 24/7 to qualify leads and support customers.",
+  title: "Custom AI Chatbots & Voice AI Agents — GrowthSpare",
+  description:
+    "Build 24/7 AI chatbots, WhatsApp bots & customer support agents with GrowthSpare. Qualify leads & answer support inquiries automatically. Request a demo! ✓",
+  alternates: {
+    canonical: "/services/ai-chatbots",
+  },
+  openGraph: {
+    title: "Custom AI Chatbots & Voice AI Agents — GrowthSpare",
+    description:
+      "Build 24/7 AI chatbots, WhatsApp bots & customer support agents with GrowthSpare. Qualify leads & answer support inquiries automatically. Request a demo! ✓",
+    url: "https://growthspare.com/services/ai-chatbots",
+    type: "website",
+  },
 };
 
 const useCases = [
@@ -21,6 +33,17 @@ const integrations = ["WhatsApp Business API", "Telegram", "Website Widget", "Fa
 export default function AIChatbotsPage() {
   return (
     <>
+      <SoftwareSchema
+        appName="GrowthSpare AI Chatbots & Support Agents"
+        description="Custom AI chatbots, lead qualification bots, WhatsApp automation agents, and voice AI assistants operating 24/7."
+        slug="ai-chatbots"
+        features={[
+          "24/7 Automated Support",
+          "Lead Qualification & Booking",
+          "WhatsApp Business API Integration",
+          "Voice AI Support Agents"
+        ]}
+      />
       <section className="bg-gradient-to-br from-violet-50 to-white py-16 md:py-20 border-b border-violet-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">

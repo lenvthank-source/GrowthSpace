@@ -1,11 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Search, CheckCircle2, ArrowRight, TrendingUp, Globe, BarChart3 } from "lucide-react";
+import ServiceSchema from "@/components/schema/ServiceSchema";
 
 export const metadata: Metadata = {
-  title: "SEO Services — GrowthSpare | Rank Higher, Drive More Traffic",
+  title: "SEO Services — Rank #1 on Google with GrowthSpare",
   description:
-    "GrowthSpare's SEO services include technical SEO, on-page optimization, link building, local SEO, and e-commerce SEO. Grow your organic traffic with data-driven strategies.",
+    "Drive higher organic traffic with GrowthSpare's technical SEO, link building & on-page optimization. Guaranteed measurable ROI. Get a free SEO audit today! ✓",
+  alternates: {
+    canonical: "/services/seo",
+  },
+  openGraph: {
+    title: "SEO Services — Rank #1 on Google with GrowthSpare",
+    description:
+      "Drive higher organic traffic with GrowthSpare's technical SEO, link building & on-page optimization. Guaranteed measurable ROI. Get a free SEO audit today! ✓",
+    url: "https://growthspare.com/services/seo",
+    type: "website",
+  },
 };
 
 const seoServices = [
@@ -20,6 +31,13 @@ const seoServices = [
 export default function SEOPage() {
   return (
     <>
+      <ServiceSchema
+        serviceName="Search Engine Optimization (SEO) Services"
+        serviceType="Search Engine Optimization"
+        description="GrowthSpare's SEO services include technical SEO, on-page optimization, link building, local SEO, and e-commerce SEO to grow organic traffic."
+        slug="seo"
+        offers={["Technical SEO", "On-Page SEO", "Local SEO & GMB", "E-commerce SEO", "Link Building"]}
+      />
       <section className="bg-white py-16 md:py-20 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">

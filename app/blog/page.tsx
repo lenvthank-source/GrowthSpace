@@ -7,9 +7,19 @@ import matter from "gray-matter";
 import { sanityClient } from "@/lib/sanity";
 
 export const metadata: Metadata = {
-  title: "Blog — Digital Marketing Insights | GrowthSpare",
+  title: "GrowthSpare Blog — Digital Marketing & AI Growth Insights",
   description:
-    "Read the latest insights on SEO, PPC, social media marketing, AI marketing, content strategy, and conversion optimization from GrowthSpare experts.",
+    "Master digital growth with actionable guides on SEO, Google Ads, AI automation & custom tech from GrowthSpare experts. Boost your conversion rates today! ✓",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "GrowthSpare Blog — Digital Marketing & AI Growth Insights",
+    description:
+      "Master digital growth with actionable guides on SEO, Google Ads, AI automation & custom tech from GrowthSpare experts. Boost your conversion rates today! ✓",
+    url: "https://growthspare.com/blog",
+    type: "website",
+  },
 };
 
 const postsDir = path.join(process.cwd(), "content", "posts");

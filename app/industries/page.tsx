@@ -3,9 +3,19 @@ import Link from "next/link";
 import { ArrowRight, TrendingUp, Cpu } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Industries We Serve — GrowthSpare | Marketing & Technology",
+  title: "Industries We Serve — Tailored Marketing & AI | GrowthSpare",
   description:
-    "GrowthSpare serves businesses across Healthcare, Real Estate, Education, Finance, Manufacturing, E-commerce, Logistics, Hospitality, Legal, and Startups with tailored marketing and technology solutions.",
+    "GrowthSpare delivers specialized marketing and technology solutions for Healthcare, Real Estate, E-commerce, Finance & Education. Scale your industry brand! ✓",
+  alternates: {
+    canonical: "/industries",
+  },
+  openGraph: {
+    title: "Industries We Serve — Tailored Marketing & AI | GrowthSpare",
+    description:
+      "GrowthSpare delivers specialized marketing and technology solutions for Healthcare, Real Estate, E-commerce, Finance & Education. Scale your industry brand! ✓",
+    url: "https://growthspare.com/industries",
+    type: "website",
+  },
 };
 
 const industries = [

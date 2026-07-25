@@ -3,9 +3,19 @@ import Link from "next/link";
 import { CheckCircle2, ArrowRight, Zap, TrendingUp, Building2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Pricing — GrowthSpare Digital Marketing Packages",
+  title: "GrowthSpare Pricing — Transparent SEO & Marketing Plans",
   description:
-    "Explore GrowthSpare's transparent pricing packages for SEO, PPC, social media marketing, and full-service digital marketing. Starter, Growth, and Enterprise plans available.",
+    "Explore transparent pricing packages for SEO, PPC, AI chatbots & custom software at GrowthSpare. Flexible plans for startups and enterprises. See pricing today! ✓",
+  alternates: {
+    canonical: "/pricing",
+  },
+  openGraph: {
+    title: "GrowthSpare Pricing — Transparent SEO & Marketing Plans",
+    description:
+      "Explore transparent pricing packages for SEO, PPC, AI chatbots & custom software at GrowthSpare. Flexible plans for startups and enterprises.",
+    url: "https://growthspare.com/pricing",
+    type: "website",
+  },
 };
 
 const plans = [

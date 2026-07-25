@@ -4,6 +4,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Script from "next/script";
+import GlobalSchema from "@/components/schema/GlobalSchema";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,12 +18,45 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://growthspare.com";
+
 export const metadata: Metadata = {
-  title: "GrowthSpare — Marketing + Technology. One Partner.",
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: "GrowthSpare — Digital Marketing Agency & AI Tech Solutions",
+    template: "%s | GrowthSpare",
+  },
   description:
-    "GrowthSpare combines performance marketing and custom technology to help businesses grow online and run smarter. SEO, Google Ads, AI Chatbots, ERP/CRM — all under one roof.",
-  keywords:
-    "digital marketing agency, technology partner, SEO services, Google Ads, AI chatbots, ERP development, CRM software, performance marketing",
+    "GrowthSpare combines performance marketing, SEO, Google Ads, AI chatbots, and custom ERP/CRM software to help businesses scale fast. Claim your free audit today!",
+  keywords: [
+    "digital marketing agency",
+    "technology partner",
+    "SEO services",
+    "Google Ads",
+    "AI chatbots",
+    "ERP development",
+    "CRM software",
+    "performance marketing",
+    "Delhi NCR digital agency",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "GrowthSpare — Digital Marketing Agency & AI Tech Solutions",
+    description:
+      "GrowthSpare combines performance marketing, SEO, Google Ads, AI chatbots, and custom ERP/CRM software to help businesses scale fast.",
+    url: baseUrl,
+    siteName: "GrowthSpare",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "GrowthSpare — Digital Marketing Agency & AI Tech Solutions",
+    description:
+      "GrowthSpare combines performance marketing, SEO, Google Ads, AI chatbots, and custom ERP/CRM software to help businesses scale fast.",
+  },
 };
 
 export default function RootLayout({
@@ -33,9 +67,17 @@ export default function RootLayout({
   return (
     <html lang="en" id="top" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
-        {/* Google tag (gtag.js) */}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="GrowthSpare RSS Feed"
+          href="/feed.xml"
+        />
+      </head>
+      <body className="font-sans antialiased">
+        {/* Google Tag (gtag.js) - Single Consolidated GA Tracking ID */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-VSM8RB2D66"
+          src="https://www.googletagmanager.com/gtag/js?id=G-WEVSM7ZB4K"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -43,12 +85,12 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
-            gtag('config', 'G-VSM8RB2D66');
+            gtag('config', 'G-WEVSM7ZB4K');
           `}
         </Script>
-      </head>
-      <body className="font-sans antialiased">
+
+        <GlobalSchema />
+
         <Navbar />
         <main>{children}</main>
         <Footer />

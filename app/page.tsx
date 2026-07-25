@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Script from "next/script";
 import HeroSection from "@/components/home/HeroSection";
 import DivisionsSection from "@/components/home/DivisionsSection";
@@ -5,6 +6,22 @@ import CaseStudiesSection from "@/components/home/CaseStudiesSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import IndustriesStrip from "@/components/home/IndustriesStrip";
 import FAQSection from "@/components/home/FAQSection";
+
+export const metadata: Metadata = {
+  title: "GrowthSpare — Digital Marketing Agency & AI Tech Solutions",
+  description:
+    "Scale your business with GrowthSpare. We blend data-driven SEO, Google Ads, AI chatbots & custom ERP software to boost revenue 3x. Claim your free audit! ✓",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "GrowthSpare — Digital Marketing Agency & AI Tech Solutions",
+    description:
+      "Scale your business with GrowthSpare. We blend data-driven SEO, Google Ads, AI chatbots & custom ERP software to boost revenue 3x. Claim your free audit! ✓",
+    url: "https://growthspare.com",
+    type: "website",
+  },
+};
 
 export default function Home() {
   return (
@@ -30,17 +47,6 @@ export default function Home() {
           alt="facebook pixel"
         />
       </noscript>
-      <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-WEVSM7ZB4K"
-        strategy="afterInteractive"
-      />
-      <Script id="gtag-init" strategy="afterInteractive">
-        {`window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-WEVSM7ZB4K');`}
-      </Script>
 
       <HeroSection />
       <DivisionsSection />

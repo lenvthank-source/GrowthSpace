@@ -163,9 +163,9 @@ export default function Footer() {
 
           {/* Solutions */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-white mb-4">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-white mb-4">
               Solutions
-            </h4>
+            </h3>
             <ul className="space-y-3">
               {footerLinks.solutions.map((link) => (
                 <li key={link.href}>
@@ -184,9 +184,9 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <TrendingUp className="w-4 h-4 text-amber-500" />
-              <h4 className="text-xs font-bold uppercase tracking-widest text-white">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-white">
                 Marketing
-              </h4>
+              </h3>
             </div>
             <ul className="space-y-3">
               {footerLinks.marketing.map((link) => (
@@ -206,9 +206,9 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Cpu className="w-4 h-4 text-blue-500" />
-              <h4 className="text-xs font-bold uppercase tracking-widest text-white">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-white">
                 Technology
-              </h4>
+              </h3>
             </div>
             <ul className="space-y-3">
               {footerLinks.technology.map((link) => (
@@ -226,9 +226,9 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-white mb-4">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-white mb-4">
               Company
-            </h4>
+            </h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.href}>

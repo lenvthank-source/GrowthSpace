@@ -3,9 +3,19 @@ import Link from "next/link";
 import { ArrowRight, Star, TrendingUp, MousePointer2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Our Projects & Case Studies — GrowthSpare",
+  title: "Case Studies & Client Results — GrowthSpare Marketing",
   description:
-    "Explore GrowthSpare's client case studies and projects. Real results from real businesses across SEO, PPC, social media, and performance marketing.",
+    "See real client results from GrowthSpare. Explore case studies showcasing 300%+ ROI across SEO, Google Ads, AI chatbots, and custom app development. View results! ✓",
+  alternates: {
+    canonical: "/projects",
+  },
+  openGraph: {
+    title: "Case Studies & Client Results — GrowthSpare Marketing",
+    description:
+      "See real client results from GrowthSpare. Explore case studies showcasing 300%+ ROI across SEO, Google Ads, AI chatbots, and custom app development. View results! ✓",
+    url: "https://growthspare.com/projects",
+    type: "website",
+  },
 };
 
 const projects = [

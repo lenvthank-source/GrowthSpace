@@ -138,95 +138,61 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     ? new Date(postData.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
     : postData.date;
 
-  // Build Structured Data (JSON-LD)
-  const organizationSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    '@id': 'https://growthspace.co/#organization',
-    'name': 'GrowthSpare',
-    'url': 'https://growthspace.co',
-    'logo': 'https://growthspace.co/growthspare-logo-final-H33coufZj8jv5cgL.avif'
-  };
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://growthspare.com';
+  const postUrl = `${baseUrl}/blog/${params.slug}`;
+  const imageUrl = postData.image || `${baseUrl}/growthspare-a-logo.png`;
 
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    'itemListElement': [
-      {
-        '@type': 'ListItem',
-        'position': 1,
-        'name': 'Home',
-        'item': 'https://growthspace.co'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 2,
-        'name': 'Blog',
-        'item': 'https://growthspace.co/blog'
-      },
-      {
-        '@type': 'ListItem',
-        'position': 3,
-        'name': postData.title,
-        'item': `https://growthspace.co/blog/${params.slug}`
-      }
-    ]
-  };
-
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    'headline': postData.title,
-    'description': postData.excerpt,
-    'image': postData.image || 'https://growthspace.co/growthspare-logo-final-H33coufZj8jv5cgL.avif',
-    'datePublished': postData.date,
-    'author': {
-      '@type': 'Person',
-      'name': postData.author
+  const blogGraph: any[] = [
+    {
+      '@type': 'BreadcrumbList',
+      'itemListElement': [
+        { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': baseUrl },
+        { '@type': 'ListItem', 'position': 2, 'name': 'Blog', 'item': `${baseUrl}/blog` },
+        { '@type': 'ListItem', 'position': 3, 'name': postData.title, 'item': postUrl }
+      ]
     },
-    'publisher': {
-      '@type': 'Organization',
-      'name': 'GrowthSpare',
-      'logo': {
-        '@type': 'ImageObject',
-        'url': 'https://growthspace.co/growthspare-logo-final-H33coufZj8jv5cgL.avif'
-      }
+    {
+      '@type': 'BlogPosting',
+      '@id': `${postUrl}/#article`,
+      'mainEntityOfPage': { '@type': 'WebPage', '@id': postUrl },
+      'headline': postData.title,
+      'description': postData.excerpt,
+      'image': imageUrl,
+      'datePublished': postData.date,
+      'dateModified': postData.date,
+      'author': {
+        '@type': 'Person',
+        'name': postData.author || 'GrowthSpare Team'
+      },
+      'publisher': { '@id': `${baseUrl}/#organization` }
     }
-  };
+  ];
 
-  const faqSchema = postData.faq && postData.faq.length > 0 ? {
+  if (postData.faq && postData.faq.length > 0) {
+    blogGraph.push({
+      '@type': 'FAQPage',
+      'mainEntity': postData.faq.map((item: any) => ({
+        '@type': 'Question',
+        'name': item.question,
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': item.answer
+        }
+      }))
+    });
+  }
+
+  const jsonLdData = {
     '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': postData.faq.map((item: any) => ({
-      '@type': 'Question',
-      'name': item.question,
-      'acceptedAnswer': {
-        '@type': 'Answer',
-        'text': item.answer
-      }
-    }))
-  } : null;
+    '@graph': blogGraph
+  };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdData) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
 
       <article className="py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

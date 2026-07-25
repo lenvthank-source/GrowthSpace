@@ -45,7 +45,7 @@ async function readSanityPosts() {
 }
 
 export async function GET() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://growthspace.co';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://growthspare.com';
   
   const local = readLocalPosts();
   const sanity = await readSanityPosts();

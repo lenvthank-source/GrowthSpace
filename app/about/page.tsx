@@ -3,9 +3,19 @@ import Link from "next/link";
 import { CheckCircle2, ArrowRight, Briefcase } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About GrowthSpare — Our Story, Team & Values",
+  title: "About GrowthSpare — Growth Marketing & AI Tech Leaders",
   description:
-    "Learn about GrowthSpare, a results-driven digital marketing agency helping businesses grow their online presence and generate consistent leads.",
+    "Discover GrowthSpare: Our team, mission, and transparent approach to growing brands through performance marketing, custom software & AI automation. Connect today! ✓",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About GrowthSpare — Growth Marketing & AI Tech Leaders",
+    description:
+      "Discover GrowthSpare: Our team, mission, and transparent approach to growing brands through performance marketing, custom software & AI automation. Connect today! ✓",
+    url: "https://growthspare.com/about",
+    type: "website",
+  },
 };
 
 const team = [
@@ -100,7 +110,7 @@ export default function AboutPage() {
             </div>
             <div className="lg:pt-4">
               <div className="bg-gray-50 rounded-2xl p-8 space-y-3">
-                <h3 className="font-black text-2xl text-gray-900 mb-4">Built for Growth</h3>
+                <h2 className="font-black text-2xl text-gray-900 mb-4">Built for Growth</h2>
                 <p className="text-gray-600 text-sm leading-relaxed mb-6">
                   Whether you&apos;re launching your first product or scaling to new
                   heights, GrowthSpare acts as your extended marketing team —

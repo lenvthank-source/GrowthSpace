@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, HelpCircle, MessageCircle } from "lucide-react";
 import Link from "next/link";
+import Script from "next/script";
 
 const faqs = [
   {
@@ -44,8 +45,27 @@ const itemVariants = {
 export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(0);
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a,
+      },
+    })),
+  };
+
   return (
     <section className="relative py-24 md:py-32 overflow-hidden bg-gray-50">
+      <Script
+        id="faq-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       {/* Background */}
       <div className="absolute inset-0 dots-pattern opacity-30" />
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-amber-100/40 to-transparent rounded-full blur-3xl" />
@@ -99,11 +119,11 @@ export default function FAQSection() {
                   onClick={() => setOpen(open === i ? null : i)}
                   className="w-full flex items-center justify-between px-6 py-5 text-left"
                 >
-                  <span className={`font-semibold pr-4 text-base transition-colors duration-300 ${
+                  <h3 className={`font-semibold pr-4 text-base transition-colors duration-300 ${
                     open === i ? "text-gray-900" : "text-gray-700"
                   }`}>
                     {faq.q}
-                  </span>
+                  </h3>
 
                   <motion.div
                     animate={{ rotate: open === i ? 180 : 0 }}
