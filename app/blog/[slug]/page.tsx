@@ -188,7 +188,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdData) }}
       />
 
-      <article className="py-16 md:py-20">
+      <article className="pt-6 pb-16 md:pt-8 md:pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link href="/blog" className="inline-flex items-center gap-2 text-gray-500 hover:text-amber-500 text-sm font-medium mb-8 transition-colors">
             <ArrowLeft className="w-4 h-4" /> Back to Blog

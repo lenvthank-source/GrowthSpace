@@ -117,7 +117,7 @@ export default function Breadcrumbs() {
 
       <nav
         aria-label="breadcrumb"
-        className="w-full bg-slate-50/80 border-b border-slate-200/60 py-3 transition-colors"
+        className="w-full bg-slate-50/90 backdrop-blur-sm border-b border-slate-200/60 pt-20 pb-3 sm:pt-24 sm:pb-3 transition-all"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ol className="flex flex-wrap items-center gap-1.5 text-xs text-slate-500 font-medium">
