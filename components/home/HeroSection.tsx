@@ -314,7 +314,10 @@ export default function HeroSection() {
             </motion.div>
 
             <motion.div variants={itemVariants} className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-black text-gray-900 leading-[1.05] tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-black text-gray-900 leading-[1.1] tracking-tight">
+                <span className="text-base sm:text-lg md:text-xl font-bold text-amber-600 uppercase tracking-wider block mb-2 font-sans">
+                  Delhi NCR&apos;s Growth &amp; Technology Partner — Digital Marketing Agency &amp; AI Solutions
+                </span>
                 <span className="block">More Customers.</span>
                 <span className="block text-gradient">Better Systems.</span>
                 <span className="block">Faster Growth.</span>

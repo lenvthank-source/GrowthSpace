@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Script from "next/script";
 import GlobalSchema from "@/components/schema/GlobalSchema";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -92,6 +93,7 @@ export default function RootLayout({
         <GlobalSchema />
 
         <Navbar />
+        <Breadcrumbs />
         <main>{children}</main>
         <Footer />
 

@@ -144,14 +144,6 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
   const blogGraph: any[] = [
     {
-      '@type': 'BreadcrumbList',
-      'itemListElement': [
-        { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': baseUrl },
-        { '@type': 'ListItem', 'position': 2, 'name': 'Blog', 'item': `${baseUrl}/blog` },
-        { '@type': 'ListItem', 'position': 3, 'name': postData.title, 'item': postUrl }
-      ]
-    },
-    {
       '@type': 'BlogPosting',
       '@id': `${postUrl}/#article`,
       'mainEntityOfPage': { '@type': 'WebPage', '@id': postUrl },

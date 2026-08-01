@@ -20,33 +20,21 @@ export default function SoftwareSchema({
 
   const schema = {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": baseUrl },
-          { "@type": "ListItem", "position": 2, "name": "Services", "item": `${baseUrl}/services` },
-          { "@type": "ListItem", "position": 3, "name": appName, "item": appUrl }
-        ]
-      },
-      {
-        "@type": "SoftwareApplication",
-        "name": appName,
-        "applicationCategory": category,
-        "operatingSystem": "Web, Cloud, iOS, Android, WhatsApp API",
-        "provider": { "@id": `${baseUrl}/#organization` },
-        "description": description,
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "INR",
-          "price": "0",
-          "priceValidUntil": "2026-12-31",
-          "availability": "https://schema.org/InStock",
-          "seller": { "@id": `${baseUrl}/#organization` }
-        },
-        ...(features.length > 0 && { "featureList": features })
-      }
-    ]
+    "@type": "SoftwareApplication",
+    "name": appName,
+    "applicationCategory": category,
+    "operatingSystem": "Web, Cloud, iOS, Android, WhatsApp API",
+    "provider": { "@id": `${baseUrl}/#organization` },
+    "description": description,
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "INR",
+      "price": "0",
+      "priceValidUntil": "2026-12-31",
+      "availability": "https://schema.org/InStock",
+      "seller": { "@id": `${baseUrl}/#organization` }
+    },
+    ...(features.length > 0 && { "featureList": features })
   };
 
   return (

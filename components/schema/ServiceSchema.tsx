@@ -20,35 +20,23 @@ export default function ServiceSchema({
 
   const schema = {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": baseUrl },
-          { "@type": "ListItem", "position": 2, "name": "Services", "item": `${baseUrl}/services` },
-          { "@type": "ListItem", "position": 3, "name": serviceName, "item": serviceUrl }
-        ]
-      },
-      {
-        "@type": "Service",
-        "@id": `${serviceUrl}/#service`,
-        "name": serviceName,
-        "serviceType": serviceType,
-        "provider": { "@id": `${baseUrl}/#organization` },
-        "description": description,
-        "areaServed": ["Delhi NCR", "Noida", "Gurgaon", "Global"],
-        ...(offers.length > 0 && {
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": `${serviceName} Solutions`,
-            "itemListElement": offers.map((offer) => ({
-              "@type": "Offer",
-              "itemOffered": { "@type": "Service", "name": offer }
-            }))
-          }
-        })
+    "@type": "Service",
+    "@id": `${serviceUrl}/#service`,
+    "name": serviceName,
+    "serviceType": serviceType,
+    "provider": { "@id": `${baseUrl}/#organization` },
+    "description": description,
+    "areaServed": ["Delhi NCR", "Noida", "Gurgaon", "Global"],
+    ...(offers.length > 0 && {
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": `${serviceName} Solutions`,
+        "itemListElement": offers.map((offer) => ({
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": offer }
+        }))
       }
-    ]
+    })
   };
 
   return (

@@ -28,13 +28,6 @@ export default function ContactLayout({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": baseUrl },
-          { "@type": "ListItem", "position": 2, "name": "Contact Us", "item": `${baseUrl}/contact` }
-        ]
-      },
-      {
         "@type": "ContactPage",
         "@id": `${baseUrl}/contact/#webpage`,
         "url": `${baseUrl}/contact`,
