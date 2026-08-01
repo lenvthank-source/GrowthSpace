@@ -66,6 +66,7 @@ async function readSanityPosts() {
       .filter((p: any) => p.slug)
       .map((p: any) => ({
         ...p,
+        slug: typeof p.slug === 'string' ? p.slug.replace(/^\/+/, '').replace(/\/+$/, '') : p.slug,
         date: p.date
           ? new Date(p.date).toLocaleDateString("en-US", {
               year: "numeric",

@@ -11,9 +11,11 @@ import { sanityClient } from '@/lib/sanity';
 
 const postsDir = path.join(process.cwd(), 'content', 'posts');
 
-async function getSanityPost(slug: string) {
+async function getSanityPost(rawSlug: string) {
+  const cleanSlug = decodeURIComponent(rawSlug).replace(/^\/+/, '').replace(/\/+$/, '');
+  const withSlash = `/${cleanSlug}`;
   try {
-    const query = `*[_type == "post" && slug.current == $slug][0] {
+    const query = `*[_type == "post" && (slug.current == $cleanSlug || slug.current == $withSlash)][0] {
       title,
       "slug": slug.current,
       content,
@@ -29,7 +31,11 @@ async function getSanityPost(slug: string) {
       noindex,
       faq
     }`;
-    return await sanityClient.fetch(query, { slug });
+    const post = await sanityClient.fetch(query, { cleanSlug, withSlash });
+    if (post) {
+      post.slug = post.slug.replace(/^\/+/, '').replace(/\/+$/, '');
+    }
+    return post;
   } catch (e) {
     console.error('Error loading single post from Sanity', e);
     return null;
@@ -48,7 +54,7 @@ export async function generateStaticParams() {
     const sanitySlugs = await sanityClient.fetch(query);
     const validSanitySlugs = (sanitySlugs || [])
       .filter((s: any) => s && typeof s.slug === 'string' && s.slug.trim() !== '')
-      .map((s: any) => ({ slug: s.slug }));
+      .map((s: any) => ({ slug: s.slug.replace(/^\/+/, '').replace(/\/+$/, '') }));
     localSlugs.push(...validSanitySlugs);
   } catch (e) {
     console.error('Error fetching static params from Sanity', e);

@@ -90,7 +90,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const results = await sanityClient.fetch(query);
     sanitySlugs = results
       .filter((p: any) => p.slug)
-      .map((p: any) => p.slug);
+      .map((p: any) => (typeof p.slug === 'string' ? p.slug.replace(/^\/+/, '').replace(/\/+$/, '') : p.slug));
   } catch (e) {
     console.error('Error fetching sitemap slugs from Sanity', e);
   }
