@@ -6,10 +6,10 @@ import { LOCATIONS } from "@/lib/data/locations";
 import { MapPin, Building, ArrowRight, CheckCircle2 } from "lucide-react";
 
 interface Props {
-  params: {
+  params: Promise<{
     service: string;
     location: string;
-  };
+  }>;
 }
 
 const VALID_SERVICES: Record<string, { name: string; desc: string }> = {
@@ -32,15 +32,16 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const service = VALID_SERVICES[params.service];
-  const loc = LOCATIONS[params.location];
+  const { service: serviceParam, location: locationParam } = await params;
+  const service = VALID_SERVICES[serviceParam];
+  const loc = LOCATIONS[locationParam];
 
   if (!service || !loc) return {};
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://growthspare.com";
   const title = `${service.name} in ${loc.cityName}, ${loc.stateRegion} | GrowthSpare`;
   const description = `Looking for top-tier ${service.name} in ${loc.cityName}? GrowthSpare delivers data-driven digital growth, local market dominance, and custom AI solutions.`;
-  const canonicalUrl = `${baseUrl}/services/${params.service}/${params.location}`;
+  const canonicalUrl = `${baseUrl}/services/${serviceParam}/${locationParam}`;
 
   return {
     title,
@@ -58,16 +59,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ServiceLocationPage({ params }: Props) {
-  const service = VALID_SERVICES[params.service];
-  const loc = LOCATIONS[params.location];
+export default async function ServiceLocationPage({ params }: Props) {
+  const { service: serviceParam, location: locationParam } = await params;
+  const service = VALID_SERVICES[serviceParam];
+  const loc = LOCATIONS[locationParam];
 
   if (!service || !loc) {
     notFound();
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://growthspare.com";
-  const canonicalUrl = `${baseUrl}/services/${params.service}/${params.location}`;
+  const canonicalUrl = `${baseUrl}/services/${serviceParam}/${locationParam}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -90,7 +92,7 @@ export default function ServiceLocationPage({ params }: Props) {
   return (
     <>
       <Script
-        id={`jsonld-${params.service}-${params.location}`}
+        id={`jsonld-${serviceParam}-${locationParam}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />

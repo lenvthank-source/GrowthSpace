@@ -57,8 +57,9 @@ export async function generateStaticParams() {
   return localSlugs;
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const sanityPost = await getSanityPost(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const sanityPost = await getSanityPost(slug);
   if (sanityPost) {
     return {
       title: `${sanityPost.seoTitle || sanityPost.title} — GrowthSpare`,
@@ -70,7 +71,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
   }
 
-  const full = path.join(postsDir, `${params.slug}.md`);
+  const full = path.join(postsDir, `${slug}.md`);
   if (!fs.existsSync(full)) return { title: 'Post' };
   const raw = fs.readFileSync(full, 'utf8');
   const { data } = matter(raw);
@@ -102,17 +103,18 @@ const portableTextComponents = {
   },
 };
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   let postData: any = null;
   let isSanity = false;
   let contentHtml = '';
 
-  const sanityPost = await getSanityPost(params.slug);
+  const sanityPost = await getSanityPost(slug);
   if (sanityPost) {
     postData = sanityPost;
     isSanity = true;
   } else {
-    const full = path.join(postsDir, `${params.slug}.md`);
+    const full = path.join(postsDir, `${slug}.md`);
     if (fs.existsSync(full)) {
       const raw = fs.readFileSync(full, 'utf8');
       const { data, content } = matter(raw);
@@ -139,7 +141,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     : postData.date;
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://growthspare.com';
-  const postUrl = `${baseUrl}/blog/${params.slug}`;
+  const postUrl = `${baseUrl}/blog/${slug}`;
   const imageUrl = postData.image || `${baseUrl}/growthspare-a-logo.png`;
 
   const blogGraph: any[] = [

@@ -6,9 +6,9 @@ import { INTEGRATIONS } from "@/lib/data/integrations";
 import { ArrowRight, Code2, Layers, Cpu } from "lucide-react";
 
 interface Props {
-  params: {
+  params: Promise<{
     tool: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -16,13 +16,14 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const tool = INTEGRATIONS[params.tool];
+  const { tool: toolParam } = await params;
+  const tool = INTEGRATIONS[toolParam];
   if (!tool) return {};
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://growthspare.com";
   const title = `${tool.name} Integration & Development Services | GrowthSpare`;
   const description = `${tool.valueProp}. Enterprise integration, API architecture, and custom Next.js development.`;
-  const canonicalUrl = `${baseUrl}/integrations/${params.tool}`;
+  const canonicalUrl = `${baseUrl}/integrations/${toolParam}`;
 
   return {
     title,
@@ -40,12 +41,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function IntegrationToolPage({ params }: Props) {
-  const tool = INTEGRATIONS[params.tool];
+export default async function IntegrationToolPage({ params }: Props) {
+  const { tool: toolParam } = await params;
+  const tool = INTEGRATIONS[toolParam];
   if (!tool) notFound();
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://growthspare.com";
-  const canonicalUrl = `${baseUrl}/integrations/${params.tool}`;
+  const canonicalUrl = `${baseUrl}/integrations/${toolParam}`;
 
   return (
     <>

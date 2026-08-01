@@ -6,9 +6,9 @@ import { INDUSTRIES } from "@/lib/data/industries";
 import { ArrowRight, CheckCircle2, ShieldCheck, Zap } from "lucide-react";
 
 interface Props {
-  params: {
+  params: Promise<{
     industry: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -16,13 +16,14 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const ind = INDUSTRIES[params.industry];
+  const { industry } = await params;
+  const ind = INDUSTRIES[industry];
   if (!ind) return {};
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://growthspare.com";
   const title = `${ind.name} Marketing & Technology Solutions | GrowthSpare`;
   const description = `${ind.heroHeadline}. Tailored performance marketing, SEO, and custom software for ${ind.name} brands.`;
-  const canonicalUrl = `${baseUrl}/solutions/${params.industry}`;
+  const canonicalUrl = `${baseUrl}/solutions/${industry}`;
 
   return {
     title,
@@ -40,12 +41,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function IndustrySolutionPage({ params }: Props) {
-  const ind = INDUSTRIES[params.industry];
+export default async function IndustrySolutionPage({ params }: Props) {
+  const { industry } = await params;
+  const ind = INDUSTRIES[industry];
   if (!ind) notFound();
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://growthspare.com";
-  const canonicalUrl = `${baseUrl}/solutions/${params.industry}`;
+  const canonicalUrl = `${baseUrl}/solutions/${industry}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -59,7 +61,7 @@ export default function IndustrySolutionPage({ params }: Props) {
   return (
     <>
       <Script
-        id={`jsonld-industry-${params.industry}`}
+        id={`jsonld-industry-${industry}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
