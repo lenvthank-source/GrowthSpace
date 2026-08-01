@@ -85,6 +85,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 const portableTextComponents = {
+  types: {
+    image: ({ value }: any) => {
+      if (!value?.asset?.url) return null;
+      return (
+        <div className="my-8 rounded-2xl overflow-hidden bg-slate-50/80 border border-slate-200/60 flex justify-center p-1 sm:p-2">
+          <img
+            src={value.asset.url}
+            alt={value.alt || "Blog image"}
+            className="w-full h-auto max-h-[600px] object-contain rounded-xl shadow-sm mx-auto"
+          />
+        </div>
+      );
+    },
+  },
   marks: {
     link: ({ children, value }: any) => {
       const rel = !value.href.startsWith('/') ? 'noopener noreferrer' : undefined;
@@ -226,8 +240,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
 
           {postData.image && (
-            <div className="mb-10">
-              <img src={postData.image} alt={postData.title} className="w-full rounded-2xl shadow-md object-cover aspect-video" />
+            <div className="mb-10 rounded-2xl overflow-hidden bg-slate-50/80 border border-slate-200/60 flex items-center justify-center p-1 sm:p-2">
+              <img
+                src={postData.image}
+                alt={postData.title}
+                className="w-full h-auto max-h-[550px] object-contain rounded-xl shadow-sm mx-auto"
+              />
             </div>
           )}
 
