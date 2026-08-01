@@ -31,50 +31,59 @@ function readPosts() {
     const full = path.join(postsDir, file);
     const raw = fs.readFileSync(full, "utf8");
     const { data } = matter(raw);
+    const stat = fs.statSync(full);
+    const rawDate = data.date || stat.mtime.toISOString();
     return {
       title: data.title || file.replace(/\.mdx?$/i, ""),
       excerpt: data.excerpt || "",
       image: data.image || "",
       category: data.category || "",
-      author: data.author || "",
-      date: data.date || "",
-      readTime: data.readTime || "",
+      author: data.author || "GrowthSpare Team",
+      rawDate: rawDate,
+      date: new Date(rawDate).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }),
+      readTime: data.readTime || "5 min read",
       featured: data.featured || false,
       slug: data.slug || file.replace(/\.mdx?$/i, ""),
     } as any;
   });
-  // sort by date descending
-  posts.sort((a, b) => (a.date < b.date ? 1 : -1));
   return posts;
 }
 
 async function readSanityPosts() {
   try {
-    const query = `*[_type == "post"] | order(publishedAt desc) {
+    const query = `*[_type == "post"] | order(select(defined(publishedAt) => publishedAt, _createdAt) desc) {
       title,
       "slug": slug.current,
       excerpt,
       "image": mainImage.asset->url,
       category,
       author,
-      "date": publishedAt,
+      "rawDate": select(defined(publishedAt) => publishedAt, _createdAt),
       readTime,
       featured
     }`;
     const sanityPosts = await sanityClient.fetch(query);
-    return sanityPosts
+    return (sanityPosts || [])
       .filter((p: any) => p.slug)
-      .map((p: any) => ({
-        ...p,
-        slug: typeof p.slug === 'string' ? p.slug.replace(/^\/+/, '').replace(/\/+$/, '') : p.slug,
-        date: p.date
-          ? new Date(p.date).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })
-          : "",
-      }));
+      .map((p: any) => {
+        const rawDate = p.rawDate || new Date().toISOString();
+        return {
+          ...p,
+          author: p.author || "GrowthSpare Team",
+          slug: typeof p.slug === 'string' ? p.slug.replace(/^\/+/, '').replace(/\/+$/, '') : p.slug,
+          rawDate: rawDate,
+          date: new Date(rawDate).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          }),
+          readTime: p.readTime || "5 min read",
+        };
+      });
   } catch (e) {
     console.error("Error loading posts from Sanity", e);
     return [];
@@ -85,8 +94,8 @@ export default async function BlogPage() {
   const localPosts = readPosts();
   const sanityPosts = await readSanityPosts();
   const posts = [...sanityPosts, ...localPosts];
-  // Sort posts by date descending
-  posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  // Sort posts strictly by date descending (latest to oldest)
+  posts.sort((a, b) => new Date(b.rawDate).getTime() - new Date(a.rawDate).getTime());
 
   const featured = posts.filter((p) => p.featured);
   const regular = posts.filter((p) => !p.featured);

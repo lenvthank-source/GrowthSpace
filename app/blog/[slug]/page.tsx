@@ -23,7 +23,7 @@ async function getSanityPost(rawSlug: string) {
       "image": mainImage.asset->url,
       category,
       author,
-      "date": publishedAt,
+      "date": select(defined(publishedAt) => publishedAt, _createdAt),
       readTime,
       seoTitle,
       metaDescription,
@@ -129,7 +129,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       postData = {
         title: data.title || '',
         category: data.category || '',
-        author: data.author || 'GrowthSpare',
+        author: data.author || 'GrowthSpare Team',
         date: data.date || '',
         readTime: data.readTime || '',
         image: data.image || '',
@@ -142,9 +142,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     return <div className="p-8 text-center text-gray-500">Post not found</div>;
   }
 
-  const displayDate = isSanity && postData.date
-    ? new Date(postData.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
-    : postData.date;
+  const rawDate = postData.date || postData._createdAt || new Date().toISOString();
+  const displayDate = new Date(rawDate).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://growthspare.com';
   const postUrl = `${baseUrl}/blog/${slug}`;
