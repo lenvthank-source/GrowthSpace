@@ -315,17 +315,13 @@ export default function HeroSection() {
 
             <motion.div variants={itemVariants} className="space-y-4">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-black text-gray-900 leading-[1.1] tracking-tight">
-                <span className="text-base sm:text-lg md:text-xl font-bold text-amber-600 uppercase tracking-wider block mb-2 font-sans">
-                  Delhi NCR&apos;s Growth &amp; Technology Partner — Digital Marketing Agency &amp; AI Solutions
-                </span>
                 <span className="block">More Customers.</span>
                 <span className="block text-gradient">Better Systems.</span>
                 <span className="block">Faster Growth.</span>
               </h1>
 
               <p className="text-lg md:text-xl text-gray-500 max-w-lg leading-relaxed">
-                GrowthSpare combines performance marketing and custom technology to help
-                businesses grow online and run smarter — all under one roof.
+                Delhi Best Digital Marketing Agency &amp; AI Solutions, GrowthSpare combines performance marketing and custom technology to help businesses grow online and run smarter — all under one roof.
               </p>
             </motion.div>
 
