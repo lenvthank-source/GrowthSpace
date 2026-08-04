@@ -30,13 +30,18 @@ export async function POST(req: Request) {
       });
     }
 
+    const isSecure = smtpPort === 465;
+
     const transporter = nodemailer.createTransport({
       host: smtpHost,
       port: smtpPort,
-      secure: smtpPort === 465, // true for 465, false for 587
+      secure: isSecure, // true for 465, false for 587
       auth: {
         user: smtpUser,
         pass: smtpPass,
+      },
+      tls: {
+        rejectUnauthorized: false, // Prevents cert verification failures on some hosts
       },
     });
 
@@ -174,8 +179,12 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true, message: "Emails sent successfully." });
   } catch (error: any) {
     console.error("Error sending contact email via SMTP:", error);
+    let userMsg = error?.message || "Failed to send email. Please try again later.";
+    if (userMsg.includes("535") || userMsg.includes("authentication failed")) {
+      userMsg = "SMTP Authentication Failed (535): Please check SMTP_USER and SMTP_PASS in Netlify environment variables. If using Gmail/Zoho with 2FA, generate an App Password.";
+    }
     return NextResponse.json(
-      { error: error?.message || "Failed to send email. Please try again later." },
+      { error: userMsg },
       { status: 500 }
     );
   }
