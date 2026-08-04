@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, Mail, MapPin, Clock, MessageCircle, Send, CheckCircle2 } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, MessageCircle, Send, CheckCircle2, Loader2 } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
 import SectionBadge from "@/components/ui/SectionBadge";
 
@@ -29,6 +29,8 @@ const budgets = [
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [form, setForm] = useState({
     name: "", email: "", phone: "", company: "", service: "", budget: "", message: "",
   });
@@ -37,9 +39,29 @@ export default function ContactPage() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+      if (!res.ok && data.error) {
+        setErrorMessage(data.error);
+      } else {
+        setSubmitted(true);
+      }
+    } catch {
+      setErrorMessage("Unable to send request. Please check your connection or contact us directly on WhatsApp.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -282,12 +304,27 @@ export default function ContactPage() {
                             className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#F26522] focus:ring-2 focus:ring-[#F26522]/20 text-[#111827] text-sm transition-colors resize-none bg-white"
                           />
                         </div>
+                        {errorMessage && (
+                          <div className="bg-red-50 border border-red-200 text-red-700 text-sm p-4 rounded-xl font-sans">
+                            {errorMessage}
+                          </div>
+                        )}
                         <button
                           type="submit"
-                          className="flex items-center gap-3 bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-8 py-4 rounded-xl transition-colors shadow-sm w-full justify-center"
+                          disabled={loading}
+                          className="flex items-center gap-3 bg-[#F26522] hover:bg-[#e05a1a] disabled:opacity-60 text-white font-semibold px-8 py-4 rounded-xl transition-colors shadow-sm w-full justify-center"
                         >
-                          <Send className="w-5 h-5" />
-                          Send Message
+                          {loading ? (
+                            <>
+                              <Loader2 className="w-5 h-5 animate-spin" />
+                              Sending Inquiry...
+                            </>
+                          ) : (
+                            <>
+                              <Send className="w-5 h-5" />
+                              Send Message
+                            </>
+                          )}
                         </button>
                       </form>
                     </>
