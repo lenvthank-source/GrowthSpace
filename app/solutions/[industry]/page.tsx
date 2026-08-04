@@ -73,7 +73,7 @@ export default async function IndustrySolutionPage({ params }: Props) {
       <section className="bg-slate-900 text-white py-16 md:py-24">
         <FadeIn>
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="inline-block bg-[#F26522]/10 border border-amber-500/20 text-amber-400 font-semibold text-xs px-3 py-1 rounded-full mb-4">
+          <div className="inline-block bg-[#F5A623]/10 border border-amber-500/20 text-amber-400 font-semibold text-xs px-3 py-1 rounded-full mb-4">
             {ind.name} Industry Solutions
           </div>
           <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6">
@@ -82,7 +82,7 @@ export default async function IndustrySolutionPage({ params }: Props) {
           <p className="text-slate-300 text-lg max-w-3xl mb-8">
             GrowthSpare delivers specialized marketing and custom software systems designed specifically to solve {ind.name} operational and growth challenges.
           </p>
-          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F26522] hover:bg-[#e05a1a] text-slate-950 font-bold px-7 py-4 rounded-xl transition-all shadow-lg shadow-amber-500/20">Schedule Industry Demo
+          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D4901E] text-slate-950 font-bold px-7 py-4 rounded-xl transition-all shadow-lg shadow-amber-500/20">Schedule Industry Demo
             </TextRollButton>
         </div>
       </FadeIn>
@@ -96,7 +96,7 @@ export default async function IndustrySolutionPage({ params }: Props) {
             {ind.keyModules.map((mod, i) => (
               <div key={i} className="border border-slate-200 rounded-2xl p-6 hover:shadow-md transition-all">
                 <div className="flex items-center gap-3 mb-3">
-                  <CheckCircle2 className="w-6 h-6 text-[#F26522]" />
+                  <CheckCircle2 className="w-6 h-6 text-[#F5A623]" />
                   <h3 className="text-xl font-bold text-slate-900">{mod.title}</h3>
                 </div>
                 <p className="text-slate-600 leading-relaxed">{mod.description}</p>

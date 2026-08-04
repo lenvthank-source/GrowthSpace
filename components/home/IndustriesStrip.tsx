@@ -47,7 +47,7 @@ export default function IndustriesStrip() {
                 className="group flex flex-col items-center gap-3 p-5 rounded-2xl bg-[#F5F5F5] hover-lift transition-all duration-500 cursor-pointer"
               >
                 <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm">
-                  <Icon className="w-6 h-6 text-[#111827] group-hover:text-[#F26522] transition-colors duration-300" />
+                  <Icon className="w-6 h-6 text-[#111827] group-hover:text-[#F5A623] transition-colors duration-300" />
                 </div>
                 <span className="text-xs font-semibold text-[#111827] text-center uppercase tracking-wide">
                   {industry.name}

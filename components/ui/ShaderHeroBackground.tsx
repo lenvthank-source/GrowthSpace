@@ -17,7 +17,7 @@ export default function ShaderHeroBackground() {
   if (err || !SC) {
     return (
       <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden bg-gradient-to-b from-[#EFEFEF] via-[#F4F4F4] to-[#EFEFEF]">
-        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(#ff5f03_1px,transparent_1px)] [background-size:32px_32px]" />
+        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(#FFBA3B_1px,transparent_1px)] [background-size:32px_32px]" />
       </div>
     );
   }
@@ -31,10 +31,10 @@ export default function ShaderHeroBackground() {
           <Swirl colorA="#ffffff" colorB="#f0f0f0" detail={1.7} />
           <ChromaFlow
             baseColor="#ffffff"
-            downColor="#ff5f03"
-            leftColor="#ff5f03"
-            rightColor="#ff5f03"
-            upColor="#ff5f03"
+            downColor="#FFBA3B"
+            leftColor="#FFBA3B"
+            rightColor="#FFBA3B"
+            upColor="#FFBA3B"
             momentum={13}
             radius={3.5}
           />

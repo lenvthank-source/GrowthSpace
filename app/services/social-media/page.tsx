@@ -32,7 +32,7 @@ export default function SocialMediaPage() {
               " />
               <h1 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-[#111827] leading-tight mb-5">
                 Build Your Brand on{" "}
-                <span className="text-[#F26522]">Every Platform.</span>
+                <span className="text-[#F5A623]">Every Platform.</span>
               </h1>
               <p className="text-[#6B7280] font-sans text-lg leading-relaxed mb-7">
                 Social media isn&apos;t just a channel for us — it&apos;s a strategic pillar. We craft
@@ -40,7 +40,7 @@ export default function SocialMediaPage() {
                 and convert followers into customers.
               </p>
               <div className="flex gap-4">
-                <Link href="/contact" className="bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-6 py-3.5 rounded-lg transition-colors">
+                <Link href="/contact" className="bg-[#F5A623] hover:bg-[#D4901E] text-[#111827] font-semibold px-6 py-3.5 rounded-lg transition-colors">
                   Get Started
                 </Link>
                 <Link href="/projects" className="border-2 border-gray-200 hover:border-gray-900 text-gray-700 font-semibold px-6 py-3.5 rounded-lg transition-colors">
@@ -94,7 +94,7 @@ export default function SocialMediaPage() {
               "Monthly content calendar", "Performance analytics & reporting",
             ].map((item) => (
               <div key={item} className="flex items-center gap-3 p-4 rounded-xl border border-gray-100 hover:border-amber-200 transition-colors">
-                <div className="w-2 h-2 rounded-full bg-[#F26522] shrink-0" />
+                <div className="w-2 h-2 rounded-full bg-[#F5A623] shrink-0" />
                 <span className="text-gray-700 text-sm font-medium">{item}</span>
               </div>
             ))}
@@ -108,7 +108,7 @@ export default function SocialMediaPage() {
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <h2 className="text-3xl font-black text-white mb-4">Ready to Grow Your Social Presence?</h2>
           <p className="text-[#6B7280] font-sans text-lg mb-8">Let&apos;s build a social media strategy that grows your brand and drives real business results.</p>
-          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg">Get Free Strategy Call </TextRollButton>
+          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D4901E] text-[#111827] font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg">Get Free Strategy Call </TextRollButton>
         </div>
       </FadeIn>
       </section>

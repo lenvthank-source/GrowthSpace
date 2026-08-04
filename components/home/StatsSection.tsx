@@ -23,7 +23,7 @@ export default function StatsSection() {
               transition={{ duration: 0.5, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
               className="text-center"
             >
-              <p className="text-4xl md:text-5xl font-display font-black text-[#F26522] mb-2">{stat.value}</p>
+              <p className="text-4xl md:text-5xl font-display font-black text-[#F5A623] mb-2">{stat.value}</p>
               <p className="text-white font-sans font-semibold text-base mb-1">{stat.label}</p>
               <p className="text-gray-400 font-sans text-xs md:text-sm">{stat.desc}</p>
             </motion.div>

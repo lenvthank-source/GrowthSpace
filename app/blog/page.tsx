@@ -167,12 +167,12 @@ export default async function BlogPage() {
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <span className="absolute top-4 left-4 bg-[#F26522] text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  <span className="absolute top-4 left-4 bg-[#F5A623] text-[#111827] text-xs font-semibold px-3 py-1 rounded-full">
                     {post.category}
                   </span>
                 </div>
                 <div className="p-6">
-                  <h2 className="font-black text-[#111827] text-xl leading-snug mb-3 group-hover:text-[#F26522] transition-colors">
+                  <h2 className="font-black text-[#111827] text-xl leading-snug mb-3 group-hover:text-[#F5A623] transition-colors">
                     {post.title}
                   </h2>
                   <p className="text-[#6B7280] font-sans text-sm leading-relaxed mb-4">
@@ -214,7 +214,7 @@ export default async function BlogPage() {
                   </span>
                 </div>
                 <div className="p-5 flex flex-col flex-1">
-                  <h2 className="font-bold text-[#111827] mb-2 leading-snug group-hover:text-[#F26522] transition-colors">
+                  <h2 className="font-bold text-[#111827] mb-2 leading-snug group-hover:text-[#F5A623] transition-colors">
                     {post.title}
                   </h2>
                   <p className="text-[#6B7280] font-sans text-sm leading-relaxed mb-4 flex-1">
@@ -272,7 +272,7 @@ export default async function BlogPage() {
               placeholder="Enter your email"
               className="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-amber-400 text-[#111827]"
             />
-            <button className="bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-6 py-3 rounded-lg transition-colors shrink-0">
+            <button className="bg-[#F5A623] hover:bg-[#D4901E] text-[#111827] font-semibold px-6 py-3 rounded-lg transition-colors shrink-0">
               Subscribe
             </button>
           </div>

@@ -32,14 +32,14 @@ export default function PPCPage() {
               " />
               <h1 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-[#111827] leading-tight mb-5">
                 Generate Leads with{" "}
-                <span className="text-[#F26522]">High-Converting PPC Campaigns.</span>
+                <span className="text-[#F5A623]">High-Converting PPC Campaigns.</span>
               </h1>
               <p className="text-[#6B7280] font-sans text-lg leading-relaxed mb-7">
                 Our certified Google Ads experts manage your entire paid search strategy — from campaign setup
                 to ongoing optimization — ensuring every rupee delivers maximum return on investment.
               </p>
               <div className="flex gap-4">
-                <Link href="/contact" className="bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-6 py-3.5 rounded-lg transition-colors">
+                <Link href="/contact" className="bg-[#F5A623] hover:bg-[#D4901E] text-[#111827] font-semibold px-6 py-3.5 rounded-lg transition-colors">
                   Start a Campaign
                 </Link>
                 <Link href="/pricing" className="border-2 border-gray-200 hover:border-gray-900 text-gray-700 font-semibold px-6 py-3.5 rounded-lg transition-colors">
@@ -72,7 +72,7 @@ export default function PPCPage() {
               return (
                 <div key={f.title} className="bg-white rounded-2xl p-7 border border-gray-100 hover:border-amber-200 hover:shadow-sm transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]">
                   <div className="w-11 h-11 bg-amber-50 rounded-xl flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5 text-[#F26522]" />
+                    <Icon className="w-5 h-5 text-[#F5A623]" />
                   </div>
                   <h3 className="font-bold text-[#111827] mb-2">{f.title}</h3>
                   <p className="text-[#6B7280] font-sans text-sm leading-relaxed">{f.desc}</p>
@@ -96,7 +96,7 @@ export default function PPCPage() {
               { step: "04", title: "Optimize & Scale", desc: "A/B test ads, optimize bids, cut losers, and scale winners for maximum ROI." },
             ].map((step) => (
               <div key={step.step} className="text-center">
-                <div className="w-14 h-14 bg-[#F26522] rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-14 h-14 bg-[#F5A623] rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <span className="text-white font-black text-lg">{step.step}</span>
                 </div>
                 <h3 className="font-bold text-[#111827] mb-2">{step.title}</h3>
@@ -113,7 +113,7 @@ export default function PPCPage() {
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <h2 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-white mb-4">Ready to Scale with Google Ads?</h2>
           <p className="text-[#6B7280] font-sans text-lg mb-8">Get a free Google Ads audit and see how much you could save and earn.</p>
-          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg">Get Free Audit </TextRollButton>
+          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D4901E] text-[#111827] font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg">Get Free Audit </TextRollButton>
         </div>
       </FadeIn>
       </section>

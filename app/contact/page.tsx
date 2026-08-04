@@ -93,11 +93,11 @@ export default function ContactPage() {
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shrink-0">
-                        <Phone className="w-5 h-5 text-[#F26522]" />
+                        <Phone className="w-5 h-5 text-[#F5A623]" />
                       </div>
                       <div>
                         <p className="font-sans font-semibold text-[#111827] text-sm mb-1">Phone</p>
-                        <a href="tel:+919560725039" className="font-sans text-[#6B7280] text-sm hover:text-[#F26522] transition-colors">
+                        <a href="tel:+919560725039" className="font-sans text-[#6B7280] text-sm hover:text-[#F5A623] transition-colors">
                           +91 9560725039
                         </a>
                       </div>
@@ -211,7 +211,7 @@ export default function ContactPage() {
                               value={form.name}
                               onChange={handleChange}
                               placeholder="Your full name"
-                              className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#F26522] focus:ring-2 focus:ring-[#F26522]/20 text-[#111827] text-sm transition-colors bg-white"
+                              className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#F5A623] focus:ring-2 focus:ring-[#F5A623]/20 text-[#111827] text-sm transition-colors bg-white"
                             />
                           </div>
                           <div>
@@ -225,7 +225,7 @@ export default function ContactPage() {
                               value={form.email}
                               onChange={handleChange}
                               placeholder="you@company.com"
-                              className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#F26522] focus:ring-2 focus:ring-[#F26522]/20 text-[#111827] text-sm transition-colors bg-white"
+                              className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#F5A623] focus:ring-2 focus:ring-[#F5A623]/20 text-[#111827] text-sm transition-colors bg-white"
                             />
                           </div>
                         </div>
@@ -240,7 +240,7 @@ export default function ContactPage() {
                               value={form.phone}
                               onChange={handleChange}
                               placeholder="+91 99999 99999"
-                              className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#F26522] focus:ring-2 focus:ring-[#F26522]/20 text-[#111827] text-sm transition-colors bg-white"
+                              className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#F5A623] focus:ring-2 focus:ring-[#F5A623]/20 text-[#111827] text-sm transition-colors bg-white"
                             />
                           </div>
                           <div>
@@ -253,7 +253,7 @@ export default function ContactPage() {
                               value={form.company}
                               onChange={handleChange}
                               placeholder="Your company"
-                              className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#F26522] focus:ring-2 focus:ring-[#F26522]/20 text-[#111827] text-sm transition-colors bg-white"
+                              className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#F5A623] focus:ring-2 focus:ring-[#F5A623]/20 text-[#111827] text-sm transition-colors bg-white"
                             />
                           </div>
                         </div>
@@ -266,7 +266,7 @@ export default function ContactPage() {
                               name="service"
                               value={form.service}
                               onChange={handleChange}
-                              className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#F26522] focus:ring-2 focus:ring-[#F26522]/20 text-[#111827] text-sm transition-colors bg-white"
+                              className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#F5A623] focus:ring-2 focus:ring-[#F5A623]/20 text-[#111827] text-sm transition-colors bg-white"
                             >
                               <option value="">Select a service</option>
                               {services.map((s) => (
@@ -282,7 +282,7 @@ export default function ContactPage() {
                               name="budget"
                               value={form.budget}
                               onChange={handleChange}
-                              className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#F26522] focus:ring-2 focus:ring-[#F26522]/20 text-[#111827] text-sm transition-colors bg-white"
+                              className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#F5A623] focus:ring-2 focus:ring-[#F5A623]/20 text-[#111827] text-sm transition-colors bg-white"
                             >
                               <option value="">Select budget range</option>
                               {budgets.map((b) => (
@@ -301,7 +301,7 @@ export default function ContactPage() {
                             onChange={handleChange}
                             rows={4}
                             placeholder="Tell us about your business goals and challenges..."
-                            className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#F26522] focus:ring-2 focus:ring-[#F26522]/20 text-[#111827] text-sm transition-colors resize-none bg-white"
+                            className="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-[#F5A623] focus:ring-2 focus:ring-[#F5A623]/20 text-[#111827] text-sm transition-colors resize-none bg-white"
                           />
                         </div>
                         {errorMessage && (
@@ -312,7 +312,7 @@ export default function ContactPage() {
                         <button
                           type="submit"
                           disabled={loading}
-                          className="flex items-center gap-3 bg-[#F26522] hover:bg-[#e05a1a] disabled:opacity-60 text-white font-semibold px-8 py-4 rounded-xl transition-colors shadow-sm w-full justify-center"
+                          className="flex items-center gap-3 bg-[#F5A623] hover:bg-[#D4901E] disabled:opacity-60 text-[#111827] font-semibold px-8 py-4 rounded-xl transition-colors shadow-sm w-full justify-center"
                         >
                           {loading ? (
                             <>
@@ -346,8 +346,8 @@ export default function ContactPage() {
         <div className="absolute inset-0 flex items-center justify-center">
           <FadeIn>
             <div className="bg-white rounded-2xl shadow-xl p-8 text-center max-w-sm mx-4 hover-lift">
-              <div className="w-12 h-12 bg-[#F26522]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MapPin className="w-6 h-6 text-[#F26522]" />
+              <div className="w-12 h-12 bg-[#F5A623]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MapPin className="w-6 h-6 text-[#F5A623]" />
               </div>
               <p className="font-display font-medium text-xl text-[#111827] mb-2">GrowthSpare HQ</p>
               <p className="font-sans text-[#6B7280] text-sm leading-relaxed">Indure House, 2nd Floor, Savitri Cinema Complex GK-II, New Delhi, Delhi 110048</p>

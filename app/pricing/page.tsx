@@ -107,7 +107,7 @@ const comparison = [
 ];
 
 function CheckOrX({ value }: { value: boolean | string }) {
-  if (value === true) return <CheckCircle2 className="w-5 h-5 text-[#F26522] mx-auto" />;
+  if (value === true) return <CheckCircle2 className="w-5 h-5 text-[#F5A623] mx-auto" />;
   if (value === false) return <span className="text-gray-300 text-lg font-bold block text-center">—</span>;
   return <span className="text-xs font-sans font-semibold text-[#111827] block text-center">{value}</span>;
 }
@@ -142,7 +142,7 @@ export default function PricingPage() {
                   <div className="relative bg-[#EFEFEF] rounded-2xl p-6 sm:p-8 hover-lift h-full flex flex-col">
                     {plan.badge && (
                       <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                        <span className="bg-[#F26522] text-white text-xs font-bold px-4 py-1.5 rounded-full whitespace-nowrap">
+                        <span className="bg-[#F5A623] text-[#111827] text-xs font-bold px-4 py-1.5 rounded-full whitespace-nowrap">
                           {plan.badge}
                         </span>
                       </div>
@@ -150,11 +150,11 @@ export default function PricingPage() {
 
                     <div className="flex items-center gap-4 mb-6">
                       <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-[#F26522]" />
+                        <Icon className="w-6 h-6 text-[#F5A623]" />
                       </div>
                       <div>
                         <h2 className="font-display font-medium text-[#111827] text-2xl">{plan.name}</h2>
-                        <p className="font-sans text-[#F26522] text-xs font-semibold">{plan.tagline}</p>
+                        <p className="font-sans text-[#F5A623] text-xs font-semibold">{plan.tagline}</p>
                       </div>
                     </div>
 
@@ -177,7 +177,7 @@ export default function PricingPage() {
                     <div className="space-y-4">
                       {plan.features.map((f) => (
                         <div key={f} className="flex items-start gap-3">
-                          <CheckCircle2 className="w-5 h-5 text-[#F26522] shrink-0" />
+                          <CheckCircle2 className="w-5 h-5 text-[#F5A623] shrink-0" />
                           <span className="font-sans text-[#111827] text-sm">{f}</span>
                         </div>
                       ))}
@@ -215,7 +215,7 @@ export default function PricingPage() {
                     <tr className="border-b border-gray-100">
                       <th className="text-left px-8 py-6 font-display font-medium text-[#6B7280]">Feature</th>
                       <th className="text-center px-6 py-6 font-display font-medium text-[#111827]">Starter</th>
-                      <th className="text-center px-6 py-6 font-display font-bold text-[#F26522] bg-[#F26522]/5">Growth</th>
+                      <th className="text-center px-6 py-6 font-display font-bold text-[#F5A623] bg-[#F5A623]/5">Growth</th>
                       <th className="text-center px-6 py-6 font-display font-medium text-[#111827]">Enterprise</th>
                     </tr>
                   </thead>
@@ -224,7 +224,7 @@ export default function PricingPage() {
                       <tr key={row.feature} className={`border-b border-gray-100 ${i % 2 === 1 ? "bg-gray-50/50" : ""}`}>
                         <td className="px-8 py-5 font-sans text-sm text-[#111827]">{row.feature}</td>
                         <td className="px-6 py-5"><CheckOrX value={row.starter} /></td>
-                        <td className="px-6 py-5 bg-[#F26522]/5"><CheckOrX value={row.growth} /></td>
+                        <td className="px-6 py-5 bg-[#F5A623]/5"><CheckOrX value={row.growth} /></td>
                         <td className="px-6 py-5"><CheckOrX value={row.enterprise} /></td>
                       </tr>
                     ))}

@@ -32,14 +32,14 @@ export default function ContentPage() {
               " />
               <h1 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-[#111827] leading-tight mb-5">
                 Content That{" "}
-                <span className="text-[#F26522]">Ranks, Engages & Converts.</span>
+                <span className="text-[#F5A623]">Ranks, Engages & Converts.</span>
               </h1>
               <p className="text-[#6B7280] font-sans text-lg leading-relaxed mb-7">
                 We create content that doesn&apos;t just fill space — it builds authority, attracts qualified
                 traffic, and converts visitors into customers. Every piece is crafted with strategy, SEO,
                 and your audience in mind.
               </p>
-              <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-6 py-3.5 rounded-lg transition-colors">Get Content Strategy </TextRollButton>
+              <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D4901E] text-[#111827] font-semibold px-6 py-3.5 rounded-lg transition-colors">Get Content Strategy </TextRollButton>
             </div>
             <img
               src="https://images.pexels.com/photos/6177607/pexels-photo-6177607.jpeg?auto=compress&cs=tinysrgb&w=700"
@@ -75,7 +75,7 @@ export default function ContentPage() {
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <h2 className="text-3xl font-black text-white mb-4">Start Creating Content That Converts</h2>
           <p className="text-[#6B7280] font-sans text-lg mb-8">Let&apos;s build a content strategy that drives traffic and grows your business.</p>
-          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg">Book Free Consultation </TextRollButton>
+          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D4901E] text-[#111827] font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg">Book Free Consultation </TextRollButton>
         </div>
       </FadeIn>
       </section>

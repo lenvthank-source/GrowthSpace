@@ -44,7 +44,7 @@ export default function GrowthMarketingPage() {
               <h1 className="text-4xl md:text-5xl xl:text-6xl font-black text-[#111827] leading-tight mb-6">
                 Acquire More Customers.
                 <br />
-                <span className="text-[#F26522]">Grow More Revenue.</span>
+                <span className="text-[#F5A623]">Grow More Revenue.</span>
               </h1>
               <p className="text-gray-600 text-lg leading-relaxed mb-8 max-w-xl">
                 Our Growth & Marketing division combines SEO, paid advertising, social media,
@@ -52,7 +52,7 @@ export default function GrowthMarketingPage() {
                 delivers consistent, measurable results.
               </p>
               <div className="flex flex-wrap gap-4">
-                <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-7 py-3.5 rounded-xl transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] shadow-lg shadow-amber-200">Book Free Strategy Call
+                <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D4901E] text-[#111827] font-semibold px-7 py-3.5 rounded-xl transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] shadow-lg shadow-amber-200">Book Free Strategy Call
                   </TextRollButton>
                 <Link href="/projects" className="inline-flex items-center gap-2 border-2 border-gray-200 hover:border-gray-900 text-gray-700 font-semibold px-7 py-3.5 rounded-xl transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]">
                   View Case Studies
@@ -63,7 +63,7 @@ export default function GrowthMarketingPage() {
             <div className="grid grid-cols-2 gap-4">
               {results.map((r) => (
                 <div key={r.label} className="bg-white rounded-2xl p-7 border border-amber-100 shadow-sm">
-                  <p className="text-4xl font-black text-[#F26522] mb-2">{r.metric}</p>
+                  <p className="text-4xl font-black text-[#F5A623] mb-2">{r.metric}</p>
                   <p className="text-gray-600 text-sm leading-snug">{r.label}</p>
                 </div>
               ))}
@@ -86,12 +86,12 @@ export default function GrowthMarketingPage() {
               const Icon = s.icon;
               return (
                 <Link key={s.title} href={s.href} className="group bg-amber-50/50 hover:bg-amber-50 border border-amber-100 hover:border-amber-200 rounded-2xl p-7 transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:shadow-sm hover:-translate-y-0.5">
-                  <div className="w-11 h-11 bg-[#F26522] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <div className="w-11 h-11 bg-[#F5A623] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Icon className="w-5 h-5 text-white" />
                   </div>
                   <h3 className="font-bold text-[#111827] mb-2">{s.title}</h3>
                   <p className="text-[#6B7280] font-sans text-sm leading-relaxed">{s.desc}</p>
-                  <span className="inline-flex items-center gap-1 text-[#F26522] text-sm font-semibold mt-4 group-hover:gap-2 transition-all">
+                  <span className="inline-flex items-center gap-1 text-[#F5A623] text-sm font-semibold mt-4 group-hover:gap-2 transition-all">
                     Learn More <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </Link>
@@ -125,7 +125,7 @@ export default function GrowthMarketingPage() {
                   "ROI-first mindset — every rupee must earn",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#F26522] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-[#F5A623] shrink-0 mt-0.5" />
                     <span className="text-gray-700">{item}</span>
                   </div>
                 ))}
@@ -138,7 +138,7 @@ export default function GrowthMarketingPage() {
                 className="w-full rounded-3xl shadow-xl object-cover aspect-square"
               />
               <div className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-lg border border-amber-100 p-5">
-                <p className="text-3xl font-black text-[#F26522]">95%</p>
+                <p className="text-3xl font-black text-[#F5A623]">95%</p>
                 <p className="text-gray-600 text-sm">Client Retention Rate</p>
               </div>
             </div>
@@ -148,7 +148,7 @@ export default function GrowthMarketingPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[#F26522] text-center">
+      <section className="py-20 bg-[#F5A623] text-center">
         <FadeIn>
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <h2 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-white mb-5">
@@ -157,7 +157,7 @@ export default function GrowthMarketingPage() {
           <p className="text-amber-100 text-lg mb-8">
             Book a free 30-minute strategy call and get a custom marketing roadmap for your business.
           </p>
-          <Link href="/contact" className="inline-flex items-center gap-2 bg-white hover:bg-[#EFEFEF] text-[#F26522] font-semibold px-8 py-4 rounded-xl transition-colors shadow-lg">
+          <Link href="/contact" className="inline-flex items-center gap-2 bg-white hover:bg-[#EFEFEF] text-[#F5A623] font-semibold px-8 py-4 rounded-xl transition-colors shadow-lg">
             Book Free Consultation <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

@@ -155,13 +155,13 @@ export default function IndustriesPage() {
                   <div className="grid sm:grid-cols-2 gap-8">
                     <div>
                       <div className="flex items-center gap-3 mb-4">
-                        <TrendingUp className="w-5 h-5 text-[#F26522]" />
+                        <TrendingUp className="w-5 h-5 text-[#F5A623]" />
                         <h3 className="font-display font-medium text-[#111827] text-sm uppercase tracking-wider">Marketing</h3>
                       </div>
                       <ul className="space-y-2.5">
                         {ind.marketing.map((item) => (
                           <li key={item} className="flex items-start gap-3 font-sans text-[#6B7280] text-sm leading-relaxed">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#F26522] shrink-0 mt-1.5" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#F5A623] shrink-0 mt-1.5" />
                             {item}
                           </li>
                         ))}

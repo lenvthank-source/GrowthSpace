@@ -53,7 +53,7 @@ export default function IndustriesSection() {
               className="group bg-white rounded-2xl p-6 text-center hover-lift border border-gray-100 transition-all duration-500"
             >
               <div className="text-4xl mb-4">{industry.icon}</div>
-              <h3 className="font-display font-bold text-[#111827] text-base mb-2 group-hover:text-[#F26522] transition-colors">{industry.name}</h3>
+              <h3 className="font-display font-bold text-[#111827] text-base mb-2 group-hover:text-[#F5A623] transition-colors">{industry.name}</h3>
               <p className="text-[#6B7280] font-sans text-xs leading-relaxed line-clamp-3">{industry.marketing}</p>
             </Link>
           ))}

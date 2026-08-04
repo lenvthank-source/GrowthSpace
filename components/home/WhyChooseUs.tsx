@@ -33,7 +33,7 @@ export default function WhyChooseUs() {
             <h2 className="axion-heading text-[#111827] mt-6 mb-6">
               Unlike Any Agency
               <br />
-              <span className="text-[#F26522]">You've Worked With.</span>
+              <span className="text-[#F5A623]">You've Worked With.</span>
             </h2>
             <p className="text-[#6B7280] font-sans text-lg leading-relaxed mb-8">
               Traditional agencies only do marketing. Development shops only build software.
@@ -43,7 +43,7 @@ export default function WhyChooseUs() {
 
             <div className="grid grid-cols-2 gap-4 mb-8">
               <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
-                <TrendingUp className="w-6 h-6 text-[#F26522] mb-3" />
+                <TrendingUp className="w-6 h-6 text-[#F5A623] mb-3" />
                 <p className="font-display font-bold text-[#111827] text-sm mb-1">Growth & Marketing</p>
                 <p className="text-[#6B7280] font-sans text-xs leading-relaxed">Customer acquisition & revenue generation</p>
               </div>
@@ -67,7 +67,7 @@ export default function WhyChooseUs() {
                 transition={{ duration: 0.5, delay: index * 0.05, ease: [0.25, 0.1, 0.25, 1] }}
                 className="flex gap-4 bg-white rounded-2xl p-6 border border-gray-100 hover-lift"
               >
-                <CheckCircle2 className="w-6 h-6 text-[#F26522] shrink-0" />
+                <CheckCircle2 className="w-6 h-6 text-[#F5A623] shrink-0" />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-3 mb-2 flex-wrap">
                     <h3 className="font-display font-bold text-[#111827] text-base">{feature.title}</h3>

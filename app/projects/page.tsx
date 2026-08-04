@@ -185,7 +185,7 @@ export default function ProjectsPage() {
                     <h2 className="font-display font-medium text-3xl md:text-4xl text-[#111827] mb-3">
                       {project.title}
                     </h2>
-                    <p className="font-sans text-[#F26522] font-semibold mb-6">{project.client}</p>
+                    <p className="font-sans text-[#F5A623] font-semibold mb-6">{project.client}</p>
                     <p className="font-sans text-[#6B7280] leading-relaxed mb-6">{project.description}</p>
                     
                     <div className="bg-[#EFEFEF] rounded-2xl p-6 mb-6">
@@ -198,7 +198,7 @@ export default function ProjectsPage() {
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                       {project.metrics.map((m) => (
                         <div key={m.label} className="bg-white rounded-xl p-4 text-center hover-lift border border-gray-100 shadow-sm">
-                          <p className="font-display text-xl font-bold text-[#F26522] leading-none mb-2">{m.value}</p>
+                          <p className="font-display text-xl font-bold text-[#F5A623] leading-none mb-2">{m.value}</p>
                           <p className="font-sans text-[11px] text-[#6B7280] font-medium leading-tight">{m.label}</p>
                         </div>
                       ))}
@@ -248,7 +248,7 @@ export default function ProjectsPage() {
                     <div className="bg-[#EFEFEF] rounded-2xl p-8 hover-lift h-full flex flex-col">
                       <div className="flex gap-1.5 mb-6">
                         {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-[#F26522] text-[#F26522]" />
+                          <Star key={i} className="w-5 h-5 fill-[#F5A623] text-[#F5A623]" />
                         ))}
                       </div>
                       <p className="font-sans text-[#6B7280] leading-relaxed mb-8 italic text-base flex-grow">&ldquo;{t.text}&rdquo;</p>

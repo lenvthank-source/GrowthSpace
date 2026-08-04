@@ -89,7 +89,7 @@ export default function BusinessStageSection() {
               >
                 {stage.badge && (
                   <div className="absolute -top-3 left-8">
-                    <span className="bg-[#F26522] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
+                    <span className="bg-[#F5A623] text-[#111827] text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
                       {stage.badge}
                     </span>
                   </div>
@@ -101,7 +101,7 @@ export default function BusinessStageSection() {
                   </div>
                   <div>
                     <h3 className="font-display font-bold text-[#111827] text-xl">{stage.stage}</h3>
-                    <p className="text-[#F26522] text-xs uppercase tracking-wide font-semibold mt-1">{stage.tagline}</p>
+                    <p className="text-[#F5A623] text-xs uppercase tracking-wide font-semibold mt-1">{stage.tagline}</p>
                   </div>
                 </div>
 

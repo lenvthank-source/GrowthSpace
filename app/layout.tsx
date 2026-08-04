@@ -58,6 +58,14 @@ export const metadata: Metadata = {
     description:
       "GrowthSpare combines performance marketing, SEO, Google Ads, AI chatbots, and custom ERP/CRM software to help businesses scale fast.",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/logosmall.png", type: "image/png" },
+    ],
+    shortcut: "/logosmall.png",
+    apple: "/growthspare-a-logo.png",
+  },
 };
 
 export default function RootLayout({

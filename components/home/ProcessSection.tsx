@@ -62,7 +62,7 @@ export default function ProcessSection() {
               transition={{ duration: 0.5, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
               className="flex flex-col items-center text-center group bg-white p-6 rounded-2xl hover-lift border border-gray-100"
             >
-              <div className="w-16 h-16 rounded-full bg-[#F5F5F5] text-[#111827] flex items-center justify-center mb-5 group-hover:bg-[#F26522] group-hover:text-white transition-colors duration-300">
+              <div className="w-16 h-16 rounded-full bg-[#F5F5F5] text-[#111827] flex items-center justify-center mb-5 group-hover:bg-[#F5A623] group-hover:text-[#111827] transition-colors duration-300">
                 <span className="font-display font-bold text-xl">{step.step}</span>
               </div>
               <h3 className="font-display font-bold text-[#111827] mb-3">{step.title}</h3>

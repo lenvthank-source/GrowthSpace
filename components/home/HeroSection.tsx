@@ -4,12 +4,13 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import ShaderHeroBackground from "@/components/ui/ShaderHeroBackground";
 import TextRollButton from "@/components/ui/TextRollButton";
+import CountUp from "@/components/ui/CountUp";
 
 const stats = [
-  { value: "50+", label: "Brands Grown" },
-  { value: "10+", label: "Years Experience" },
-  { value: "95%", label: "Client Retention" },
-  { value: "2.45M+", label: "Ad Spend Managed" },
+  { end: 50, suffix: "+", label: "Brands Grown" },
+  { end: 10, suffix: "+", label: "Years Experience" },
+  { end: 95, suffix: "%", label: "Client Retention" },
+  { end: 2.45, suffix: "M+", label: "Ad Spend Managed", decimals: 2 },
 ];
 
 const brands = [
@@ -34,7 +35,7 @@ export default function HeroSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <span className="inline-block text-[#F26522] font-semibold text-sm tracking-wider uppercase mb-4">
+            <span className="inline-block text-[#F5A623] font-semibold text-sm tracking-wider uppercase mb-4">
               GrowthSpare
             </span>
           </motion.div>
@@ -47,7 +48,7 @@ export default function HeroSection() {
             className="axion-hero-heading text-[#111827] mb-6"
           >
             <span className="block">More Customers.</span>
-            <span className="block text-[#F26522]">Better Systems.</span>
+            <span className="block text-[#F5A623]">Better Systems.</span>
             <span className="block">Faster Growth.</span>
           </motion.h1>
 
@@ -84,7 +85,9 @@ export default function HeroSection() {
           >
             {stats.map((stat, i) => (
               <div key={i}>
-                <div className="text-3xl font-display font-bold text-[#111827] mb-1">{stat.value}</div>
+                <div className="text-3xl font-display font-bold text-[#111827] mb-1">
+                  <CountUp end={stat.end} suffix={stat.suffix} duration={4000} decimals={stat.decimals || 0} />
+                </div>
                 <div className="text-sm font-sans text-[#6B7280]">{stat.label}</div>
               </div>
             ))}
@@ -105,3 +108,4 @@ export default function HeroSection() {
     </section>
   );
 }
+

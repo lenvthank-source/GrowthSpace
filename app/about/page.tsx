@@ -117,13 +117,13 @@ export default function AboutPage() {
                   bringing strategy, execution, and optimization under one roof.
                 </p>
                 <div className="bg-[#111827] rounded-xl p-6">
-                  <p className="text-[#F26522] font-semibold text-sm uppercase tracking-wider mb-4">
+                  <p className="text-[#F5A623] font-semibold text-sm uppercase tracking-wider mb-4">
                     Approach
                   </p>
                   <ul className="space-y-3">
                     {approach.map((item) => (
                       <li key={item} className="flex items-center gap-3 font-sans text-gray-300 text-sm">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#F26522] shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#F5A623] shrink-0" />
                         {item}
                       </li>
                     ))}
@@ -148,12 +148,12 @@ export default function AboutPage() {
                   className="w-full max-w-md rounded-2xl object-cover hover-lift shadow-lg"
                 />
                 <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-6">
-                  <p className="text-3xl font-display font-bold text-[#F26522]">50+</p>
+                  <p className="text-3xl font-display font-bold text-[#F5A623]">50+</p>
                   <p className="font-sans text-sm text-[#6B7280] font-medium">Brands Managed</p>
                 </div>
-                <div className="absolute top-8 -right-6 bg-[#F26522] rounded-2xl shadow-xl p-6">
-                  <p className="text-3xl font-display font-bold text-white">10+</p>
-                  <p className="font-sans text-sm text-orange-100 font-medium">Years Experience</p>
+                <div className="absolute top-8 -right-6 bg-[#F5A623] rounded-2xl shadow-xl p-6">
+                  <p className="text-3xl font-display font-bold text-[#111827]">10+</p>
+                  <p className="font-sans text-sm text-amber-900 font-medium">Years Experience</p>
                 </div>
               </div>
 
@@ -180,7 +180,7 @@ export default function AboutPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {["Performance Over Promises", "Consistency & Discipline", "Client-Centric Approach", "Treat Clients as Partners", "Adaptability & Innovation"].map((v) => (
                       <div key={v} className="flex items-center gap-3 font-sans text-[#6B7280] text-sm">
-                        <CheckCircle2 className="w-5 h-5 text-[#F26522] shrink-0" />
+                        <CheckCircle2 className="w-5 h-5 text-[#F5A623] shrink-0" />
                         {v}
                       </div>
                     ))}
@@ -197,12 +197,12 @@ export default function AboutPage() {
                       { role: "Visual Design Lead", company: "McCann", current: false },
                     ].map((exp, i) => (
                       <div key={i} className="flex items-center gap-4 bg-[#EFEFEF] rounded-xl p-4 hover-lift">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${exp.current ? "bg-[#F26522]" : "bg-white"}`}>
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${exp.current ? "bg-[#F5A623]" : "bg-white"}`}>
                           <Briefcase className={`w-4 h-4 ${exp.current ? "text-white" : "text-[#111827]"}`} />
                         </div>
                         <div>
                           <p className="font-sans text-sm font-semibold text-[#111827]">{exp.role}</p>
-                          <p className="font-sans text-xs text-[#6B7280]">{exp.company}{exp.current && <span className="ml-2 text-[#F26522] font-bold">Current</span>}</p>
+                          <p className="font-sans text-xs text-[#6B7280]">{exp.company}{exp.current && <span className="ml-2 text-[#F5A623] font-bold">Current</span>}</p>
                         </div>
                       </div>
                     ))}
@@ -235,7 +235,7 @@ export default function AboutPage() {
                       />
                     </div>
                     <h3 className="font-display font-medium text-xl text-[#111827]">{member.name}</h3>
-                    <p className="font-sans text-[#F26522] text-sm font-semibold mb-3">
+                    <p className="font-sans text-[#F5A623] text-sm font-semibold mb-3">
                       {member.role}
                     </p>
                     <p className="font-sans text-[#6B7280] text-sm leading-relaxed">{member.bio}</p>
@@ -259,7 +259,7 @@ export default function AboutPage() {
               {values.map((v, i) => (
                 <FadeIn key={v.title} delay={i * 0.1}>
                   <div className="bg-[#EFEFEF] rounded-2xl p-6 sm:p-8 hover-lift h-full">
-                    <div className="w-12 h-12 bg-[#F26522] rounded-xl flex items-center justify-center mb-6">
+                    <div className="w-12 h-12 bg-[#F5A623] rounded-xl flex items-center justify-center mb-6">
                       <CheckCircle2 className="w-6 h-6 text-white" />
                     </div>
                     <h3 className="font-display font-medium text-[#111827] text-lg mb-3">{v.title}</h3>
@@ -305,7 +305,7 @@ export default function AboutPage() {
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <FadeIn>
             <div className="max-w-3xl mx-auto">
-              <p className="font-sans text-[#F26522] text-sm font-semibold uppercase tracking-widest mb-6">
+              <p className="font-sans text-[#F5A623] text-sm font-semibold uppercase tracking-widest mb-6">
                 We believe in one thing:
               </p>
               <h2 className="axion-heading text-[#111827] font-display mb-10">

@@ -58,7 +58,7 @@ export default async function IntegrationToolPage({ params }: Props) {
       <section className="bg-slate-900 text-white py-16 md:py-24">
         <FadeIn>
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="inline-block bg-[#F26522]/10 border border-amber-500/20 text-amber-400 font-semibold text-xs px-3 py-1 rounded-full mb-4">
+          <div className="inline-block bg-[#F5A623]/10 border border-amber-500/20 text-amber-400 font-semibold text-xs px-3 py-1 rounded-full mb-4">
             {tool.category} Integration Partner
           </div>
           <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6">
@@ -67,7 +67,7 @@ export default async function IntegrationToolPage({ params }: Props) {
           <p className="text-slate-300 text-lg max-w-3xl mb-8 leading-relaxed">
             {tool.valueProp}
           </p>
-          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F26522] hover:bg-[#e05a1a] text-slate-950 font-bold px-7 py-4 rounded-xl transition-all shadow-lg shadow-amber-500/20">Consult Our Tech Leads
+          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D4901E] text-slate-950 font-bold px-7 py-4 rounded-xl transition-all shadow-lg shadow-amber-500/20">Consult Our Tech Leads
             </TextRollButton>
         </div>
       </FadeIn>
@@ -80,7 +80,7 @@ export default async function IntegrationToolPage({ params }: Props) {
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             {tool.technicalCapabilities.map((cap, i) => (
               <div key={i} className="bg-slate-50 border border-slate-200 rounded-xl p-6">
-                <Code2 className="w-6 h-6 text-[#F26522] mb-3" />
+                <Code2 className="w-6 h-6 text-[#F5A623] mb-3" />
                 <p className="text-slate-800 font-semibold">{cap}</p>
               </div>
             ))}

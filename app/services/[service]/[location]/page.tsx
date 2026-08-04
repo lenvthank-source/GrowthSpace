@@ -111,13 +111,13 @@ export default async function ServiceLocationPage({ params }: Props) {
           </div>
           <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6">
             {service.name} <br className="hidden md:block" />
-            <span className="text-[#F26522]">in {loc.cityName}</span>
+            <span className="text-[#F5A623]">in {loc.cityName}</span>
           </h1>
           <p className="text-slate-300 text-lg md:text-xl max-w-3xl mb-8 leading-relaxed">
             {service.desc} Tailored growth strategies designed for companies operating across {loc.localStats.techHubName || loc.cityName}.
           </p>
           <div className="flex flex-wrap gap-4">
-            <TextRollButton href="/contact" className="bg-[#F26522] hover:bg-[#e05a1a] text-slate-950 font-bold px-7 py-4 rounded-xl transition-all shadow-lg shadow-amber-500/20 flex items-center gap-2">Consult Our {loc.cityName} Team
+            <TextRollButton href="/contact" className="bg-[#F5A623] hover:bg-[#D4901E] text-slate-950 font-bold px-7 py-4 rounded-xl transition-all shadow-lg shadow-amber-500/20 flex items-center gap-2">Consult Our {loc.cityName} Team
               </TextRollButton>
           </div>
         </div>
@@ -130,7 +130,7 @@ export default async function ServiceLocationPage({ params }: Props) {
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="bg-amber-50/60 border border-amber-200/80 rounded-2xl p-8 mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-              <Building className="w-6 h-6 text-[#F26522]" />
+              <Building className="w-6 h-6 text-[#F5A623]" />
               Local Market Advantage: {loc.cityName}
             </h2>
             <p className="text-slate-700 leading-relaxed mb-4">

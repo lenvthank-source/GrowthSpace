@@ -112,7 +112,7 @@ const portableTextComponents = {
           href={value.href}
           rel={rel}
           target={target}
-          className="text-[#F26522] hover:text-[#F26522] underline break-words font-medium transition-colors"
+          className="text-[#F5A623] hover:text-[#F5A623] underline break-words font-medium transition-colors"
         >
           {children}
         </a>
@@ -217,7 +217,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       <article className="pt-6 pb-16 md:pt-8 md:pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-[#6B7280] font-sans hover:text-[#F26522] text-sm font-medium mb-8 transition-colors">
+          <Link href="/blog" className="inline-flex items-center gap-2 text-[#6B7280] font-sans hover:text-[#F5A623] text-sm font-medium mb-8 transition-colors">
             <ArrowLeft className="w-4 h-4" /> Back to Blog
           </Link>
 
@@ -253,7 +253,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
           )}
 
-          <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-6 [word-break:break-word] [&_a]:text-[#F26522] [&_a]:hover:text-[#F26522] [&_a]:underline [&_a]:break-words [&_a]:font-medium [&_a]:transition-colors">
+          <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-6 [word-break:break-word] [&_a]:text-[#F5A623] [&_a]:hover:text-[#F5A623] [&_a]:underline [&_a]:break-words [&_a]:font-medium [&_a]:transition-colors">
             {isSanity ? (
               <PortableText value={postData.content} components={portableTextComponents} />
             ) : (

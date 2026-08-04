@@ -39,7 +39,7 @@ export default function Footer() {
       {/* CTA Section */}
       <div className="relative border-b border-white/10">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[300px] bg-[#F26522]/10 rounded-full blur-3xl" />
+          <div className="absolute top-0 left-1/4 w-[500px] h-[300px] bg-[#F5A623]/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] bg-blue-500/10 rounded-full blur-3xl" />
         </div>
 
@@ -51,7 +51,7 @@ export default function Footer() {
               viewport={{ once: true }}
               className="text-center lg:text-left"
             >
-              <p className="text-[13px] text-[#F26522] font-medium mb-5">Taking on projects for Q1 2026</p>
+              <p className="text-[13px] text-[#F5A623] font-medium mb-5">Taking on projects for Q1 2026</p>
               <h2 className="axion-heading text-white mb-5">
                 Ready to Grow
                 <br className="hidden sm:block" />
@@ -108,15 +108,15 @@ export default function Footer() {
 
             <div className="space-y-3">
               <a href="tel:+919560725039" className="flex items-center gap-2.5 text-gray-400 hover:text-white text-sm transition-colors">
-                <Phone className="w-4 h-4 text-[#F26522]" />
+                <Phone className="w-4 h-4 text-[#F5A623]" />
                 +91 9560725039
               </a>
               <a href="mailto:info@growthspare.com" className="flex items-center gap-2.5 text-gray-400 hover:text-white text-sm transition-colors">
-                <Mail className="w-4 h-4 text-[#F26522]" />
+                <Mail className="w-4 h-4 text-[#F5A623]" />
                 info@growthspare.com
               </a>
               <div className="flex items-start gap-2.5 text-gray-400 text-sm">
-                <MapPin className="w-4 h-4 text-[#F26522] shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#F5A623] shrink-0 mt-0.5" />
                 <span>Indure House, 2nd Floor, Savitri Cinema Complex GK-II, New Delhi, Delhi 110048</span>
               </div>
             </div>
@@ -131,7 +131,7 @@ export default function Footer() {
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="w-9 h-9 rounded-full bg-white/5 hover:bg-[#F26522]/20 border border-white/10 hover:border-[#F26522]/40 flex items-center justify-center transition-all duration-300"
+                  className="w-9 h-9 rounded-full bg-white/5 hover:bg-[#F5A623]/20 border border-white/10 hover:border-[#F5A623]/40 flex items-center justify-center transition-all duration-300"
                 >
                   <Icon className="w-4 h-4 text-gray-400" />
                 </a>
@@ -154,13 +154,13 @@ export default function Footer() {
           {/* Marketing */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <TrendingUp className="w-3.5 h-3.5 text-[#F26522]" />
+              <TrendingUp className="w-3.5 h-3.5 text-[#F5A623]" />
               <h3 className="text-[11px] font-bold uppercase tracking-widest text-white">Marketing</h3>
             </div>
             <ul className="space-y-3">
               {footerLinks.marketing.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-gray-400 hover:text-[#F26522] text-sm transition-colors">{link.label}</Link>
+                  <Link href={link.href} className="text-gray-400 hover:text-[#F5A623] text-sm transition-colors">{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -213,7 +213,7 @@ export default function Footer() {
       <motion.a
         href="#top"
         whileHover={{ y: -4 }}
-        className="fixed bottom-24 right-6 w-10 h-10 bg-white/10 hover:bg-[#F26522] backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-colors duration-300 z-40"
+        className="fixed bottom-24 right-6 w-10 h-10 bg-white/10 hover:bg-[#F5A623] backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-colors duration-300 z-40"
       >
         <ArrowRight className="w-4 h-4 text-white -rotate-90" />
       </motion.a>

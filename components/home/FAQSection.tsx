@@ -59,7 +59,7 @@ export default function FAQSection() {
           >
             <SectionBadge number="4" label="Common questions" borderColor="border-gray-300" />
             <h2 className="axion-heading text-[#111827] mt-6 mb-6">
-              Your Questions, <span className="text-[#F26522]">Answered</span>
+              Your Questions, <span className="text-[#F5A623]">Answered</span>
             </h2>
             <p className="text-[#6B7280] font-sans mb-8 leading-relaxed">
               Common questions about our marketing, technology, and AI services.

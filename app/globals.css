@@ -16,7 +16,7 @@
     --secondary-foreground: 220 13% 9%;
     --muted: 0 0% 94%;
     --muted-foreground: 0 0% 45%;
-    --accent: 16 90% 54%;
+    --accent: 38 91% 55%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
@@ -31,9 +31,9 @@
     --axion-surface: #FFFFFF;
     --axion-text: #111827;
     --axion-text-muted: #6B7280;
-    --axion-orange: #F26522;
-    --axion-orange-hover: #e05a1a;
-    --axion-orange-shader: #ff5f03;
+    --axion-orange: #F5A623;
+    --axion-orange-hover: #D4901E;
+    --axion-orange-shader: #FFBA3B;
     --axion-dark: #030712;
   }
 }
@@ -50,7 +50,7 @@
     scroll-behavior: smooth;
   }
   ::selection {
-    background: rgba(242, 101, 34, 0.15);
+    background: rgba(245, 166, 35, 0.15);
     color: var(--axion-text);
   }
 }
@@ -60,7 +60,7 @@
     text-wrap: balance;
   }
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--axion-orange)] via-orange-500 to-[var(--axion-orange)];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--axion-orange)] via-amber-500 to-[var(--axion-orange)];
   }
   .text-gradient-blue {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-600;
@@ -150,7 +150,7 @@
 
   /* Glow effects */
   .glow-amber {
-    box-shadow: 0 0 40px rgba(242, 101, 34, 0.15), 0 0 80px rgba(242, 101, 34, 0.1);
+    box-shadow: 0 0 40px rgba(245, 166, 35, 0.15), 0 0 80px rgba(245, 166, 35, 0.1);
   }
 
   .glow-blue {

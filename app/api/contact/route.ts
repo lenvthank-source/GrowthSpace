@@ -66,7 +66,7 @@ export async function POST(req: Request) {
             .card { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
             .header { background: #111827; color: #ffffff; padding: 24px; text-align: center; }
             .header h2 { margin: 0; font-size: 20px; font-weight: 600; }
-            .badge { display: inline-block; background: #F26522; color: #ffffff; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 99px; text-transform: uppercase; margin-top: 8px; }
+            .badge { display: inline-block; background: #F5A623; color: #111827; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 99px; text-transform: uppercase; margin-top: 8px; }
             .body { padding: 30px; }
             .field { margin-bottom: 20px; }
             .field-label { font-size: 11px; font-weight: 700; color: #6B7280; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
@@ -133,7 +133,7 @@ export async function POST(req: Request) {
             body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f5; margin: 0; padding: 20px; color: #111827; }
             .card { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
             .header { background: #111827; color: #ffffff; padding: 32px 24px; text-align: center; }
-            .header h1 { margin: 0; font-size: 24px; font-weight: 700; color: #F26522; }
+            .header h1 { margin: 0; font-size: 24px; font-weight: 700; color: #F5A623; }
             .header p { margin: 8px 0 0 0; font-size: 14px; color: #9CA3AF; }
             .body { padding: 32px; }
             .greeting { font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #111827; }
@@ -142,7 +142,7 @@ export async function POST(req: Request) {
             .steps h4 { margin: 0 0 12px 0; font-size: 14px; color: #111827; text-transform: uppercase; letter-spacing: 0.05em; }
             .step-item { font-size: 14px; color: #374151; margin-bottom: 8px; display: flex; items-center; gap: 8px; }
             .footer { background: #111827; color: #9CA3AF; padding: 24px; text-align: center; font-size: 13px; border-top: 1px solid #1F2937; }
-            .footer a { color: #F26522; text-decoration: none; }
+            .footer a { color: #F5A623; text-decoration: none; }
           </style>
         </head>
         <body>

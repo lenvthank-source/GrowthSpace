@@ -96,7 +96,7 @@ export default function CaseStudiesSection() {
               <div className="grid grid-cols-3 gap-4 mt-6 bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
                 {study.results.map((result) => (
                   <div key={result.label} className="text-center">
-                    <p className="font-display font-bold text-[#F26522]">{result.metric}</p>
+                    <p className="font-display font-bold text-[#F5A623]">{result.metric}</p>
                     <p className="text-[10px] font-sans font-semibold text-gray-500 uppercase tracking-wider mt-1">{result.label}</p>
                   </div>
                 ))}

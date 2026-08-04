@@ -14,7 +14,7 @@ const solutions = [
     label: "Growth & Marketing",
     href: "/solutions/growth-marketing",
     desc: "SEO, PPC, Social Media & Performance Marketing",
-    color: "from-[#F26522] to-orange-500",
+    color: "from-[#F5A623] to-orange-500",
   },
   {
     icon: Cpu,
@@ -28,7 +28,7 @@ const solutions = [
 const serviceGroups = [
   {
     heading: "Growth & Marketing",
-    color: "text-[#F26522]",
+    color: "text-[#F5A623]",
     items: [
       { label: "SEO Services", href: "/services/seo" },
       { label: "Google Ads / PPC", href: "/services/ppc" },
@@ -86,16 +86,21 @@ export default function Navbar() {
           >
             {/* LEFT: Logo + Nav */}
             <div className="flex items-center gap-1 sm:gap-2">
-              <Link href="/" className="flex items-center gap-2.5 group shrink-0 pl-1">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gray-900 rounded-full flex items-center justify-center text-white text-[10px] sm:text-[11px] font-bold tracking-tight shadow-md group-hover:bg-[#F26522] transition-colors duration-300">
-                  GS
-                </div>
+              <Link href="/" className="flex items-center gap-2 group shrink-0 pl-1">
+                <Image
+                  src="/logosmall.png"
+                  alt="GrowthSpare"
+                  width={28}
+                  height={28}
+                  className="w-6 h-6 sm:w-7 sm:h-7 object-contain"
+                  priority
+                />
                 <Image
                   src="/growthspare-logo-final-H33coufZj8jv5cgL.avif"
                   alt="GrowthSpare"
                   width={120}
                   height={34}
-                  className="h-6 sm:h-7 w-auto object-contain hidden sm:block"
+                  className="h-5 sm:h-7 w-auto object-contain"
                   priority
                 />
               </Link>
@@ -110,7 +115,7 @@ export default function Navbar() {
                 >
                   <button
                     className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-full transition-colors duration-300 ${
-                      pathname.startsWith("/solutions") ? "text-[#F26522]" : "text-gray-900 hover:text-gray-500"
+                      pathname.startsWith("/solutions") ? "text-[#F5A623]" : "text-gray-900 hover:text-gray-500"
                     }`}
                   >
                     Solutions
@@ -132,7 +137,7 @@ export default function Navbar() {
                                 <Icon className="w-4 h-4 text-white" />
                               </div>
                               <div>
-                                <p className="font-semibold text-gray-900 text-[13px] group-hover/item:text-[#F26522] transition-colors">{sol.label}</p>
+                                <p className="font-semibold text-gray-900 text-[13px] group-hover/item:text-[#F5A623] transition-colors">{sol.label}</p>
                                 <p className="text-gray-400 text-[11px] mt-0.5 leading-relaxed">{sol.desc}</p>
                               </div>
                             </Link>
@@ -151,7 +156,7 @@ export default function Navbar() {
                 >
                   <button
                     className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-full transition-colors duration-300 ${
-                      pathname.startsWith("/services") ? "text-[#F26522]" : "text-gray-900 hover:text-gray-500"
+                      pathname.startsWith("/services") ? "text-[#F5A623]" : "text-gray-900 hover:text-gray-500"
                     }`}
                   >
                     Services
@@ -171,7 +176,7 @@ export default function Navbar() {
                                 <li key={item.href}>
                                   <Link
                                     href={item.href}
-                                    className="block text-[13px] text-gray-600 hover:text-[#F26522] px-2 py-1.5 rounded-lg transition-colors hover:bg-gray-50"
+                                    className="block text-[13px] text-gray-600 hover:text-[#F5A623] px-2 py-1.5 rounded-lg transition-colors hover:bg-gray-50"
                                   >
                                     {item.label}
                                   </Link>
@@ -191,7 +196,7 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     className={`px-3 py-2 text-sm font-medium rounded-full transition-colors duration-300 ${
-                      pathname === link.href ? "text-[#F26522]" : "text-gray-900 hover:text-gray-500"
+                      pathname === link.href ? "text-[#F5A623]" : "text-gray-900 hover:text-gray-500"
                     }`}
                   >
                     {link.label}
@@ -212,7 +217,7 @@ export default function Navbar() {
               {/* Mobile Menu Toggle */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 bg-gray-900 rounded-full flex items-center justify-center text-white transition-colors hover:bg-[#F26522]"
+                className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 bg-gray-900 rounded-full flex items-center justify-center text-white transition-colors hover:bg-[#F5A623]"
               >
                 {isOpen ? <X size={18} /> : <Menu size={18} />}
               </button>
@@ -226,13 +231,10 @@ export default function Navbar() {
         <div className="fixed inset-0 z-[60] lg:hidden" onClick={() => setIsOpen(false)}>
           <div className="absolute inset-0 bg-black/60" />
           <div
-            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl mx-3 mb-3 rounded-b-2xl overflow-hidden"
+            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl mx-3 mb-3 rounded-b-2xl overflow-hidden max-h-[85vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="p-6 space-y-2">
-              <div className="flex items-center gap-2 pb-4 border-b border-gray-100">
-                <LiveClock />
-              </div>
+            <div className="p-5 space-y-1">
               {solutions.map((sol) => {
                 const Icon = sol.icon;
                 return (
@@ -240,12 +242,12 @@ export default function Navbar() {
                     key={sol.href}
                     href={sol.href}
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-50 transition-colors"
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 transition-colors"
                   >
                     <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${sol.color} flex items-center justify-center`}>
                       <Icon className="w-4 h-4 text-white" />
                     </div>
-                    <span className="text-[28px] sm:text-[32px] font-medium text-gray-900">{sol.label}</span>
+                    <span className="text-base font-medium text-gray-900">{sol.label}</span>
                   </Link>
                 );
               })}
@@ -254,16 +256,16 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block px-3 py-3 text-[28px] sm:text-[32px] font-medium text-gray-900 hover:text-[#F26522] rounded-xl hover:bg-gray-50 transition-colors"
+                  className="block px-3 py-2.5 text-base font-medium text-gray-900 hover:text-[#F5A623] rounded-xl hover:bg-gray-50 transition-colors"
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="pt-4 border-t border-gray-100 mt-4">
+              <div className="pt-3 border-t border-gray-100 mt-3">
                 <Link
                   href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center gap-2 bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-6 py-4 rounded-full transition-colors w-full"
+                  className="flex items-center justify-center gap-2 bg-[#F5A623] hover:bg-[#D4901E] text-[#111827] font-semibold px-6 py-4 rounded-full transition-colors w-full"
                 >
                   Start a project
                   <ArrowRight className="w-4 h-4" />

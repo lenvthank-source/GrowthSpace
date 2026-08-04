@@ -25,9 +25,9 @@ export function TextRollButton({
 }: TextRollButtonProps) {
   const content = label || text || (typeof children === "string" ? children : "Start a project");
   const isOrange = variant === "orange";
-  const bg = isOrange ? "bg-[#F26522] hover:bg-[#e05a1a]" : "bg-gray-900 hover:bg-gray-800";
+  const bg = isOrange ? "bg-[#F5A623] hover:bg-[#D4901E]" : "bg-gray-900 hover:bg-gray-800";
   const arrowBg = "bg-white";
-  const arrowColor = isOrange ? "text-[#F26522]" : "text-gray-900";
+  const arrowColor = isOrange ? "text-[#F5A623]" : "text-gray-900";
   const iconSize = isOrange ? "w-7 h-7 sm:w-8 sm:h-8" : "w-6 h-6";
 
   const buttonElement = (

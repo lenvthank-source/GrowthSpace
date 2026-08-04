@@ -8,14 +8,14 @@ const steps = [
     number: "01",
     title: "Acquire Customers",
     desc: "SEO, Paid Ads & Social Media generate qualified leads",
-    color: "bg-[#F26522]",
+    color: "bg-[#F5A623]",
     connector: true,
   },
   {
     number: "02",
     title: "Generate Leads",
     desc: "Landing pages, funnels & CRO convert traffic into prospects",
-    color: "bg-[#e05a1a]",
+    color: "bg-[#D4901E]",
     connector: true,
   },
   {
@@ -61,7 +61,7 @@ export default function GrowthJourneySection() {
         >
           <SectionBadge number="8" label="The Unified Journey" />
           <h2 className="axion-heading text-[#111827] mt-6 mb-4">
-            How Growth & Technology <span className="text-[#F26522]">Work Together</span>
+            How Growth & Technology <span className="text-[#F5A623]">Work Together</span>
           </h2>
           <p className="text-lg text-[#6B7280] font-sans max-w-2xl">
             Our marketing and technology divisions work as one ecosystem — each step

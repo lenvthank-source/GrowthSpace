@@ -32,7 +32,7 @@ const services = [
     href: "/services/ppc",
     image: "https://images.pexels.com/photos/905163/pexels-photo-905163.jpeg?auto=compress&cs=tinysrgb&w=600",
     color: "bg-amber-50",
-    iconColor: "text-[#F26522]",
+    iconColor: "text-[#F5A623]",
   },
   {
     icon: Share2,
@@ -148,7 +148,7 @@ export default function ServicesPage() {
                     </div>
                     <Link
                       href={service.href}
-                      className="inline-flex items-center gap-1.5 text-[#F26522] hover:text-amber-700 font-semibold text-sm group-hover:gap-2.5 transition-all"
+                      className="inline-flex items-center gap-1.5 text-[#F5A623] hover:text-amber-700 font-semibold text-sm group-hover:gap-2.5 transition-all"
                     >
                       Learn More
                       <ArrowRight className="w-4 h-4" />
@@ -172,7 +172,7 @@ export default function ServicesPage() {
           <p className="text-[#6B7280] font-sans text-lg mb-8">
             Schedule a free strategy call and discover how GrowthSpare can help you achieve your goals.
           </p>
-          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-8 py-4 rounded-lg transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] shadow-lg">Schedule a Free Strategy Call
+          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D4901E] text-[#111827] font-semibold px-8 py-4 rounded-lg transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] shadow-lg">Schedule a Free Strategy Call
             </TextRollButton>
         </div>
       </FadeIn>

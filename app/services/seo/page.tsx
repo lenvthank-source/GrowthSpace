@@ -51,7 +51,7 @@ export default function SEOPage() {
               " />
               <h1 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-[#111827] leading-tight mb-5">
                 Rank Higher. Drive More{" "}
-                <span className="text-[#F26522]">Organic Traffic.</span>
+                <span className="text-[#F5A623]">Organic Traffic.</span>
               </h1>
               <p className="text-[#6B7280] font-sans text-lg leading-relaxed mb-7">
                 We take a transparent and structured approach to SEO. By auditing your existing assets and
@@ -59,7 +59,7 @@ export default function SEOPage() {
                 and measurable performance expectations.
               </p>
               <div className="flex gap-4">
-                <Link href="/contact" className="bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-6 py-3.5 rounded-lg transition-colors">
+                <Link href="/contact" className="bg-[#F5A623] hover:bg-[#D4901E] text-[#111827] font-semibold px-6 py-3.5 rounded-lg transition-colors">
                   Get Free SEO Audit
                 </Link>
                 <Link href="/pricing" className="border-2 border-gray-200 hover:border-gray-900 text-gray-700 font-semibold px-6 py-3.5 rounded-lg transition-colors">
@@ -127,7 +127,7 @@ export default function SEOPage() {
                   "Quarterly strategy reviews and plan adjustments",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#F26522] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-[#F5A623] shrink-0 mt-0.5" />
                     <span className="text-gray-700 text-sm">{item}</span>
                   </div>
                 ))}
@@ -138,7 +138,7 @@ export default function SEOPage() {
               <div className="space-y-5">
                 {[
                   { metric: "+285%", label: "Average increase in organic traffic (12 months)", color: "text-blue-600" },
-                  { metric: "3–6 months", label: "Time to see meaningful ranking improvements", color: "text-[#F26522]" },
+                  { metric: "3–6 months", label: "Time to see meaningful ranking improvements", color: "text-[#F5A623]" },
                   { metric: "50+", label: "High-intent keywords ranked per client", color: "text-green-600" },
                   { metric: "4.8/5", label: "Average client satisfaction score", color: "text-rose-600" },
                 ].map((stat) => (
@@ -163,7 +163,7 @@ export default function SEOPage() {
           <p className="text-[#6B7280] font-sans text-lg mb-8">
             Get a free SEO audit and find out exactly what&apos;s holding your website back.
           </p>
-          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg">Get Free SEO Audit
+          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D4901E] text-[#111827] font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg">Get Free SEO Audit
             </TextRollButton>
         </div>
       </FadeIn>

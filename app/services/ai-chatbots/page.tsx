@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 const useCases = [
   { icon: MessageCircle, title: "Customer Support Agent", desc: "Handle FAQs, order tracking, complaints, and escalations — 24/7 without human intervention.", color: "bg-violet-500" },
-  { icon: Zap, title: "Lead Qualification Bot", desc: "Engage website visitors, qualify leads, collect contact info, and book appointments automatically.", color: "bg-[#F26522]" },
+  { icon: Zap, title: "Lead Qualification Bot", desc: "Engage website visitors, qualify leads, collect contact info, and book appointments automatically.", color: "bg-[#F5A623]" },
   { icon: Phone, title: "WhatsApp Automation", desc: "Send order updates, payment confirmations, follow-ups, and promotional messages via WhatsApp Business API.", color: "bg-green-500" },
   { icon: Bot, title: "Voice AI Agents", desc: "Automated voice calls for appointment reminders, lead follow-up, and customer surveys.", color: "bg-blue-500" },
   { icon: MessageCircle, title: "Internal Knowledgebase AI", desc: "AI assistant trained on your company docs, policies, and SOPs — answers employee questions instantly.", color: "bg-indigo-500" },

@@ -43,7 +43,7 @@ export default function CustomSoftwarePage() {
                 No off-the-shelf compromises, no workarounds — just software that works precisely the way you need it to.
               </p>
               <div className="flex gap-4">
-                <Link href="/contact" className="bg-gray-900 hover:bg-[#F26522] text-white font-semibold px-6 py-3.5 rounded-xl transition-colors shadow-md">
+                <Link href="/contact" className="bg-gray-900 hover:bg-[#F5A623] text-[#111827] font-semibold px-6 py-3.5 rounded-xl transition-colors shadow-md">
                   Discuss Your Project
                 </Link>
                 <Link href="/solutions/technology-ai" className="border-2 border-gray-200 hover:border-gray-900 text-gray-700 font-semibold px-6 py-3.5 rounded-xl transition-colors">
@@ -93,7 +93,7 @@ export default function CustomSoftwarePage() {
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <h2 className="text-3xl font-black text-[#111827] mb-5">Have a Software Idea?</h2>
           <p className="text-[#6B7280] font-sans text-lg mb-8">Let&apos;s turn it into a reality. Share your requirements and get a free technical assessment.</p>
-          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-8 py-4 rounded-xl transition-colors shadow-lg">Start a Project </TextRollButton>
+          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D4901E] text-[#111827] font-semibold px-8 py-4 rounded-xl transition-colors shadow-lg">Start a Project </TextRollButton>
         </div>
       </FadeIn>
       </section>

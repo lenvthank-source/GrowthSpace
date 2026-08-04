@@ -36,7 +36,7 @@ export default function DivisionsSection() {
         >
           <SectionBadge number="1" label="Our Divisions" />
           <h2 className="axion-heading text-[#111827] mt-6 mb-4 max-w-3xl">
-            Everything Your Business Needs <span className="text-[#F26522]">Under One Roof</span>
+            Everything Your Business Needs <span className="text-[#F5A623]">Under One Roof</span>
           </h2>
           <p className="text-lg text-[#6B7280] font-sans max-w-2xl">
             The only partner you need — from acquiring customers and growing revenue
@@ -57,7 +57,7 @@ export default function DivisionsSection() {
               <h3 className="font-display font-bold text-3xl text-[#111827] mb-2">
                 {division.title}
               </h3>
-              <p className="text-[#F26522] font-semibold text-sm mb-6 uppercase tracking-wide">
+              <p className="text-[#F5A623] font-semibold text-sm mb-6 uppercase tracking-wide">
                 {division.subtitle}
               </p>
               
@@ -68,7 +68,7 @@ export default function DivisionsSection() {
               <div className="space-y-3 mb-10">
                 {division.highlights.map((item) => (
                   <div key={item} className="flex items-center gap-3 text-[#111827] font-sans text-sm font-medium">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#F26522]" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#F5A623]" />
                     {item}
                   </div>
                 ))}

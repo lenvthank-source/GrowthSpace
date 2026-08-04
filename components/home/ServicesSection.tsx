@@ -61,7 +61,7 @@ export default function ServicesSection() {
                   className="block h-full group bg-[#F5F5F5] rounded-2xl p-6 hover-lift border border-gray-100"
                 >
                   <div className="flex items-start justify-between mb-6">
-                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center group-hover:bg-[#F26522] transition-colors duration-300">
+                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center group-hover:bg-[#F5A623] transition-colors duration-300">
                       <Icon className="w-6 h-6 text-[#111827] group-hover:text-white transition-colors duration-300" />
                     </div>
                     <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${service.tagColor}`}>
