@@ -78,8 +78,8 @@ export default function GlobalSchema() {
           {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            "opens": "08:30",
-            "closes": "16:30"
+            "opens": "09:00",
+            "closes": "18:00"
           }
         ],
         "areaServed": [

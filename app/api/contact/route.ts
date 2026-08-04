@@ -17,7 +17,13 @@ export async function POST(req: Request) {
     const smtpPort = parseInt(process.env.SMTP_PORT || "465", 10);
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
-    const adminEmail = process.env.ADMIN_EMAIL || "info@growthspare.com";
+    const rawAdminEmail = process.env.ADMIN_EMAIL || "info@growthspare.com";
+    const adminEmails = rawAdminEmail
+      .split(",")
+      .map((e) => e.trim())
+      .filter((e) => e.length > 0);
+    const toAdmin = adminEmails.length > 1 ? adminEmails : (adminEmails[0] || "info@growthspare.com");
+
     const fromEmail = process.env.SMTP_FROM || smtpUser || "no-reply@growthspare.com";
 
     // If SMTP credentials aren't set yet (e.g. initial deployment check)
@@ -45,10 +51,10 @@ export async function POST(req: Request) {
       },
     });
 
-    // 1. Admin Alert Email (To Agency / Self)
+    // 1. Admin Alert Email (To Agency / Self - Supports multiple recipients)
     const adminMailOptions = {
       from: `"GrowthSpare Website" <${fromEmail}>`,
-      to: adminEmail,
+      to: toAdmin,
       replyTo: email,
       subject: `🚨 New Lead: ${name} — ${service || "General Inquiry"}`,
       html: `
@@ -153,7 +159,7 @@ export async function POST(req: Request) {
               <div class="steps">
                 <h4>What happens next?</h4>
                 <div class="step-item">1. Our strategy team is reviewing your query.</div>
-                <div class="step-item">2. We will contact you within 24 hours (Mon – Sat, 8:30 AM – 4:30 PM).</div>
+                <div class="step-item">2. We will contact you within 24 hours (Mon – Sat, 9:00 AM – 6:00 PM).</div>
                 <div class="step-item">3. We'll prepare custom insights for your business.</div>
               </div>
               <div class="text" style="margin-top: 24px;">
