@@ -1,4 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
+import SectionBadge from "@/components/ui/SectionBadge";
+import TextRollButton from "@/components/ui/TextRollButton";
 
 const industries = [
   { name: "Healthcare", icon: "🏥", marketing: "Patient acquisition, local SEO, content", tech: "Hospital management, patient portals, AI appointment scheduling" },
@@ -15,43 +20,54 @@ const industries = [
 
 export default function IndustriesSection() {
   return (
-    <section className="py-20 md:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <p className="text-amber-500 text-sm font-semibold uppercase tracking-widest mb-3">
-            Industries We Serve
-          </p>
-          <h2 className="text-3xl md:text-4xl xl:text-5xl font-black text-gray-900 mb-4">
+    <section className="py-24 bg-[#EFEFEF]">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-center flex flex-col items-center mb-16"
+        >
+          <SectionBadge number="6" label="Industries We Serve" borderColor="border-gray-300" />
+          <h2 className="axion-heading text-[#111827] mt-6 mb-4">
             Tailored for Your Industry
           </h2>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+          <p className="text-lg text-[#6B7280] font-sans max-w-2xl">
             Deep domain expertise across 10+ industries. Both marketing and technology
             solutions are customized to the specific challenges of your sector.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6"
+        >
           {industries.map((industry) => (
             <Link
               key={industry.name}
               href="/industries"
-              className="group flex flex-col items-center text-center p-5 rounded-2xl border border-gray-100 hover:border-amber-200 hover:shadow-md hover:bg-amber-50/30 transition-all duration-200 hover:-translate-y-1"
+              className="group bg-white rounded-2xl p-6 text-center hover-lift border border-gray-100 transition-all duration-500"
             >
-              <span className="text-3xl mb-3">{industry.icon}</span>
-              <h3 className="font-bold text-gray-900 text-sm mb-1.5">{industry.name}</h3>
-              <p className="text-gray-400 text-xs leading-relaxed line-clamp-2">{industry.marketing}</p>
+              <div className="text-4xl mb-4">{industry.icon}</div>
+              <h3 className="font-display font-bold text-[#111827] text-base mb-2 group-hover:text-[#F26522] transition-colors">{industry.name}</h3>
+              <p className="text-[#6B7280] font-sans text-xs leading-relaxed line-clamp-3">{industry.marketing}</p>
             </Link>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="text-center mt-10">
-          <Link
-            href="/industries"
-            className="inline-flex items-center gap-2 bg-gray-900 hover:bg-amber-500 text-white font-semibold px-7 py-3.5 rounded-xl transition-all duration-200"
-          >
-            View All Industries
-          </Link>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-center mt-12"
+        >
+          <TextRollButton href="/industries" label="View All Industries" variant="dark" />
+        </motion.div>
       </div>
     </section>
   );

@@ -6,6 +6,10 @@ import html from 'remark-html';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, Clock } from 'lucide-react';
+import FadeIn from "@/components/ui/FadeIn";
+import TextRollButton from "@/components/ui/TextRollButton";
+import SectionBadge from "@/components/ui/SectionBadge";
+import ExpandingCard from "@/components/ui/ExpandingCard";
 import { PortableText } from '@portabletext/react';
 import { sanityClient } from '@/lib/sanity';
 
@@ -108,7 +112,7 @@ const portableTextComponents = {
           href={value.href}
           rel={rel}
           target={target}
-          className="text-amber-500 hover:text-amber-600 underline break-words font-medium transition-colors"
+          className="text-[#F26522] hover:text-[#F26522] underline break-words font-medium transition-colors"
         >
           {children}
         </a>
@@ -116,9 +120,9 @@ const portableTextComponents = {
     },
   },
   block: {
-    h1: ({ children }: any) => <h1 className="text-3xl md:text-4xl font-black text-gray-900 mt-8 mb-4">{children}</h1>,
-    h2: ({ children }: any) => <h2 className="text-2xl md:text-3xl font-black text-gray-900 mt-8 mb-4">{children}</h2>,
-    h3: ({ children }: any) => <h3 className="text-xl md:text-2xl font-black text-gray-900 mt-6 mb-3">{children}</h3>,
+    h1: ({ children }: any) => <h1 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-[#111827] mt-8 mb-4">{children}</h1>,
+    h2: ({ children }: any) => <h2 className="text-2xl md:text-3xl font-black text-[#111827] mt-8 mb-4">{children}</h2>,
+    h3: ({ children }: any) => <h3 className="text-xl md:text-2xl font-black text-[#111827] mt-6 mb-3">{children}</h3>,
     normal: ({ children }: any) => <p className="text-gray-600 leading-relaxed mb-6">{children}</p>,
   },
 };
@@ -153,7 +157,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
 
   if (!postData) {
-    return <div className="p-8 text-center text-gray-500">Post not found</div>;
+    return <div className="p-8 text-center text-[#6B7280] font-sans">Post not found</div>;
   }
 
   const rawDate = postData.date || postData._createdAt || new Date().toISOString();
@@ -213,7 +217,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       <article className="pt-6 pb-16 md:pt-8 md:pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-gray-500 hover:text-amber-500 text-sm font-medium mb-8 transition-colors">
+          <Link href="/blog" className="inline-flex items-center gap-2 text-[#6B7280] font-sans hover:text-[#F26522] text-sm font-medium mb-8 transition-colors">
             <ArrowLeft className="w-4 h-4" /> Back to Blog
           </Link>
 
@@ -225,13 +229,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
           )}
 
-          <h1 className="text-3xl md:text-5xl font-black text-gray-900 leading-tight mb-6">{postData.title}</h1>
+          <h1 className="text-3xl md:text-5xl font-black text-[#111827] leading-tight mb-6">{postData.title}</h1>
 
-          <div className="flex items-center gap-4 text-sm text-gray-500 mb-8 pb-8 border-b border-gray-100">
+          <div className="flex items-center gap-4 text-sm text-[#6B7280] font-sans mb-8 pb-8 border-b border-gray-100">
             <img src="/growthspare-a-logo.png" alt="Author" className="w-10 h-10 rounded-full object-cover" />
             <div>
-              <p className="font-semibold text-gray-900">{postData.author}</p>
-              <p className="flex items-center gap-1.5 text-gray-400">
+              <p className="font-semibold text-[#111827]">{postData.author}</p>
+              <p className="flex items-center gap-1.5 text-[#6B7280] font-sans">
                 {displayDate && <span>{displayDate}</span>}
                 {displayDate && postData.readTime && <span>&middot;</span>}
                 {postData.readTime && <span>{postData.readTime}</span>}
@@ -249,7 +253,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
           )}
 
-          <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-6 [word-break:break-word] [&_a]:text-amber-500 [&_a]:hover:text-amber-600 [&_a]:underline [&_a]:break-words [&_a]:font-medium [&_a]:transition-colors">
+          <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-6 [word-break:break-word] [&_a]:text-[#F26522] [&_a]:hover:text-[#F26522] [&_a]:underline [&_a]:break-words [&_a]:font-medium [&_a]:transition-colors">
             {isSanity ? (
               <PortableText value={postData.content} components={portableTextComponents} />
             ) : (

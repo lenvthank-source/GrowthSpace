@@ -3,7 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Instagram, Linkedin, Youtube, Mail, Phone, MapPin, ArrowUpRight, Sparkles, TrendingUp, Cpu, Heart } from "lucide-react";
+import { Instagram, Linkedin, Youtube, Mail, Phone, MapPin, ArrowRight, TrendingUp, Cpu, Heart } from "lucide-react";
+import TextRollButton from "@/components/ui/TextRollButton";
 
 const footerLinks = {
   solutions: [
@@ -37,39 +38,31 @@ export default function Footer() {
     <footer className="relative bg-gray-900 text-white overflow-hidden">
       {/* CTA Section */}
       <div className="relative border-b border-white/10">
-        {/* Background glow */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[300px] bg-amber-500/10 rounded-full blur-3xl" />
+          <div className="absolute top-0 left-1/4 w-[500px] h-[300px] bg-[#F26522]/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] bg-blue-500/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+        <div className="relative max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 py-20 md:py-28">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
-            {/* Left content */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-center lg:text-left"
             >
-              <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold px-4 py-2 rounded-full mb-6">
-                <Sparkles className="w-3.5 h-3.5" />
-                Let&apos;s Build Something Great
-              </div>
-
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-black tracking-tight mb-5">
+              <p className="text-[13px] text-[#F26522] font-medium mb-5">Taking on projects for Q1 2026</p>
+              <h2 className="axion-heading text-white mb-5">
                 Ready to Grow
                 <br className="hidden sm:block" />
                 <span className="text-gradient"> Your Business?</span>
               </h2>
-
-              <p className="text-gray-400 max-w-lg leading-relaxed">
+              <p className="text-gray-400 max-w-lg leading-relaxed text-[15px]">
                 Book a free consultation and let&apos;s discuss how we can help you acquire more customers,
                 build better systems, and grow faster.
               </p>
             </motion.div>
 
-            {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -77,20 +70,10 @@ export default function Footer() {
               transition={{ delay: 0.1 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Link
-                href="/contact"
-                className="group relative inline-flex items-center justify-center gap-2 bg-white text-gray-900 font-semibold px-8 py-4 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-white/20"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  Book Free Consultation
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </Link>
-
+              <TextRollButton href="/contact" label="Book Free Consultation" variant="orange" />
               <Link
                 href="/projects"
-                className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40 text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300 hover:bg-white/5"
+                className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40 text-white font-medium text-[13px] sm:text-sm px-6 py-3 rounded-full transition-all duration-300 hover:bg-white/5"
               >
                 See Our Work
               </Link>
@@ -100,17 +83,20 @@ export default function Footer() {
       </div>
 
       {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 py-16">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10">
           {/* Brand Column */}
           <div className="col-span-2">
-            <Link href="/" className="inline-block mb-6">
+            <Link href="/" className="inline-flex items-center gap-2.5 mb-6 group">
+              <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-900 text-[10px] font-bold tracking-tight">
+                GS
+              </div>
               <Image
                 src="/growthspare-logo-final-H33coufZj8jv5cgL.avif"
                 alt="GrowthSpare"
-                width={140}
-                height={40}
-                className="h-9 w-auto object-contain brightness-0 invert"
+                width={120}
+                height={34}
+                className="h-7 w-auto object-contain brightness-0 invert"
                 priority
               />
             </Link>
@@ -120,29 +106,21 @@ export default function Footer() {
               and AI automation under one roof.
             </p>
 
-            {/* Contact info */}
             <div className="space-y-3">
-              <a
-                href="tel:+919560725039"
-                className="flex items-center gap-2.5 text-gray-400 hover:text-white text-sm transition-colors"
-              >
-                <Phone className="w-4 h-4 text-amber-500" />
+              <a href="tel:+919560725039" className="flex items-center gap-2.5 text-gray-400 hover:text-white text-sm transition-colors">
+                <Phone className="w-4 h-4 text-[#F26522]" />
                 +91 9560725039
               </a>
-              <a
-                href="mailto:info@growthspare.com"
-                className="flex items-center gap-2.5 text-gray-400 hover:text-white text-sm transition-colors"
-              >
-                <Mail className="w-4 h-4 text-amber-500" />
+              <a href="mailto:info@growthspare.com" className="flex items-center gap-2.5 text-gray-400 hover:text-white text-sm transition-colors">
+                <Mail className="w-4 h-4 text-[#F26522]" />
                 info@growthspare.com
               </a>
               <div className="flex items-start gap-2.5 text-gray-400 text-sm">
-                <MapPin className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#F26522] shrink-0 mt-0.5" />
                 <span>Indure House, 2nd Floor, Savitri Cinema Complex GK-II, New Delhi, Delhi 110048</span>
               </div>
             </div>
 
-            {/* Social links */}
             <div className="flex gap-3 mt-6">
               {[
                 { Icon: Instagram, label: "Instagram" },
@@ -153,7 +131,7 @@ export default function Footer() {
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 flex items-center justify-center transition-all duration-200"
+                  className="w-9 h-9 rounded-full bg-white/5 hover:bg-[#F26522]/20 border border-white/10 hover:border-[#F26522]/40 flex items-center justify-center transition-all duration-300"
                 >
                   <Icon className="w-4 h-4 text-gray-400" />
                 </a>
@@ -163,18 +141,11 @@ export default function Footer() {
 
           {/* Solutions */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-white mb-4">
-              Solutions
-            </h3>
+            <h3 className="text-[11px] font-bold uppercase tracking-widest text-white mb-4">Solutions</h3>
             <ul className="space-y-3">
               {footerLinks.solutions.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-white text-sm transition-colors"
-                  >
-                    {link.label}
-                  </Link>
+                  <Link href={link.href} className="text-gray-400 hover:text-white text-sm transition-colors">{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -183,20 +154,13 @@ export default function Footer() {
           {/* Marketing */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <TrendingUp className="w-4 h-4 text-amber-500" />
-              <h3 className="text-xs font-bold uppercase tracking-widest text-white">
-                Marketing
-              </h3>
+              <TrendingUp className="w-3.5 h-3.5 text-[#F26522]" />
+              <h3 className="text-[11px] font-bold uppercase tracking-widest text-white">Marketing</h3>
             </div>
             <ul className="space-y-3">
               {footerLinks.marketing.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-amber-400 text-sm transition-colors"
-                  >
-                    {link.label}
-                  </Link>
+                  <Link href={link.href} className="text-gray-400 hover:text-[#F26522] text-sm transition-colors">{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -205,20 +169,13 @@ export default function Footer() {
           {/* Technology */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Cpu className="w-4 h-4 text-blue-500" />
-              <h3 className="text-xs font-bold uppercase tracking-widest text-white">
-                Technology
-              </h3>
+              <Cpu className="w-3.5 h-3.5 text-blue-500" />
+              <h3 className="text-[11px] font-bold uppercase tracking-widest text-white">Technology</h3>
             </div>
             <ul className="space-y-3">
               {footerLinks.technology.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-blue-400 text-sm transition-colors"
-                  >
-                    {link.label}
-                  </Link>
+                  <Link href={link.href} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -226,18 +183,11 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-white mb-4">
-              Company
-            </h3>
+            <h3 className="text-[11px] font-bold uppercase tracking-widest text-white mb-4">Company</h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-white text-sm transition-colors"
-                  >
-                    {link.label}
-                  </Link>
+                  <Link href={link.href} className="text-gray-400 hover:text-white text-sm transition-colors">{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -247,28 +197,25 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-gray-500 text-sm">
               &copy; {new Date().getFullYear()} GrowthSpare. All rights reserved.
             </p>
-
-            <div className="flex items-center gap-6">
-              <span className="text-gray-500 text-sm">
-                Made with <Heart className="w-3.5 h-3.5 text-red-500 inline-block" /> in Delhi NCR
-              </span>
-            </div>
+            <span className="text-gray-500 text-sm">
+              Made with <Heart className="w-3.5 h-3.5 text-red-500 inline-block" /> in Delhi NCR
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Back to top button */}
+      {/* Back to top */}
       <motion.a
         href="#top"
         whileHover={{ y: -4 }}
-        className="fixed bottom-24 right-6 w-10 h-10 bg-white/10 hover:bg-amber-500 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-colors duration-300 z-40"
+        className="fixed bottom-24 right-6 w-10 h-10 bg-white/10 hover:bg-[#F26522] backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center transition-colors duration-300 z-40"
       >
-        <ArrowUpRight className="w-4 h-4 text-white rotate-[-45deg]" />
+        <ArrowRight className="w-4 h-4 text-white -rotate-90" />
       </motion.a>
     </footer>
   );

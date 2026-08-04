@@ -5,25 +5,36 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --foreground: 220 13% 9%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 220 13% 9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
+    --popover-foreground: 220 13% 9%;
+    --primary: 220 13% 9%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 38 92% 50%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 220 13% 9%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 16 90% 54%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 220 13% 9%;
     --radius: 0.75rem;
+
+    /* Axion palette */
+    --axion-bg: #EFEFEF;
+    --axion-bg-alt: #F5F5F5;
+    --axion-surface: #FFFFFF;
+    --axion-text: #111827;
+    --axion-text-muted: #6B7280;
+    --axion-orange: #F26522;
+    --axion-orange-hover: #e05a1a;
+    --axion-orange-shader: #ff5f03;
+    --axion-dark: #030712;
   }
 }
 
@@ -32,14 +43,15 @@
     @apply border-border;
   }
   body {
-    @apply bg-white text-gray-900 antialiased;
+    @apply bg-[var(--axion-bg)] text-[var(--axion-text)] antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   html {
     scroll-behavior: smooth;
   }
   ::selection {
-    @apply bg-amber-500/20 text-gray-900;
+    background: rgba(242, 101, 34, 0.15);
+    color: var(--axion-text);
   }
 }
 
@@ -48,7 +60,7 @@
     text-wrap: balance;
   }
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--axion-orange)] via-orange-500 to-[var(--axion-orange)];
   }
   .text-gradient-blue {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-600;
@@ -56,6 +68,20 @@
 }
 
 @layer components {
+  /* Axion glass utilities */
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.08);
+  }
+
+  .liquid-glass-strong {
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+  }
+
   .glass {
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(20px);
@@ -68,23 +94,34 @@
     -webkit-backdrop-filter: blur(20px);
   }
 
-  .gradient-border {
-    background: linear-gradient(135deg, rgba(251, 191, 36, 0.3), rgba(59, 130, 246, 0.3));
-    padding: 1px;
+  /* Axion section patterns */
+  .axion-section {
+    @apply w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12;
   }
 
-  .gradient-border > * {
-    background: white;
+  .axion-heading {
+    font-size: clamp(1.5rem, 4vw, 3.2rem);
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--axion-text);
   }
 
-  .spotlight {
-    background: radial-gradient(
-      800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(251, 191, 36, 0.06),
-      transparent 40%
-    );
+  .axion-hero-heading {
+    font-size: clamp(1.75rem, 7vw, 4.2rem);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--axion-text);
   }
 
+  @media (min-width: 640px) {
+    .axion-hero-heading {
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+    }
+  }
+
+  /* Grid pattern */
   .grid-pattern {
     background-image:
       linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
@@ -111,14 +148,16 @@
     mix-blend-mode: overlay;
   }
 
+  /* Glow effects */
   .glow-amber {
-    box-shadow: 0 0 40px rgba(251, 191, 36, 0.15), 0 0 80px rgba(251, 191, 36, 0.1);
+    box-shadow: 0 0 40px rgba(242, 101, 34, 0.15), 0 0 80px rgba(242, 101, 34, 0.1);
   }
 
   .glow-blue {
     box-shadow: 0 0 40px rgba(59, 130, 246, 0.15), 0 0 80px rgba(59, 130, 246, 0.1);
   }
 
+  /* Hover lift */
   .hover-lift {
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
   }
@@ -128,10 +167,7 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
   }
 
-  .btn-magnetic {
-    transition: transform 0.2s ease-out;
-  }
-
+  /* Shine effect */
   .shine {
     position: relative;
     overflow: hidden;
@@ -157,6 +193,7 @@
     left: 100%;
   }
 
+  /* Floating animation */
   .floating {
     animation: floating 6s ease-in-out infinite;
   }
@@ -171,47 +208,7 @@
     animation-delay: -3s;
   }
 
-  .pulse-slow {
-    animation: pulse-slow 4s ease-in-out infinite;
-  }
-
-  @keyframes pulse-slow {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-  }
-
-  .gradient-flow {
-    background-size: 200% 200%;
-    animation: gradient-flow 8s ease infinite;
-  }
-
-  @keyframes gradient-flow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  .text-shimmer {
-    background: linear-gradient(
-      90deg,
-      #1f2937 0%,
-      #1f2937 40%,
-      #fbbf24 50%,
-      #1f2937 60%,
-      #1f2937 100%
-    );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 3s linear infinite;
-  }
-
-  @keyframes shimmer {
-    0% { background-position: 200% center; }
-    100% { background-position: -200% center; }
-  }
-
+  /* Marquee */
   .marquee {
     animation: marquee 30s linear infinite;
   }
@@ -221,6 +218,39 @@
     100% { transform: translateX(-50%); }
   }
 
+  /* Text roll animation for buttons */
+  .text-roll-container {
+    overflow: hidden;
+    height: 20px;
+  }
+
+  .text-roll-inner {
+    display: flex;
+    flex-direction: column;
+    transition: transform 500ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .group:hover .text-roll-inner {
+    transform: translateY(-50%);
+  }
+
+  /* Expanding button */
+  .expand-btn {
+    transition: all 300ms ease-in-out;
+  }
+
+  /* Axion easing */
+  .axion-ease {
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition-duration: 500ms;
+  }
+
+  .axion-sheet-ease {
+    transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+    transition-duration: 500ms;
+  }
+
+  /* Scroll reveal */
   .scroll-reveal {
     opacity: 0;
     transform: translateY(30px);

@@ -1,62 +1,73 @@
+"use client";
+
+import { motion } from "framer-motion";
+import SectionBadge from "@/components/ui/SectionBadge";
+
 const steps = [
   {
     step: "01",
     title: "Discovery & Audit",
     desc: "We deep-dive into your business goals, current state, competition, and opportunities across both marketing and technology.",
-    color: "bg-amber-500",
   },
   {
     step: "02",
     title: "Strategy & Roadmap",
     desc: "A unified growth and technology roadmap with clear KPIs, timelines, priorities, and resource allocation.",
-    color: "bg-orange-500",
   },
   {
     step: "03",
     title: "Build & Execute",
     desc: "We simultaneously run marketing campaigns and build technology solutions — maximizing speed to value.",
-    color: "bg-blue-600",
   },
   {
     step: "04",
     title: "Automate & Optimize",
     desc: "Continuous performance optimization, A/B testing, and AI automation deployment to maximize efficiency.",
-    color: "bg-indigo-600",
   },
   {
     step: "05",
     title: "Scale & Report",
     desc: "Transparent performance reporting across all initiatives, with strategic quarterly reviews to drive the next phase of growth.",
-    color: "bg-violet-600",
   },
 ];
 
 export default function ProcessSection() {
   return (
-    <section className="py-20 md:py-28 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <p className="text-amber-500 text-sm font-semibold uppercase tracking-widest mb-3">
-            How We Work
-          </p>
-          <h2 className="text-3xl md:text-4xl xl:text-5xl font-black text-gray-900 mb-4">
+    <section className="py-24 bg-[#EFEFEF]">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-center flex flex-col items-center mb-16"
+        >
+          <SectionBadge number="9" label="How We Work" borderColor="border-gray-300" />
+          <h2 className="axion-heading text-[#111827] mt-6 mb-4">
             Our Process
           </h2>
-          <p className="text-gray-500 text-lg max-w-xl mx-auto">
+          <p className="text-lg text-[#6B7280] font-sans max-w-2xl">
             A proven five-step framework that transforms your business — whether the goal
             is more customers, better systems, or full AI automation.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {steps.map((step) => (
-            <div key={step.step} className="flex flex-col items-center text-center group">
-              <div className={`w-20 h-20 rounded-2xl ${step.color} flex items-center justify-center mb-5 shadow-lg group-hover:scale-105 transition-transform duration-200`}>
-                <span className="text-white font-black text-2xl">{step.step}</span>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.step}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+              className="flex flex-col items-center text-center group bg-white p-6 rounded-2xl hover-lift border border-gray-100"
+            >
+              <div className="w-16 h-16 rounded-full bg-[#F5F5F5] text-[#111827] flex items-center justify-center mb-5 group-hover:bg-[#F26522] group-hover:text-white transition-colors duration-300">
+                <span className="font-display font-bold text-xl">{step.step}</span>
               </div>
-              <h3 className="font-bold text-gray-900 mb-2 text-sm md:text-base">{step.title}</h3>
-              <p className="text-gray-500 text-xs md:text-sm leading-relaxed">{step.desc}</p>
-            </div>
+              <h3 className="font-display font-bold text-[#111827] mb-3">{step.title}</h3>
+              <p className="text-[#6B7280] font-sans text-xs leading-relaxed">{step.desc}</p>
+            </motion.div>
           ))}
         </div>
       </div>

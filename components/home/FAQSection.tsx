@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, HelpCircle, MessageCircle } from "lucide-react";
-import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 import Script from "next/script";
+import SectionBadge from "@/components/ui/SectionBadge";
+import TextRollButton from "@/components/ui/TextRollButton";
 
 const faqs = [
   {
@@ -25,23 +26,6 @@ const faqs = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring" as const, stiffness: 80, damping: 15 },
-  },
-};
-
 export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(0);
 
@@ -59,85 +43,62 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-gray-50">
+    <section className="py-24 bg-[#EFEFEF]">
       <Script
         id="faq-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 flex flex-col md:flex-row gap-12 lg:gap-20">
+        <div className="md:w-1/3">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            <SectionBadge number="4" label="Common questions" borderColor="border-gray-300" />
+            <h2 className="axion-heading text-[#111827] mt-6 mb-6">
+              Your Questions, <span className="text-[#F26522]">Answered</span>
+            </h2>
+            <p className="text-[#6B7280] font-sans mb-8 leading-relaxed">
+              Common questions about our marketing, technology, and AI services.
+            </p>
+            <div className="hidden md:block">
+              <p className="text-sm font-semibold text-[#111827] mb-4">Still have questions?</p>
+              <TextRollButton href="/contact" label="Talk to Us" variant="orange" />
+            </div>
+          </motion.div>
+        </div>
 
-      {/* Background */}
-      <div className="absolute inset-0 dots-pattern opacity-30" />
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-amber-100/40 to-transparent rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-gradient-to-tr from-blue-100/30 to-transparent rounded-full blur-3xl" />
-
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-600 text-xs font-semibold px-4 py-2 rounded-full mb-6 shadow-sm">
-            <HelpCircle className="w-3.5 h-3.5 text-amber-500" />
-            FAQ
-          </div>
-
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-black text-gray-900 mb-5 tracking-tight">
-            Your Questions,
-            <span className="text-gradient"> Answered</span>
-          </h2>
-
-          <p className="text-gray-500 text-lg max-w-xl mx-auto leading-relaxed">
-            Common questions about our marketing, technology, and AI services.
-          </p>
-        </motion.div>
-
-        {/* FAQ Items */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="space-y-3"
-        >
-          {faqs.map((faq, i) => (
-            <motion.div
-              key={i}
-              variants={itemVariants}
-              className="group"
-            >
+        <div className="md:w-2/3">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+            className="space-y-4"
+          >
+            {faqs.map((faq, i) => (
               <div
-                className={`bg-white rounded-2xl overflow-hidden transition-all duration-300 ${
-                  open === i
-                    ? "shadow-xl shadow-amber-500/10 border-2 border-amber-400"
-                    : "shadow-md shadow-gray-200/50 border-2 border-transparent"
-                }`}
+                key={i}
+                className="bg-white rounded-2xl overflow-hidden hover-lift border border-gray-100"
               >
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
-                  className="w-full flex items-center justify-between px-6 py-5 text-left"
+                  className="w-full flex items-center justify-between px-6 py-6 text-left"
                 >
-                  <h3 className={`font-semibold pr-4 text-base transition-colors duration-300 ${
-                    open === i ? "text-gray-900" : "text-gray-700"
-                  }`}>
+                  <h3 className="font-display font-semibold text-lg text-[#111827] pr-4">
                     {faq.q}
                   </h3>
-
                   <motion.div
                     animate={{ rotate: open === i ? 180 : 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                      open === i
-                        ? "bg-amber-500 text-white"
-                        : "bg-gray-100 text-gray-400"
-                    }`}
+                    className="shrink-0 w-8 h-8 bg-[#F5F5F5] rounded-full flex items-center justify-center text-[#111827]"
                   >
                     <ChevronDown className="w-4 h-4" />
                   </motion.div>
                 </button>
-
                 <AnimatePresence>
                   {open === i && (
                     <motion.div
@@ -147,8 +108,8 @@ export default function FAQSection() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-6 border-t border-gray-100">
-                        <p className="text-gray-700 leading-relaxed pt-4">
+                      <div className="px-6 pb-6">
+                        <p className="text-[#6B7280] font-sans leading-relaxed">
                           {faq.a}
                         </p>
                       </div>
@@ -156,26 +117,13 @@ export default function FAQSection() {
                   )}
                 </AnimatePresence>
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <p className="text-gray-500 mb-4">Still have questions?</p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 bg-gray-900 hover:bg-amber-500 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300"
-          >
-            <MessageCircle className="w-4 h-4" />
-            Talk to Us
-          </Link>
-        </motion.div>
+            ))}
+          </motion.div>
+          <div className="md:hidden mt-8">
+            <p className="text-sm font-semibold text-[#111827] mb-4">Still have questions?</p>
+            <TextRollButton href="/contact" label="Talk to Us" variant="orange" />
+          </div>
+        </div>
       </div>
     </section>
   );

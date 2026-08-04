@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight, Star, TrendingUp, MousePointer2 } from "lucide-react";
+import { Star, TrendingUp, MousePointer2 } from "lucide-react";
+import FadeIn from "@/components/ui/FadeIn";
+import SectionBadge from "@/components/ui/SectionBadge";
+import TextRollButton from "@/components/ui/TextRollButton";
+import ExpandingCard from "@/components/ui/ExpandingCard";
 
 export const metadata: Metadata = {
   title: "Case Studies & Client Results — GrowthSpare Marketing",
@@ -133,143 +136,159 @@ export default function ProjectsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-white py-16 md:py-20 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-amber-500 text-sm font-semibold uppercase tracking-widest mb-3">
-            Proven Work
-          </p>
-          <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-5 leading-tight">
-            Real Campaigns.<br />Real Results.
-          </h1>
-          <p className="text-gray-600 text-lg max-w-xl leading-relaxed">
-            Every number on this page is pulled directly from live campaign dashboards —
-            verified, unfiltered, and backed by real client data.
-          </p>
+      <section className="bg-[#EFEFEF] py-20 md:py-32">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
+          <FadeIn>
+            <SectionBadge number="01" label="Proven Work" />
+            <h1 className="axion-heading text-[#111827] font-display mt-6 mb-6">
+              Real Campaigns.<br />Real Results.
+            </h1>
+            <p className="font-sans text-[#6B7280] text-lg max-w-xl leading-relaxed">
+              Every number on this page is pulled directly from live campaign dashboards —
+              verified, unfiltered, and backed by real client data.
+            </p>
+          </FadeIn>
         </div>
       </section>
 
       {/* Projects */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+      <section className="bg-white py-20 md:py-32">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 space-y-24 md:space-y-32">
           {projects.map((project, i) => {
             const ChannelIcon = project.channelIcon;
             return (
-              <div key={project.client} className="grid lg:grid-cols-2 gap-12 xl:gap-16 items-start">
-                {/* Dashboard Screenshot */}
-                <div className={i % 2 === 1 ? "lg:order-2" : ""}>
-                  <div className="relative rounded-3xl overflow-hidden border border-gray-100 shadow-2xl bg-gray-50">
-                    <div className="bg-gray-800 px-4 py-2.5 flex items-center gap-2">
-                      <div className="flex gap-1.5">
-                        <div className="w-3 h-3 rounded-full bg-red-400" />
-                        <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                        <div className="w-3 h-3 rounded-full bg-green-400" />
+              <FadeIn key={project.client} delay={0.1}>
+                <div className="grid lg:grid-cols-2 gap-12 xl:gap-16 items-start">
+                  {/* Dashboard Screenshot using ExpandingCard */}
+                  <div className={i % 2 === 1 ? "lg:order-2" : ""}>
+                    <ExpandingCard
+                      href="#"
+                      title="View Campaign Dashboard"
+                      description={`Dashboard for ${project.client}`}
+                      imageSrc={project.dashboardImage}
+                      imageAlt={`${project.client} Campaign Dashboard`}
+                      aspect="aspect-[4/3]"
+                      variant="dark"
+                      buttonLabel="View Stats"
+                    >
+                      <div className="absolute top-4 left-4 right-4 z-10">
+                        <div className="bg-[#111827]/80 backdrop-blur-sm px-4 py-3 rounded-xl flex items-center gap-3">
+                          <div className="flex gap-1.5">
+                            <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
+                            <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
+                            <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
+                          </div>
+                          <div className="flex-1 text-gray-300 text-xs font-sans text-center">
+                            Campaign Dashboard — {project.client}
+                          </div>
+                        </div>
                       </div>
-                      <div className="flex-1 bg-gray-700 rounded-md px-3 py-1 text-gray-400 text-xs text-center">
-                        Campaign Dashboard — {project.client}
-                      </div>
-                    </div>
-                    <img
-                      src={project.dashboardImage}
-                      alt={`${project.client} Campaign Dashboard`}
-                      className="w-full object-cover object-top"
-                    />
+                    </ExpandingCard>
                   </div>
-                </div>
 
-                {/* Content */}
-                <div className={i % 2 === 1 ? "lg:order-1" : ""}>
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className={`inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full ${project.channelBg} ${project.channelBorder} border ${project.channelColor}`}>
-                      <ChannelIcon className="w-3 h-3" />
-                      {project.channel}
-                    </span>
-                    <span className="text-xs text-gray-400 font-medium">{project.industry}</span>
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-2">
-                    {project.title}
-                  </h2>
-                  <p className="text-amber-500 font-bold text-sm mb-5">{project.client}</p>
-                  <p className="text-gray-600 leading-relaxed mb-5">{project.description}</p>
-                  <div className="bg-gray-50 rounded-2xl p-4 mb-5 border border-gray-100">
-                    <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Campaign Highlights</p>
-                    <p className="text-gray-700 text-sm font-medium leading-relaxed">{project.results}</p>
-                  </div>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-6">{project.outcome}</p>
-                  <div className="grid grid-cols-4 gap-3">
-                    {project.metrics.map((m) => (
-                      <div key={m.label} className="bg-amber-50 border border-amber-100 rounded-xl p-3 text-center">
-                        <p className="text-lg font-black text-amber-600 leading-none">{m.value}</p>
-                        <p className="text-[10px] text-gray-500 font-semibold mt-1 leading-tight">{m.label}</p>
-                      </div>
-                    ))}
+                  {/* Content */}
+                  <div className={i % 2 === 1 ? "lg:order-1" : ""}>
+                    <div className="flex flex-wrap items-center gap-3 mb-6">
+                      <span className={`inline-flex items-center gap-2 text-xs font-display font-medium px-4 py-2 rounded-full ${project.channelBg} ${project.channelBorder} border ${project.channelColor}`}>
+                        <ChannelIcon className="w-4 h-4" />
+                        {project.channel}
+                      </span>
+                      <span className="font-sans text-sm text-[#6B7280] font-medium">{project.industry}</span>
+                    </div>
+                    <h2 className="font-display font-medium text-3xl md:text-4xl text-[#111827] mb-3">
+                      {project.title}
+                    </h2>
+                    <p className="font-sans text-[#F26522] font-semibold mb-6">{project.client}</p>
+                    <p className="font-sans text-[#6B7280] leading-relaxed mb-6">{project.description}</p>
+                    
+                    <div className="bg-[#EFEFEF] rounded-2xl p-6 mb-6">
+                      <p className="font-display text-xs font-semibold text-[#111827] uppercase tracking-wider mb-2">Campaign Highlights</p>
+                      <p className="font-sans text-[#6B7280] text-sm leading-relaxed">{project.results}</p>
+                    </div>
+                    
+                    <p className="font-sans text-[#6B7280] text-sm leading-relaxed mb-8">{project.outcome}</p>
+                    
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                      {project.metrics.map((m) => (
+                        <div key={m.label} className="bg-white rounded-xl p-4 text-center hover-lift border border-gray-100 shadow-sm">
+                          <p className="font-display text-xl font-bold text-[#F26522] leading-none mb-2">{m.value}</p>
+                          <p className="font-sans text-[11px] text-[#6B7280] font-medium leading-tight">{m.label}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </FadeIn>
             );
           })}
         </div>
       </section>
 
       {/* Our Clients */}
-      <section className="py-16 bg-gray-50 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-amber-500 text-sm font-semibold uppercase tracking-widest mb-3">Trusted By</p>
-          <h2 className="text-3xl font-black text-gray-900 mb-10">Brands We&apos;ve Grown</h2>
-          <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-5">
-            {clients.map((client) => (
-              <span
-                key={client}
-                className="text-sm font-black text-gray-400 tracking-tight hover:text-gray-700 transition-colors"
-              >
-                {client}
-              </span>
-            ))}
-          </div>
+      <section className="bg-[#EFEFEF] py-20 md:py-32">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
+          <FadeIn>
+            <SectionBadge number="02" label="Trusted By" />
+            <h2 className="axion-heading text-[#111827] font-display mt-6 mb-12">Brands We&apos;ve Grown</h2>
+            <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-6">
+              {clients.map((client) => (
+                <span
+                  key={client}
+                  className="font-display text-lg font-medium text-[#6B7280] hover:text-[#111827] transition-colors"
+                >
+                  {client}
+                </span>
+              ))}
+            </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-amber-500 text-sm font-semibold uppercase tracking-widest mb-3">Client Stories</p>
-            <h2 className="text-3xl font-black text-gray-900">
-              Here&apos;s What Our Clients Say
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {testimonials.map((t) => (
-              <div key={t.name} className="bg-gray-50 border border-gray-100 rounded-3xl p-7 hover:shadow-md hover:border-gray-200 transition-all duration-200">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <p className="text-gray-700 leading-relaxed mb-5 italic text-base">&ldquo;{t.text}&rdquo;</p>
-                <p className="text-gray-900 font-bold text-sm">— {t.name}</p>
-                <p className="text-gray-400 text-xs mt-0.5">{t.role}</p>
+      <section className="bg-white py-20 md:py-32">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
+          <FadeIn>
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-16">
+                <SectionBadge number="03" label="Client Stories" />
+                <h2 className="axion-heading text-[#111827] font-display mt-6">
+                  Here&apos;s What Our Clients Say
+                </h2>
               </div>
-            ))}
-          </div>
+              <div className="grid md:grid-cols-2 gap-8">
+                {testimonials.map((t, idx) => (
+                  <FadeIn key={t.name} delay={idx * 0.1}>
+                    <div className="bg-[#EFEFEF] rounded-2xl p-8 hover-lift h-full flex flex-col">
+                      <div className="flex gap-1.5 mb-6">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-5 h-5 fill-[#F26522] text-[#F26522]" />
+                        ))}
+                      </div>
+                      <p className="font-sans text-[#6B7280] leading-relaxed mb-8 italic text-base flex-grow">&ldquo;{t.text}&rdquo;</p>
+                      <div>
+                        <p className="font-display text-[#111827] font-medium text-lg">{t.name}</p>
+                        <p className="font-sans text-[#6B7280] text-sm mt-1">{t.role}</p>
+                      </div>
+                    </div>
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gray-950 text-center">
-        <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-4">
-            You Could Be Next
-          </p>
-          <h2 className="text-3xl font-black text-white mb-5">
-            Ready to Be Our Next Success Story?
-          </h2>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 shadow-lg"
-          >
-            Book Free Consultation
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+      <section className="bg-[#EFEFEF] py-20 md:py-32 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
+          <FadeIn>
+            <div className="max-w-xl mx-auto">
+              <h2 className="axion-heading text-[#111827] font-display mb-8">
+                Ready to Be Our Next Success Story?
+              </h2>
+              <TextRollButton href="/contact" label="Book Free Consultation" variant="orange" />
+            </div>
+          </FadeIn>
         </div>
       </section>
     </>

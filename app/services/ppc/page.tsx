@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MousePointer2, CheckCircle2, ArrowRight, Target, BarChart3, TrendingUp, Globe } from "lucide-react";
+import FadeIn from "@/components/ui/FadeIn";
+import TextRollButton from "@/components/ui/TextRollButton";
+import SectionBadge from "@/components/ui/SectionBadge";
+import ExpandingCard from "@/components/ui/ExpandingCard";
 
 export const metadata: Metadata = {
   title: "Google Ads & PPC Management — GrowthSpare",
@@ -19,23 +23,23 @@ const features = [
 export default function PPCPage() {
   return (
     <>
-      <section className="bg-white py-16 md:py-20 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-[#FFFFFF] py-16 md:py-20 border-b border-gray-100">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-flex items-center gap-2 bg-amber-50 text-amber-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-5">
-                <MousePointer2 className="w-3.5 h-3.5" /> Google Ads / PPC
-              </span>
-              <h1 className="text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-5">
+              <SectionBadge icon={MousePointer2} text="Google Ads / PPC
+              " />
+              <h1 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-[#111827] leading-tight mb-5">
                 Generate Leads with{" "}
-                <span className="text-amber-500">High-Converting PPC Campaigns.</span>
+                <span className="text-[#F26522]">High-Converting PPC Campaigns.</span>
               </h1>
-              <p className="text-gray-500 text-lg leading-relaxed mb-7">
+              <p className="text-[#6B7280] font-sans text-lg leading-relaxed mb-7">
                 Our certified Google Ads experts manage your entire paid search strategy — from campaign setup
                 to ongoing optimization — ensuring every rupee delivers maximum return on investment.
               </p>
               <div className="flex gap-4">
-                <Link href="/contact" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3.5 rounded-lg transition-colors">
+                <Link href="/contact" className="bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-6 py-3.5 rounded-lg transition-colors">
                   Start a Campaign
                 </Link>
                 <Link href="/pricing" className="border-2 border-gray-200 hover:border-gray-900 text-gray-700 font-semibold px-6 py-3.5 rounded-lg transition-colors">
@@ -52,34 +56,38 @@ export default function PPCPage() {
             </div>
           </div>
         </div>
+      </FadeIn>
       </section>
 
-      <section className="py-16 md:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 md:py-20 bg-[#EFEFEF]">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">PPC Services We Offer</h2>
-            <p className="text-gray-500 max-w-xl mx-auto">Full-funnel paid advertising management across all Google platforms.</p>
+            <h2 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-[#111827] mb-3">PPC Services We Offer</h2>
+            <p className="text-[#6B7280] font-sans max-w-xl mx-auto">Full-funnel paid advertising management across all Google platforms.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((f) => {
               const Icon = f.icon;
               return (
-                <div key={f.title} className="bg-white rounded-2xl p-7 border border-gray-100 hover:border-amber-200 hover:shadow-sm transition-all duration-200">
+                <div key={f.title} className="bg-white rounded-2xl p-7 border border-gray-100 hover:border-amber-200 hover:shadow-sm transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]">
                   <div className="w-11 h-11 bg-amber-50 rounded-xl flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5 text-amber-600" />
+                    <Icon className="w-5 h-5 text-[#F26522]" />
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-2">{f.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{f.desc}</p>
+                  <h3 className="font-bold text-[#111827] mb-2">{f.title}</h3>
+                  <p className="text-[#6B7280] font-sans text-sm leading-relaxed">{f.desc}</p>
                 </div>
               );
             })}
           </div>
         </div>
+      </FadeIn>
       </section>
 
       <section className="py-16 md:py-20 bg-white">
+        <FadeIn>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black text-gray-900 text-center mb-10">Our PPC Management Process</h2>
+          <h2 className="text-3xl font-black text-[#111827] text-center mb-10">Our PPC Management Process</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { step: "01", title: "Account Audit", desc: "Review existing campaigns, identify wasted spend, and set up conversion tracking." },
@@ -88,25 +96,26 @@ export default function PPCPage() {
               { step: "04", title: "Optimize & Scale", desc: "A/B test ads, optimize bids, cut losers, and scale winners for maximum ROI." },
             ].map((step) => (
               <div key={step.step} className="text-center">
-                <div className="w-14 h-14 bg-amber-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-14 h-14 bg-[#F26522] rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <span className="text-white font-black text-lg">{step.step}</span>
                 </div>
-                <h3 className="font-bold text-gray-900 mb-2">{step.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
+                <h3 className="font-bold text-[#111827] mb-2">{step.title}</h3>
+                <p className="text-[#6B7280] font-sans text-sm leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
         </div>
+      </FadeIn>
       </section>
 
       <section className="py-20 bg-gray-950 text-center">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Ready to Scale with Google Ads?</h2>
-          <p className="text-gray-400 text-lg mb-8">Get a free Google Ads audit and see how much you could save and earn.</p>
-          <Link href="/contact" className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg">
-            Get Free Audit <ArrowRight className="w-4 h-4" />
-          </Link>
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
+          <h2 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-white mb-4">Ready to Scale with Google Ads?</h2>
+          <p className="text-[#6B7280] font-sans text-lg mb-8">Get a free Google Ads audit and see how much you could save and earn.</p>
+          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg">Get Free Audit </TextRollButton>
         </div>
+      </FadeIn>
       </section>
     </>
   );

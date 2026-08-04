@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Mail, ArrowRight } from "lucide-react";
+import FadeIn from "@/components/ui/FadeIn";
+import TextRollButton from "@/components/ui/TextRollButton";
+import SectionBadge from "@/components/ui/SectionBadge";
+import ExpandingCard from "@/components/ui/ExpandingCard";
 
 export const metadata: Metadata = {
   title: "Email Marketing Services — GrowthSpare",
@@ -19,24 +23,22 @@ const features = [
 export default function EmailPage() {
   return (
     <>
-      <section className="bg-white py-16 md:py-20 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-[#FFFFFF] py-16 md:py-20 border-b border-gray-100">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-flex items-center gap-2 bg-rose-50 text-rose-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-5">
-                <Mail className="w-3.5 h-3.5" /> Email Marketing
-              </span>
-              <h1 className="text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-5">
+              <SectionBadge icon={Mail} text="Email Marketing
+              " />
+              <h1 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-[#111827] leading-tight mb-5">
                 Turn Your Email List Into a{" "}
-                <span className="text-amber-500">Revenue Engine.</span>
+                <span className="text-[#F26522]">Revenue Engine.</span>
               </h1>
-              <p className="text-gray-500 text-lg leading-relaxed mb-7">
+              <p className="text-[#6B7280] font-sans text-lg leading-relaxed mb-7">
                 We craft high-performing email campaigns while simplifying the entire delivery process —
                 ensuring every communication is seamless, personalized, and drives measurable revenue.
               </p>
-              <Link href="/contact" className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3.5 rounded-lg transition-colors">
-                Get Started <ArrowRight className="w-4 h-4" />
-              </Link>
+              <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-6 py-3.5 rounded-lg transition-colors">Get Started </TextRollButton>
             </div>
             <img
               src="https://images.pexels.com/photos/1591062/pexels-photo-1591062.jpeg?auto=compress&cs=tinysrgb&w=700"
@@ -45,36 +47,39 @@ export default function EmailPage() {
             />
           </div>
         </div>
+      </FadeIn>
       </section>
 
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 bg-[#EFEFEF]">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-black text-gray-900 mb-3">Email Marketing Services</h2>
-            <p className="text-gray-500 max-w-xl mx-auto">Everything you need to build and monetize your email list.</p>
+            <h2 className="text-3xl font-black text-[#111827] mb-3">Email Marketing Services</h2>
+            <p className="text-[#6B7280] font-sans max-w-xl mx-auto">Everything you need to build and monetize your email list.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((f) => (
-              <div key={f.title} className="bg-white rounded-2xl p-7 border border-gray-100 hover:border-rose-200 hover:shadow-sm transition-all duration-200">
+              <div key={f.title} className="bg-white rounded-2xl p-7 border border-gray-100 hover:border-rose-200 hover:shadow-sm transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]">
                 <div className="w-10 h-10 bg-rose-50 rounded-xl flex items-center justify-center mb-4">
                   <Mail className="w-5 h-5 text-rose-500" />
                 </div>
-                <h3 className="font-bold text-gray-900 mb-2">{f.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{f.desc}</p>
+                <h3 className="font-bold text-[#111827] mb-2">{f.title}</h3>
+                <p className="text-[#6B7280] font-sans text-sm leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
         </div>
+      </FadeIn>
       </section>
 
       <section className="py-20 bg-gray-950 text-center">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <h2 className="text-3xl font-black text-white mb-4">Ready to Monetize Your Email List?</h2>
-          <p className="text-gray-400 text-lg mb-8">Let&apos;s build email automation sequences that generate revenue while you sleep.</p>
-          <Link href="/contact" className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg">
-            Book Free Consultation <ArrowRight className="w-4 h-4" />
-          </Link>
+          <p className="text-[#6B7280] font-sans text-lg mb-8">Let&apos;s build email automation sequences that generate revenue while you sleep.</p>
+          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg">Book Free Consultation </TextRollButton>
         </div>
+      </FadeIn>
       </section>
     </>
   );

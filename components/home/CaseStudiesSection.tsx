@@ -1,104 +1,107 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import { ArrowRight, Link as LinkIcon } from "lucide-react";
+import { motion } from "framer-motion";
+import SectionBadge from "@/components/ui/SectionBadge";
+import ExpandingCard from "@/components/ui/ExpandingCard";
 
 const caseStudies = [
   {
-    id: "narrativ",
-    title: "Narrativ",
-    description: "Winner of Site of the Month 2025 - an interactive 3D showcase driving record engagement",
-    videoUrl: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260516_122702_390f5305-8719-41d5-ae80-d23ab3796c28.mp4",
-    aspect: "aspect-[329/246]",
-    bg: "bg-[#1a1d2e]",
-    btnVariant: "white" as const,
-    btnText: "Learn more",
-    btnWidth: "group-hover:w-[148px]",
-    icon: "link",
-    href: "/projects",
+    client: "Xworkstation",
+    industry: "E-commerce / Workspace",
+    channel: "Google Ads",
+    challenge: "Low conversion rate and high cost per click with limited campaign reach.",
+    strategy: "Full Google Ads restructure with smart bidding, audience refinement, and conversion-focused landing pages.",
+    results: [
+      { metric: "52.8K+", label: "Clicks" },
+      { metric: "4.32K+", label: "Conversions" },
+      { metric: "42.15", label: "Avg. CPC" },
+    ],
+    screenshot: "/images/case-studies/WhatsApp_Image_2026-06-24_at_4.01.58_PM_(1).jpeg",
   },
   {
-    id: "luminar",
-    title: "Luminar",
-    description: "Transforming a dated platform into a conversion-focused brand experience",
-    videoUrl: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260516_123323_f909c2b8-ff6c-4edf-882b-8ebcdbe389b5.mp4",
-    aspect: "aspect-square",
-    bg: "bg-[#6b6b6b]",
-    btnVariant: "dark" as const,
-    btnText: "View case study",
-    btnWidth: "group-hover:w-[168px]",
-    icon: "arrow",
-    href: "/projects",
+    client: "Srigauri Fashion",
+    industry: "Fashion & Apparel",
+    channel: "Meta Ads",
+    challenge: "High cost per lead with poor quality inquiries from untargeted Meta campaigns.",
+    strategy: "Audience segmentation overhaul, creative A/B testing, and WhatsApp lead automation for instant follow-up.",
+    results: [
+      { metric: "3.85L+", label: "Reach" },
+      { metric: "2,100+", label: "Leads" },
+      { metric: "18.90", label: "CPL" },
+    ],
+    screenshot: "/images/case-studies/WhatsApp_Image_2026-06-24_at_4.01.59_PM.jpeg",
+  },
+  {
+    client: "IELTSwithGagan",
+    industry: "Education",
+    channel: "Google Ads",
+    challenge: "Struggling to drive course enrollments at a reasonable cost through paid search.",
+    strategy: "High-intent keyword targeting, ad creative optimization, and campaign structure refinement for better Quality Scores.",
+    results: [
+      { metric: "8.85K+", label: "Clicks" },
+      { metric: "488", label: "Enrollments" },
+      { metric: "38.04", label: "Avg. CPC" },
+    ],
+    screenshot: "/images/case-studies/WhatsApp_Image_2026-06-24_at_4.01.59_PM_(1).jpeg",
   },
 ];
 
 export default function CaseStudiesSection() {
   return (
-    <section className="bg-[#F5F5F5] pt-16 sm:pt-20 lg:pt-28 pb-16 sm:pb-20 lg:pb-28">
+    <section className="py-24 bg-[#EFEFEF]">
       <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
-        {/* Badge Row */}
-        <div className="flex items-center gap-3 mb-6 sm:mb-8">
-          <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-gray-900 text-white flex items-center justify-center text-[11px] sm:text-[12px] font-semibold">
-            2
-          </div>
-          <span className="text-[12px] sm:text-[13px] font-medium border border-gray-300 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 text-gray-900">
-            Featured client work
-          </span>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+          className="mb-16"
+        >
+          <SectionBadge number="2" label="Featured client work" borderColor="border-gray-300" />
+          <h2 className="axion-hero-heading text-[#111827] mt-6 mb-4 max-w-3xl">
+            Our projects
+          </h2>
+          <p className="text-lg text-[#6B7280] font-sans max-w-2xl">
+            Real Campaigns. Real Numbers. Every metric below is pulled directly from live campaign dashboards.
+          </p>
+        </motion.div>
 
-        {/* Heading H2 */}
-        <h2 className="text-[clamp(1.75rem,7vw,4.2rem)] sm:text-[clamp(2.5rem,5vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900 mb-10 sm:mb-14 lg:mb-16">
-          Our projects
-        </h2>
-
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
-          {caseStudies.map((study) => (
-            <Link key={study.id} href={study.href} className="group block cursor-pointer">
-              {/* Video Container */}
-              <div className={`relative ${study.aspect} rounded-2xl overflow-hidden ${study.bg} shadow-sm group-hover:shadow-md transition-shadow duration-300`}>
-                <video
-                  src={study.videoUrl}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-cover"
-                />
-
-                {/* Expanding Hover Button (absolute bottom-4 left-4) */}
-                <div className="absolute bottom-4 left-4 z-10 pointer-events-none">
-                  <div
-                    className={`h-9 w-9 ${study.btnWidth} rounded-full flex items-center justify-between px-2.5 overflow-hidden transition-all duration-300 ease-in-out ${
-                      study.btnVariant === "white"
-                        ? "bg-white text-gray-900 shadow-md"
-                        : "bg-gray-900 text-white shadow-md"
-                    }`}
-                  >
-                    <span className="text-[13px] font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75 whitespace-nowrap pl-1">
-                      {study.btnText}
-                    </span>
-
-                    <div className="w-5 h-5 flex items-center justify-center shrink-0">
-                      {study.icon === "link" ? (
-                        <LinkIcon className="w-3.5 h-3.5 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
-                      ) : (
-                        <ArrowRight className="w-3.5 h-3.5 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
-                      )}
-                    </div>
-                  </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {caseStudies.map((study, index) => (
+            <motion.div
+              key={study.client}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+            >
+              <ExpandingCard
+                title={study.client}
+                description={study.strategy}
+                imageSrc={study.screenshot}
+                imageAlt={`${study.client} dashboard`}
+                href="/projects"
+                buttonLabel="View study"
+                variant="dark"
+              >
+                <div className="absolute top-4 left-4 flex flex-col gap-2">
+                   <div className="bg-white/90 backdrop-blur px-3 py-1.5 rounded-full shadow-sm text-xs font-bold text-gray-900">
+                     {study.channel}
+                   </div>
+                   <div className="bg-white/90 backdrop-blur px-3 py-1.5 rounded-full shadow-sm text-xs font-bold text-gray-900 uppercase tracking-wider">
+                     {study.industry}
+                   </div>
                 </div>
+              </ExpandingCard>
+              <div className="grid grid-cols-3 gap-4 mt-6 bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+                {study.results.map((result) => (
+                  <div key={result.label} className="text-center">
+                    <p className="font-display font-bold text-[#F26522]">{result.metric}</p>
+                    <p className="text-[10px] font-sans font-semibold text-gray-500 uppercase tracking-wider mt-1">{result.label}</p>
+                  </div>
+                ))}
               </div>
-
-              {/* Text Meta */}
-              <p className="text-xs sm:text-[13px] text-gray-600 mt-4 leading-relaxed max-w-xl">
-                {study.description}
-              </p>
-              <h3 className="text-sm sm:text-base font-semibold text-gray-900 mt-1 group-hover:text-[#F26522] transition-colors">
-                {study.title}
-              </h3>
-            </Link>
+            </motion.div>
           ))}
         </div>
       </div>

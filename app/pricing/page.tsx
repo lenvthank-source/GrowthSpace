@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { CheckCircle2, ArrowRight, Zap, TrendingUp, Building2 } from "lucide-react";
+import { CheckCircle2, Zap, TrendingUp, Building2 } from "lucide-react";
+import FadeIn from "@/components/ui/FadeIn";
+import SectionBadge from "@/components/ui/SectionBadge";
+import TextRollButton from "@/components/ui/TextRollButton";
 
 export const metadata: Metadata = {
   title: "GrowthSpare Pricing — Transparent SEO & Marketing Plans",
@@ -26,8 +28,6 @@ const plans = [
     price: "₹15,000",
     period: "/month",
     desc: "Everything you need to establish your digital presence and start generating leads.",
-    color: "border-gray-200",
-    btnColor: "bg-gray-900 hover:bg-gray-800 text-white",
     features: [
       "SEO Audit & On-page Optimization",
       "Google My Business Setup",
@@ -51,8 +51,6 @@ const plans = [
     price: "₹35,000",
     period: "/month",
     desc: "A complete growth engine for scaling businesses ready to dominate their market.",
-    color: "border-amber-500 shadow-xl shadow-amber-100",
-    btnColor: "bg-amber-500 hover:bg-amber-600 text-white",
     badge: "Most Popular",
     features: [
       "Everything in Starter",
@@ -77,8 +75,6 @@ const plans = [
     price: "Custom",
     period: "",
     desc: "Fully customized strategies for large businesses and enterprises with complex needs.",
-    color: "border-gray-900",
-    btnColor: "bg-gray-900 hover:bg-amber-500 text-white",
     features: [
       "Everything in Growth",
       "Full-funnel Marketing Strategy",
@@ -111,90 +107,91 @@ const comparison = [
 ];
 
 function CheckOrX({ value }: { value: boolean | string }) {
-  if (value === true) return <CheckCircle2 className="w-5 h-5 text-green-500 mx-auto" />;
+  if (value === true) return <CheckCircle2 className="w-5 h-5 text-[#F26522] mx-auto" />;
   if (value === false) return <span className="text-gray-300 text-lg font-bold block text-center">—</span>;
-  return <span className="text-xs font-semibold text-gray-700 block text-center">{value}</span>;
+  return <span className="text-xs font-sans font-semibold text-[#111827] block text-center">{value}</span>;
 }
 
 export default function PricingPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-white py-16 md:py-20 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-amber-500 text-sm font-semibold uppercase tracking-widest mb-3">
-            Transparent Pricing
-          </p>
-          <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-            Simple, Honest Pricing
-          </h1>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
-            No hidden fees. No locked-in contracts. Choose the plan that fits your
-            goals and scale as you grow.
-          </p>
+      <section className="bg-[#EFEFEF] py-20 md:py-32">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
+          <FadeIn>
+            <SectionBadge number="01" label="Transparent Pricing" />
+            <h1 className="axion-heading text-[#111827] font-display mt-6 mb-6">
+              Simple, Honest Pricing
+            </h1>
+            <p className="font-sans text-[#6B7280] text-lg max-w-2xl mx-auto leading-relaxed">
+              No hidden fees. No locked-in contracts. Choose the plan that fits your
+              goals and scale as you grow.
+            </p>
+          </FadeIn>
         </div>
       </section>
 
       {/* Plans */}
-      <section className="py-16 md:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8 items-start">
-            {plans.map((plan) => {
+      <section className="bg-white py-20 md:py-32">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
+          <div className="grid lg:grid-cols-3 gap-8 items-start">
+            {plans.map((plan, i) => {
               const Icon = plan.icon;
               return (
-                <div
-                  key={plan.name}
-                  className={`relative bg-white rounded-2xl border-2 ${plan.color} p-8 transition-all duration-300`}
-                >
-                  {plan.badge && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                      <span className="bg-amber-500 text-white text-xs font-bold px-4 py-1.5 rounded-full whitespace-nowrap">
-                        {plan.badge}
-                      </span>
-                    </div>
-                  )}
-
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-11 h-11 bg-amber-50 rounded-xl flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-amber-500" />
-                    </div>
-                    <div>
-                      <h2 className="font-black text-gray-900 text-xl">{plan.name}</h2>
-                      <p className="text-amber-500 text-xs font-semibold">{plan.tagline}</p>
-                    </div>
-                  </div>
-
-                  <div className="mb-4">
-                    <span className="text-4xl font-black text-gray-900">{plan.price}</span>
-                    <span className="text-gray-500 text-sm">{plan.period}</span>
-                  </div>
-
-                  <p className="text-gray-500 text-sm mb-7 leading-relaxed">{plan.desc}</p>
-
-                  <Link
-                    href="/contact"
-                    className={`block text-center font-semibold py-3.5 rounded-xl mb-7 transition-all duration-200 ${plan.btnColor}`}
-                  >
-                    {plan.name === "Enterprise" ? "Get Custom Quote" : "Get Started"}
-                  </Link>
-
-                  <div className="space-y-3">
-                    {plan.features.map((f) => (
-                      <div key={f} className="flex items-start gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
-                        <span className="text-gray-700 text-sm">{f}</span>
-                      </div>
-                    ))}
-                    {plan.notIncluded.map((f) => (
-                      <div key={f} className="flex items-start gap-2.5 opacity-40">
-                        <span className="w-4 h-4 shrink-0 mt-0.5 flex items-center justify-center">
-                          <span className="w-3 h-0.5 bg-gray-400 block" />
+                <FadeIn key={plan.name} delay={i * 0.1}>
+                  <div className="relative bg-[#EFEFEF] rounded-2xl p-6 sm:p-8 hover-lift h-full flex flex-col">
+                    {plan.badge && (
+                      <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                        <span className="bg-[#F26522] text-white text-xs font-bold px-4 py-1.5 rounded-full whitespace-nowrap">
+                          {plan.badge}
                         </span>
-                        <span className="text-gray-500 text-sm line-through">{f}</span>
                       </div>
-                    ))}
+                    )}
+
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
+                        <Icon className="w-6 h-6 text-[#F26522]" />
+                      </div>
+                      <div>
+                        <h2 className="font-display font-medium text-[#111827] text-2xl">{plan.name}</h2>
+                        <p className="font-sans text-[#F26522] text-xs font-semibold">{plan.tagline}</p>
+                      </div>
+                    </div>
+
+                    <div className="mb-6">
+                      <span className="text-4xl font-display font-bold text-[#111827]">{plan.price}</span>
+                      <span className="font-sans text-[#6B7280] text-sm">{plan.period}</span>
+                    </div>
+
+                    <p className="font-sans text-[#6B7280] text-sm mb-8 leading-relaxed flex-grow">{plan.desc}</p>
+
+                    <div className="mb-8">
+                      <TextRollButton
+                        href="/contact"
+                        label={plan.name === "Enterprise" ? "Get Custom Quote" : "Get Started"}
+                        variant={plan.badge ? "orange" : "dark"}
+                        className="w-full justify-center"
+                      />
+                    </div>
+
+                    <div className="space-y-4">
+                      {plan.features.map((f) => (
+                        <div key={f} className="flex items-start gap-3">
+                          <CheckCircle2 className="w-5 h-5 text-[#F26522] shrink-0" />
+                          <span className="font-sans text-[#111827] text-sm">{f}</span>
+                        </div>
+                      ))}
+                      {plan.notIncluded.map((f) => (
+                        <div key={f} className="flex items-start gap-3 opacity-40">
+                          <span className="w-5 h-5 shrink-0 flex items-center justify-center">
+                            <span className="w-3 h-0.5 bg-gray-400 block" />
+                          </span>
+                          <span className="font-sans text-[#6B7280] text-sm line-through">{f}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                </FadeIn>
               );
             })}
           </div>
@@ -202,75 +199,89 @@ export default function PricingPage() {
       </section>
 
       {/* Comparison Table */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black text-gray-900 text-center mb-12">
-            Compare All Plans
-          </h2>
-          <div className="rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
-            <table className="w-full">
-              <thead>
-                <tr className="bg-gray-50 border-b border-gray-100">
-                  <th className="text-left px-6 py-4 text-sm font-semibold text-gray-600">Feature</th>
-                  <th className="text-center px-4 py-4 text-sm font-semibold text-gray-900">Starter</th>
-                  <th className="text-center px-4 py-4 text-sm font-bold text-amber-600 bg-amber-50/50">Growth</th>
-                  <th className="text-center px-4 py-4 text-sm font-semibold text-gray-900">Enterprise</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparison.map((row, i) => (
-                  <tr key={row.feature} className={`border-b border-gray-50 ${i % 2 === 1 ? "bg-gray-50/30" : ""}`}>
-                    <td className="px-6 py-4 text-sm text-gray-700">{row.feature}</td>
-                    <td className="px-4 py-4"><CheckOrX value={row.starter} /></td>
-                    <td className="px-4 py-4 bg-amber-50/30"><CheckOrX value={row.growth} /></td>
-                    <td className="px-4 py-4"><CheckOrX value={row.enterprise} /></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+      <section className="bg-[#EFEFEF] py-20 md:py-32">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
+          <FadeIn>
+            <div className="text-center mb-16">
+              <SectionBadge number="02" label="Compare Features" />
+              <h2 className="axion-heading text-[#111827] font-display mt-6">
+                Compare All Plans
+              </h2>
+            </div>
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[800px]">
+                  <thead>
+                    <tr className="border-b border-gray-100">
+                      <th className="text-left px-8 py-6 font-display font-medium text-[#6B7280]">Feature</th>
+                      <th className="text-center px-6 py-6 font-display font-medium text-[#111827]">Starter</th>
+                      <th className="text-center px-6 py-6 font-display font-bold text-[#F26522] bg-[#F26522]/5">Growth</th>
+                      <th className="text-center px-6 py-6 font-display font-medium text-[#111827]">Enterprise</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {comparison.map((row, i) => (
+                      <tr key={row.feature} className={`border-b border-gray-100 ${i % 2 === 1 ? "bg-gray-50/50" : ""}`}>
+                        <td className="px-8 py-5 font-sans text-sm text-[#111827]">{row.feature}</td>
+                        <td className="px-6 py-5"><CheckOrX value={row.starter} /></td>
+                        <td className="px-6 py-5 bg-[#F26522]/5"><CheckOrX value={row.growth} /></td>
+                        <td className="px-6 py-5"><CheckOrX value={row.enterprise} /></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-16 bg-gray-50 border-t border-gray-100">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-gray-900 text-center mb-10">
-            Pricing FAQs
-          </h2>
-          <div className="space-y-4">
-            {[
-              { q: "Are there any setup fees?", a: "No hidden setup fees. The monthly price is all-inclusive for the services listed in your plan." },
-              { q: "Can I upgrade or downgrade my plan?", a: "Absolutely. You can change your plan at any time. Changes take effect from the next billing cycle." },
-              { q: "Do you require a long-term contract?", a: "We work on monthly rolling agreements with a recommended minimum of 3 months for SEO to see meaningful results." },
-              { q: "What happens to my campaigns if I cancel?", a: "You own all your ad accounts, content, and assets. We hand everything over with a full documentation handoff." },
-            ].map((faq) => (
-              <div key={faq.q} className="bg-white rounded-xl p-6 border border-gray-100">
-                <h3 className="font-semibold text-gray-900 mb-2">{faq.q}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{faq.a}</p>
+      <section className="bg-white py-20 md:py-32">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
+          <FadeIn>
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-16">
+                <SectionBadge number="03" label="Pricing FAQs" />
+                <h2 className="axion-heading text-[#111827] font-display mt-6">
+                  Frequently Asked Questions
+                </h2>
               </div>
-            ))}
-          </div>
+              <div className="space-y-4">
+                {[
+                  { q: "Are there any setup fees?", a: "No hidden setup fees. The monthly price is all-inclusive for the services listed in your plan." },
+                  { q: "Can I upgrade or downgrade my plan?", a: "Absolutely. You can change your plan at any time. Changes take effect from the next billing cycle." },
+                  { q: "Do you require a long-term contract?", a: "We work on monthly rolling agreements with a recommended minimum of 3 months for SEO to see meaningful results." },
+                  { q: "What happens to my campaigns if I cancel?", a: "You own all your ad accounts, content, and assets. We hand everything over with a full documentation handoff." },
+                ].map((faq, i) => (
+                  <FadeIn key={faq.q} delay={i * 0.1}>
+                    <div className="bg-[#EFEFEF] rounded-2xl p-6 sm:p-8 hover-lift">
+                      <h3 className="font-display font-medium text-[#111827] text-lg mb-3">{faq.q}</h3>
+                      <p className="font-sans text-[#6B7280] text-sm leading-relaxed">{faq.a}</p>
+                    </div>
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gray-950 text-center">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
-            Not Sure Which Plan to Choose?
-          </h2>
-          <p className="text-gray-400 text-lg mb-8">
-            Book a free 30-minute consultation and we&apos;ll recommend the right plan
-            for your goals and budget.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-200 shadow-lg"
-          >
-            Get a Free Consultation
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+      <section className="bg-[#EFEFEF] py-20 md:py-32 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
+          <FadeIn>
+            <div className="max-w-3xl mx-auto">
+              <h2 className="axion-heading text-[#111827] font-display mb-6">
+                Not Sure Which Plan to Choose?
+              </h2>
+              <p className="font-sans text-[#6B7280] text-lg mb-10">
+                Book a free 30-minute consultation and we&apos;ll recommend the right plan
+                for your goals and budget.
+              </p>
+              <TextRollButton href="/contact" label="Get a Free Consultation" variant="orange" />
+            </div>
+          </FadeIn>
         </div>
       </section>
     </>

@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import HeroSection from "@/components/home/HeroSection";
-import AboutSection from "@/components/home/AboutSection";
-import CaseStudiesSection from "@/components/home/CaseStudiesSection";
 import DivisionsSection from "@/components/home/DivisionsSection";
+import CaseStudiesSection from "@/components/home/CaseStudiesSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import IndustriesStrip from "@/components/home/IndustriesStrip";
 import FAQSection from "@/components/home/FAQSection";
@@ -16,7 +15,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "GrowthSpare — Digital Marketing Agency & AI Solutions",
+    title: "GrowthSpare — Digital Marketing Agency & AI Tech Solutions",
     description:
       "Scale your business with GrowthSpare. We blend data-driven SEO, Google Ads, AI chatbots & custom ERP software to boost revenue 3x. Claim your free audit! ✓",
     url: "https://growthspare.com",
@@ -50,9 +49,8 @@ export default function Home() {
       </noscript>
 
       <HeroSection />
-      <AboutSection />
-      <CaseStudiesSection />
       <DivisionsSection />
+      <CaseStudiesSection />
       <TestimonialsSection />
       <IndustriesStrip />
       <FAQSection />

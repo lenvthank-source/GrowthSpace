@@ -4,6 +4,8 @@ import {
   Search, MousePointer2, Share2, MessageSquare, Mail,
   Globe, Palette, LineChart, TrendingUp, BarChart3, ArrowRight,
 } from "lucide-react";
+import FadeIn from "@/components/ui/FadeIn";
+import TextRollButton from "@/components/ui/TextRollButton";
 
 export const metadata: Metadata = {
   title: "Our Services — GrowthSpare Digital Marketing",
@@ -30,7 +32,7 @@ const services = [
     href: "/services/ppc",
     image: "https://images.pexels.com/photos/905163/pexels-photo-905163.jpeg?auto=compress&cs=tinysrgb&w=600",
     color: "bg-amber-50",
-    iconColor: "text-amber-600",
+    iconColor: "text-[#F26522]",
   },
   {
     icon: Share2,
@@ -98,28 +100,31 @@ export default function ServicesPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-white py-16 md:py-20 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+      <section className="bg-[#FFFFFF] py-16 md:py-20 border-b border-gray-100">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
+          <h1 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-[#111827] mb-4">
             Our Services
           </h1>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[#6B7280] font-sans text-lg max-w-2xl mx-auto leading-relaxed">
             From consulting and strategy development to implementation and support,
             our comprehensive services can help your business thrive.
           </p>
         </div>
+      </FadeIn>
       </section>
 
       {/* Services Grid */}
       <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => {
               const Icon = service.icon;
               return (
                 <div
                   key={service.title}
-                  className="group rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl hover:border-gray-200 transition-all duration-300 hover:-translate-y-1"
+                  className="group bg-white rounded-2xl p-6 sm:p-8 hover-lift border border-[#EFEFEF] transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:-translate-y-1"
                 >
                   <div className="relative h-48 overflow-hidden">
                     <img
@@ -132,18 +137,18 @@ export default function ServicesPage() {
                     <div className={`w-11 h-11 ${service.color} rounded-lg flex items-center justify-center mb-4`}>
                       <Icon className={`w-5 h-5 ${service.iconColor}`} />
                     </div>
-                    <h2 className="font-black text-gray-900 text-xl mb-3">{service.title}</h2>
-                    <p className="text-gray-500 text-sm leading-relaxed mb-5">{service.desc}</p>
+                    <h2 className="font-black text-[#111827] text-xl mb-3">{service.title}</h2>
+                    <p className="text-[#6B7280] font-sans text-sm leading-relaxed mb-5">{service.desc}</p>
                     <div className="flex flex-wrap gap-2 mb-5">
                       {service.features.map((f) => (
-                        <span key={f} className="text-xs bg-gray-50 border border-gray-100 text-gray-600 px-2.5 py-1 rounded-full">
+                        <span key={f} className="text-xs bg-[#EFEFEF] border border-gray-100 text-gray-600 px-2.5 py-1 rounded-full">
                           {f}
                         </span>
                       ))}
                     </div>
                     <Link
                       href={service.href}
-                      className="inline-flex items-center gap-1.5 text-amber-600 hover:text-amber-700 font-semibold text-sm group-hover:gap-2.5 transition-all"
+                      className="inline-flex items-center gap-1.5 text-[#F26522] hover:text-amber-700 font-semibold text-sm group-hover:gap-2.5 transition-all"
                     >
                       Learn More
                       <ArrowRight className="w-4 h-4" />
@@ -154,25 +159,23 @@ export default function ServicesPage() {
             })}
           </div>
         </div>
+      </FadeIn>
       </section>
 
       {/* CTA */}
       <section className="py-20 bg-gray-950 text-center">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-5">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
+          <h2 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-white mb-5">
             Ready to Grow Your Business?
           </h2>
-          <p className="text-gray-400 text-lg mb-8">
+          <p className="text-[#6B7280] font-sans text-lg mb-8">
             Schedule a free strategy call and discover how GrowthSpare can help you achieve your goals.
           </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-200 shadow-lg"
-          >
-            Schedule a Free Strategy Call
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-8 py-4 rounded-lg transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] shadow-lg">Schedule a Free Strategy Call
+            </TextRollButton>
         </div>
+      </FadeIn>
       </section>
     </>
   );

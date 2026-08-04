@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Clock, ChevronLeft, ChevronRight } from "lucide-react";
+import FadeIn from "@/components/ui/FadeIn";
+import TextRollButton from "@/components/ui/TextRollButton";
+import SectionBadge from "@/components/ui/SectionBadge";
+import ExpandingCard from "@/components/ui/ExpandingCard";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -103,19 +107,22 @@ export default async function BlogPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-white py-16 md:py-20 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-4">Blog</h1>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+      <section className="bg-[#FFFFFF] py-16 md:py-20 border-b border-gray-100">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
+          <h1 className="text-5xl md:text-6xl font-black text-[#111827] mb-4">Blog</h1>
+          <p className="text-[#6B7280] font-sans text-lg max-w-2xl mx-auto">
             Insights, strategies, and expert advice to help you grow your business
             with digital marketing.
           </p>
         </div>
+      </FadeIn>
       </section>
 
       {/* Categories (static) */}
       <section className="sticky top-16 md:top-20 z-40 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="flex items-center gap-2 overflow-x-auto py-4 scrollbar-hide">
             {[
               "All",
@@ -140,17 +147,19 @@ export default async function BlogPage() {
             ))}
           </div>
         </div>
+      </FadeIn>
       </section>
 
       {/* Featured Posts */}
       <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {featured.map((post: any) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group block rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="group block rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:-translate-y-1"
               >
                 <div className="relative h-56 overflow-hidden">
                   <img
@@ -158,18 +167,18 @@ export default async function BlogPage() {
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <span className="absolute top-4 left-4 bg-amber-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  <span className="absolute top-4 left-4 bg-[#F26522] text-white text-xs font-semibold px-3 py-1 rounded-full">
                     {post.category}
                   </span>
                 </div>
                 <div className="p-6">
-                  <h2 className="font-black text-gray-900 text-xl leading-snug mb-3 group-hover:text-amber-600 transition-colors">
+                  <h2 className="font-black text-[#111827] text-xl leading-snug mb-3 group-hover:text-[#F26522] transition-colors">
                     {post.title}
                   </h2>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                  <p className="text-[#6B7280] font-sans text-sm leading-relaxed mb-4">
                     {post.excerpt}
                   </p>
-                  <div className="flex items-center gap-3 text-xs text-gray-400">
+                  <div className="flex items-center gap-3 text-xs text-[#6B7280] font-sans">
                     {post.author && <span>{post.author}</span>}
                     {post.author && post.date && <span>&middot;</span>}
                     {post.date && <span>{post.date}</span>}
@@ -192,7 +201,7 @@ export default async function BlogPage() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group flex flex-col rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+                className="group flex flex-col rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:-translate-y-0.5"
               >
                 <div className="relative h-48 overflow-hidden">
                   <img
@@ -205,13 +214,13 @@ export default async function BlogPage() {
                   </span>
                 </div>
                 <div className="p-5 flex flex-col flex-1">
-                  <h2 className="font-bold text-gray-900 mb-2 leading-snug group-hover:text-amber-600 transition-colors">
+                  <h2 className="font-bold text-[#111827] mb-2 leading-snug group-hover:text-[#F26522] transition-colors">
                     {post.title}
                   </h2>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-4 flex-1">
+                  <p className="text-[#6B7280] font-sans text-sm leading-relaxed mb-4 flex-1">
                     {post.excerpt}
                   </p>
-                  <div className="flex items-center gap-2 text-xs text-gray-400">
+                  <div className="flex items-center gap-2 text-xs text-[#6B7280] font-sans">
                     {post.author && <span>{post.author}</span>}
                     {post.author && post.date && <span>&middot;</span>}
                     {post.date && <span>{post.date}</span>}
@@ -230,7 +239,7 @@ export default async function BlogPage() {
 
           {/* Pagination (static placeholder) */}
           <div className="flex items-center justify-center gap-2 mt-12">
-            <button className="w-9 h-9 rounded-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:border-gray-400 transition-colors">
+            <button className="w-9 h-9 rounded-lg border border-gray-200 flex items-center justify-center text-[#6B7280] font-sans hover:border-gray-400 transition-colors">
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button className="w-9 h-9 rounded-lg bg-gray-900 text-white text-sm font-semibold">
@@ -239,17 +248,19 @@ export default async function BlogPage() {
             <button className="w-9 h-9 rounded-lg border border-gray-200 text-gray-600 text-sm font-semibold hover:border-gray-400 transition-colors">
               2
             </button>
-            <button className="w-9 h-9 rounded-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:border-gray-400 transition-colors">
+            <button className="w-9 h-9 rounded-lg border border-gray-200 flex items-center justify-center text-[#6B7280] font-sans hover:border-gray-400 transition-colors">
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
+      </FadeIn>
       </section>
 
       {/* Newsletter CTA */}
       <section className="py-16 bg-amber-50 border-t border-amber-100">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-3">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
+          <h2 className="text-2xl md:text-3xl font-black text-[#111827] mb-3">
             Get Marketing Insights Every Week
           </h2>
           <p className="text-gray-600 mb-6">
@@ -259,13 +270,14 @@ export default async function BlogPage() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-amber-400 text-gray-900"
+              className="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-amber-400 text-[#111827]"
             />
-            <button className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors shrink-0">
+            <button className="bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-6 py-3 rounded-lg transition-colors shrink-0">
               Subscribe
             </button>
           </div>
         </div>
+      </FadeIn>
       </section>
     </>
   );

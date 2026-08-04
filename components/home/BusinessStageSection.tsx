@@ -1,14 +1,15 @@
-import Link from "next/link";
-import { Zap, TrendingUp, Building2, ArrowRight } from "lucide-react";
+"use client";
+
+import { motion } from "framer-motion";
+import { Zap, TrendingUp, Building2 } from "lucide-react";
+import SectionBadge from "@/components/ui/SectionBadge";
+import TextRollButton from "@/components/ui/TextRollButton";
 
 const stages = [
   {
     icon: Zap,
     stage: "Startup",
     tagline: "Launch & Get Noticed",
-    color: "border-amber-200 bg-amber-50/50",
-    iconBg: "bg-amber-500",
-    badgeColor: "bg-amber-100 text-amber-700",
     services: [
       { label: "Brand Identity & Logo", category: "Marketing" },
       { label: "Business Website", category: "Technology" },
@@ -24,9 +25,6 @@ const stages = [
     icon: TrendingUp,
     stage: "Growing Business",
     tagline: "Scale Revenue & Operations",
-    color: "border-blue-200 bg-blue-50/50 shadow-xl",
-    iconBg: "bg-blue-600",
-    badgeColor: "bg-blue-100 text-blue-700",
     badge: "Most Popular",
     services: [
       { label: "Google Ads & Meta Ads", category: "Marketing" },
@@ -43,9 +41,6 @@ const stages = [
     icon: Building2,
     stage: "Scaling Enterprise",
     tagline: "Automate & Dominate",
-    color: "border-violet-200 bg-violet-50/50",
-    iconBg: "bg-violet-600",
-    badgeColor: "bg-violet-100 text-violet-700",
     services: [
       { label: "ERP Implementation", category: "Technology" },
       { label: "AI Workflow Automation", category: "Technology" },
@@ -61,58 +56,66 @@ const stages = [
 
 export default function BusinessStageSection() {
   return (
-    <section className="py-20 md:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <p className="text-amber-500 text-sm font-semibold uppercase tracking-widest mb-3">
-            Solutions by Business Stage
-          </p>
-          <h2 className="text-3xl md:text-4xl xl:text-5xl font-black text-gray-900 mb-4">
+    <section className="py-24 bg-[#FFFFFF]">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-center flex flex-col items-center mb-16"
+        >
+          <SectionBadge number="7" label="Solutions by Business Stage" />
+          <h2 className="axion-heading text-[#111827] mt-6 mb-4">
             We Scale With You
           </h2>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+          <p className="text-lg text-[#6B7280] font-sans max-w-2xl">
             Whether you&apos;re just starting, actively growing, or scaling to enterprise — we have
             the right mix of marketing and technology to match your stage.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-start">
-          {stages.map((stage) => {
+        <div className="grid md:grid-cols-3 gap-8 items-start">
+          {stages.map((stage, index) => {
             const Icon = stage.icon;
             return (
-              <div
+              <motion.div
                 key={stage.stage}
-                className={`relative rounded-3xl border-2 ${stage.color} p-7 md:p-8`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                className="relative bg-[#F5F5F5] rounded-2xl p-8 hover-lift border border-gray-100 flex flex-col h-full"
               >
                 {stage.badge && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span className="bg-blue-600 text-white text-xs font-bold px-4 py-1.5 rounded-full whitespace-nowrap">
+                  <div className="absolute -top-3 left-8">
+                    <span className="bg-[#F26522] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
                       {stage.badge}
                     </span>
                   </div>
                 )}
 
-                <div className="flex items-center gap-3 mb-5">
-                  <div className={`w-12 h-12 ${stage.iconBg} rounded-2xl flex items-center justify-center shadow-md`}>
-                    <Icon className="w-6 h-6 text-white" />
+                <div className="flex items-center gap-4 mb-8 mt-2">
+                  <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-sm">
+                    <Icon className="w-7 h-7 text-[#111827]" />
                   </div>
                   <div>
-                    <h3 className="font-black text-gray-900 text-xl">{stage.stage}</h3>
-                    <p className="text-gray-500 text-sm">{stage.tagline}</p>
+                    <h3 className="font-display font-bold text-[#111827] text-xl">{stage.stage}</h3>
+                    <p className="text-[#F26522] text-xs uppercase tracking-wide font-semibold mt-1">{stage.tagline}</p>
                   </div>
                 </div>
 
-                <div className="space-y-2.5 mb-7">
+                <div className="space-y-4 mb-10 flex-grow">
                   {stage.services.map((s) => (
                     <div key={s.label} className="flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-gray-400 shrink-0" />
-                        <span className="text-gray-700 text-sm">{s.label}</span>
+                      <div className="flex items-center gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#111827]" />
+                        <span className="text-[#111827] font-sans text-sm font-medium">{s.label}</span>
                       </div>
-                      <span className={`text-xs font-semibold px-2 py-0.5 rounded-full shrink-0 ${
+                      <span className={`text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-full ${
                         s.category === "Marketing"
-                          ? "bg-amber-100 text-amber-700"
-                          : "bg-blue-100 text-blue-700"
+                          ? "bg-amber-100 text-amber-800"
+                          : "bg-blue-100 text-blue-800"
                       }`}>
                         {s.category}
                       </span>
@@ -120,14 +123,10 @@ export default function BusinessStageSection() {
                   ))}
                 </div>
 
-                <Link
-                  href={stage.href}
-                  className="flex items-center justify-center gap-2 bg-gray-900 hover:bg-amber-500 text-white font-semibold py-3 px-5 rounded-xl transition-all duration-200 text-sm"
-                >
-                  {stage.cta}
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
+                <div className="pt-6 border-t border-gray-200 mt-auto">
+                  <TextRollButton href={stage.href} label={stage.cta} variant="dark" className="w-full justify-center" />
+                </div>
+              </motion.div>
             );
           })}
         </div>

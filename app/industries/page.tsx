@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight, TrendingUp, Cpu } from "lucide-react";
+import { TrendingUp, Cpu } from "lucide-react";
+import FadeIn from "@/components/ui/FadeIn";
+import SectionBadge from "@/components/ui/SectionBadge";
+import TextRollButton from "@/components/ui/TextRollButton";
+import ExpandingCard from "@/components/ui/ExpandingCard";
 
 export const metadata: Metadata = {
   title: "Industries We Serve — Tailored Marketing & AI | GrowthSpare",
@@ -105,90 +108,101 @@ export default function IndustriesPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-white py-16 md:py-20 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-amber-500 text-sm font-semibold uppercase tracking-widest mb-3">Industries</p>
-          <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-            Solutions Tailored to Your Industry
-          </h1>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
-            We bring deep domain expertise to every engagement. Both our marketing strategies and
-            technology solutions are customized to the unique challenges of your industry.
-          </p>
+      <section className="bg-[#EFEFEF] py-20 md:py-32">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
+          <FadeIn>
+            <SectionBadge number="01" label="Industries" />
+            <h1 className="axion-heading text-[#111827] font-display mt-6 mb-6">
+              Solutions Tailored to Your Industry
+            </h1>
+            <p className="font-sans text-[#6B7280] text-lg max-w-2xl mx-auto leading-relaxed">
+              We bring deep domain expertise to every engagement. Both our marketing strategies and
+              technology solutions are customized to the unique challenges of your industry.
+            </p>
+          </FadeIn>
         </div>
       </section>
 
       {/* Industries */}
-      <section className="py-16 md:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          {industries.map((ind) => (
-            <div key={ind.name} className="bg-white rounded-3xl border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300">
-              <div className="grid md:grid-cols-3 gap-0">
-                {/* Image + header */}
-                <div className="relative md:col-span-1">
-                  <img src={ind.image} alt={ind.name} className="w-full h-56 md:h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/20 to-transparent" />
-                  <div className="absolute bottom-5 left-5">
-                    <span className="text-3xl">{ind.icon}</span>
-                    <h2 className="text-2xl font-black text-white mt-1">{ind.name}</h2>
-                  </div>
+      <section className="bg-white py-20 md:py-32">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 space-y-12">
+          {industries.map((ind, i) => (
+            <FadeIn key={ind.name} delay={i * 0.1}>
+              <div className="bg-[#EFEFEF] rounded-2xl overflow-hidden hover-lift flex flex-col md:flex-row">
+                {/* Image */}
+                <div className="w-full md:w-2/5 xl:w-1/3 relative min-h-[300px]">
+                  <ExpandingCard
+                    href="/contact"
+                    title=""
+                    description=""
+                    imageSrc={ind.image}
+                    imageAlt={ind.name}
+                    aspect="h-full"
+                    buttonLabel="Get Solutions"
+                    variant="dark"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#111827]/80 via-[#111827]/20 to-transparent pointer-events-none" />
+                    <div className="absolute bottom-16 left-6 pointer-events-none">
+                      <span className="text-4xl">{ind.icon}</span>
+                      <h2 className="text-3xl font-display font-medium text-white mt-2">{ind.name}</h2>
+                    </div>
+                  </ExpandingCard>
                 </div>
 
                 {/* Content */}
-                <div className="p-7 md:col-span-2">
-                  <p className="text-gray-600 leading-relaxed mb-6">{ind.desc}</p>
-                  <div className="grid sm:grid-cols-2 gap-6">
+                <div className="w-full md:w-3/5 xl:w-2/3 p-8 sm:p-10 flex flex-col justify-center">
+                  <p className="font-sans text-[#6B7280] leading-relaxed mb-8 text-lg">{ind.desc}</p>
+                  <div className="grid sm:grid-cols-2 gap-8">
                     <div>
-                      <div className="flex items-center gap-2 mb-3">
-                        <TrendingUp className="w-4 h-4 text-amber-500" />
-                        <h3 className="font-bold text-gray-900 text-sm uppercase tracking-wider">Marketing</h3>
+                      <div className="flex items-center gap-3 mb-4">
+                        <TrendingUp className="w-5 h-5 text-[#F26522]" />
+                        <h3 className="font-display font-medium text-[#111827] text-sm uppercase tracking-wider">Marketing</h3>
                       </div>
-                      <ul className="space-y-1.5">
+                      <ul className="space-y-2.5">
                         {ind.marketing.map((item) => (
-                          <li key={item} className="flex items-center gap-2 text-gray-600 text-sm">
-                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" />
+                          <li key={item} className="flex items-start gap-3 font-sans text-[#6B7280] text-sm leading-relaxed">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#F26522] shrink-0 mt-1.5" />
                             {item}
                           </li>
                         ))}
                       </ul>
                     </div>
                     <div>
-                      <div className="flex items-center gap-2 mb-3">
-                        <Cpu className="w-4 h-4 text-blue-500" />
-                        <h3 className="font-bold text-gray-900 text-sm uppercase tracking-wider">Technology</h3>
+                      <div className="flex items-center gap-3 mb-4">
+                        <Cpu className="w-5 h-5 text-blue-500" />
+                        <h3 className="font-display font-medium text-[#111827] text-sm uppercase tracking-wider">Technology</h3>
                       </div>
-                      <ul className="space-y-1.5">
+                      <ul className="space-y-2.5">
                         {ind.technology.map((item) => (
-                          <li key={item} className="flex items-center gap-2 text-gray-600 text-sm">
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
+                          <li key={item} className="flex items-start gap-3 font-sans text-[#6B7280] text-sm leading-relaxed">
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0 mt-1.5" />
                             {item}
                           </li>
                         ))}
                       </ul>
                     </div>
                   </div>
-                  <Link href="/contact" className="inline-flex items-center gap-2 bg-gray-900 hover:bg-amber-500 text-white text-sm font-semibold px-5 py-2.5 rounded-xl mt-6 transition-all duration-200">
-                    Get {ind.name} Solutions <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
                 </div>
               </div>
-            </div>
+            </FadeIn>
           ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gray-950 text-center">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-5">
-            Don&apos;t See Your Industry?
-          </h2>
-          <p className="text-gray-400 text-lg mb-8">
-            We work with businesses across all sectors. Let&apos;s talk about your specific needs.
-          </p>
-          <Link href="/contact" className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-4 rounded-xl transition-colors shadow-lg">
-            Book Free Consultation <ArrowRight className="w-4 h-4" />
-          </Link>
+      <section className="bg-[#EFEFEF] py-20 md:py-32 text-center">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
+          <FadeIn>
+            <div className="max-w-2xl mx-auto">
+              <h2 className="axion-heading text-[#111827] font-display mb-6">
+                Don&apos;t See Your Industry?
+              </h2>
+              <p className="font-sans text-[#6B7280] text-lg mb-10">
+                We work with businesses across all sectors. Let&apos;s talk about your specific needs.
+              </p>
+              <TextRollButton href="/contact" label="Book Free Consultation" variant="orange" />
+            </div>
+          </FadeIn>
         </div>
       </section>
     </>

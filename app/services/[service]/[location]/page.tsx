@@ -4,6 +4,10 @@ import Link from "next/link";
 import Script from "next/script";
 import { LOCATIONS } from "@/lib/data/locations";
 import { MapPin, Building, ArrowRight, CheckCircle2 } from "lucide-react";
+import FadeIn from "@/components/ui/FadeIn";
+import TextRollButton from "@/components/ui/TextRollButton";
+import SectionBadge from "@/components/ui/SectionBadge";
+import ExpandingCard from "@/components/ui/ExpandingCard";
 
 interface Props {
   params: Promise<{
@@ -99,36 +103,34 @@ export default async function ServiceLocationPage({ params }: Props) {
       
       {/* Hero Section */}
       <section className="bg-slate-900 text-white py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="flex items-center gap-2 text-amber-400 font-semibold text-sm mb-4">
             <MapPin className="w-4 h-4" />
             <span>Serving Businesses in {loc.cityName}, {loc.stateRegion}</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6">
             {service.name} <br className="hidden md:block" />
-            <span className="text-amber-500">in {loc.cityName}</span>
+            <span className="text-[#F26522]">in {loc.cityName}</span>
           </h1>
           <p className="text-slate-300 text-lg md:text-xl max-w-3xl mb-8 leading-relaxed">
             {service.desc} Tailored growth strategies designed for companies operating across {loc.localStats.techHubName || loc.cityName}.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Link
-              href="/contact"
-              className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-7 py-4 rounded-xl transition-all shadow-lg shadow-amber-500/20 flex items-center gap-2"
-            >
-              Consult Our {loc.cityName} Team
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+            <TextRollButton href="/contact" className="bg-[#F26522] hover:bg-[#e05a1a] text-slate-950 font-bold px-7 py-4 rounded-xl transition-all shadow-lg shadow-amber-500/20 flex items-center gap-2">Consult Our {loc.cityName} Team
+              </TextRollButton>
           </div>
         </div>
+      </FadeIn>
       </section>
 
       {/* Local Advantage Section */}
       <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="bg-amber-50/60 border border-amber-200/80 rounded-2xl p-8 mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-              <Building className="w-6 h-6 text-amber-600" />
+              <Building className="w-6 h-6 text-[#F26522]" />
               Local Market Advantage: {loc.cityName}
             </h2>
             <p className="text-slate-700 leading-relaxed mb-4">
@@ -160,6 +162,7 @@ export default async function ServiceLocationPage({ params }: Props) {
             </div>
           )}
         </div>
+      </FadeIn>
       </section>
     </>
   );

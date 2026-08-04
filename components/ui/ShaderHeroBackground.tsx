@@ -1,38 +1,28 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ShaderHeroBackground() {
-  const [ShaderComponents, setShaderComponents] = useState<any>(null);
-  const [hasError, setHasError] = useState(false);
+  const [SC, setSC] = useState<any>(null);
+  const [err, setErr] = useState(false);
 
   useEffect(() => {
-    let isMounted = true;
+    let m = true;
     import("shaders/react")
-      .then((mod) => {
-        if (isMounted) {
-          setShaderComponents(mod);
-        }
-      })
-      .catch((err) => {
-        console.warn("WebGL Shader loading fallback:", err);
-        if (isMounted) setHasError(true);
-      });
-
-    return () => {
-      isMounted = false;
-    };
+      .then((mod) => { if (m) setSC(mod); })
+      .catch(() => { if (m) setErr(true); });
+    return () => { m = false; };
   }, []);
 
-  if (hasError || !ShaderComponents) {
+  if (err || !SC) {
     return (
       <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden bg-gradient-to-b from-[#EFEFEF] via-[#F4F4F4] to-[#EFEFEF]">
-        <div className="absolute inset-0 opacity-40 bg-[radial-gradient(#ff5f03_1px,transparent_1px)] [background-size:32px_32px]" />
+        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(#ff5f03_1px,transparent_1px)] [background-size:32px_32px]" />
       </div>
     );
   }
 
-  const { Shader, Swirl, ChromaFlow, FlutedGlass, FilmGrain } = ShaderComponents;
+  const { Shader, Swirl, ChromaFlow, FlutedGlass, FilmGrain } = SC;
 
   return (
     <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden bg-[#EFEFEF]">
@@ -63,7 +53,7 @@ export default function ShaderHeroBackground() {
           <FilmGrain strength={0.05} />
         </Shader>
       ) : (
-        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(#ff5f03_1px,transparent_1px)] [background-size:32px_32px]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#EFEFEF] to-[#E8E8E8]" />
       )}
     </div>
   );

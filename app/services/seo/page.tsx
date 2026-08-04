@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Search, CheckCircle2, ArrowRight, TrendingUp, Globe, BarChart3 } from "lucide-react";
+import FadeIn from "@/components/ui/FadeIn";
+import TextRollButton from "@/components/ui/TextRollButton";
+import SectionBadge from "@/components/ui/SectionBadge";
+import ExpandingCard from "@/components/ui/ExpandingCard";
 import ServiceSchema from "@/components/schema/ServiceSchema";
 
 export const metadata: Metadata = {
@@ -38,24 +42,24 @@ export default function SEOPage() {
         slug="seo"
         offers={["Technical SEO", "On-Page SEO", "Local SEO & GMB", "E-commerce SEO", "Link Building"]}
       />
-      <section className="bg-white py-16 md:py-20 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-[#FFFFFF] py-16 md:py-20 border-b border-gray-100">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-5">
-                <Search className="w-3.5 h-3.5" /> SEO Services
-              </span>
-              <h1 className="text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-5">
+              <SectionBadge icon={Search} text="SEO Services
+              " />
+              <h1 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-[#111827] leading-tight mb-5">
                 Rank Higher. Drive More{" "}
-                <span className="text-amber-500">Organic Traffic.</span>
+                <span className="text-[#F26522]">Organic Traffic.</span>
               </h1>
-              <p className="text-gray-500 text-lg leading-relaxed mb-7">
+              <p className="text-[#6B7280] font-sans text-lg leading-relaxed mb-7">
                 We take a transparent and structured approach to SEO. By auditing your existing assets and
                 aligning with your growth objectives, we build a strategic roadmap with clear timelines
                 and measurable performance expectations.
               </p>
               <div className="flex gap-4">
-                <Link href="/contact" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3.5 rounded-lg transition-colors">
+                <Link href="/contact" className="bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-6 py-3.5 rounded-lg transition-colors">
                   Get Free SEO Audit
                 </Link>
                 <Link href="/pricing" className="border-2 border-gray-200 hover:border-gray-900 text-gray-700 font-semibold px-6 py-3.5 rounded-lg transition-colors">
@@ -72,15 +76,17 @@ export default function SEOPage() {
             </div>
           </div>
         </div>
+      </FadeIn>
       </section>
 
-      <section className="py-16 md:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 md:py-20 bg-[#EFEFEF]">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">
+            <h2 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-[#111827] mb-3">
               Our SEO Services
             </h2>
-            <p className="text-gray-500 max-w-xl mx-auto">
+            <p className="text-[#6B7280] font-sans max-w-xl mx-auto">
               A comprehensive suite of SEO services to improve your search rankings and drive qualified organic traffic.
             </p>
           </div>
@@ -88,24 +94,26 @@ export default function SEOPage() {
             {seoServices.map((s) => {
               const Icon = s.icon;
               return (
-                <div key={s.title} className="bg-white rounded-2xl p-7 border border-gray-100 hover:border-blue-200 hover:shadow-sm transition-all duration-200">
+                <div key={s.title} className="bg-white rounded-2xl p-6 sm:p-8 hover-lift transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]">
                   <div className="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
                     <Icon className="w-5 h-5 text-blue-600" />
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-2">{s.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
+                  <h3 className="font-bold text-[#111827] mb-2">{s.title}</h3>
+                  <p className="text-[#6B7280] font-sans text-sm leading-relaxed">{s.desc}</p>
                 </div>
               );
             })}
           </div>
         </div>
+      </FadeIn>
       </section>
 
       <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6">
+              <h2 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-[#111827] mb-6">
                 What You Can Expect
               </h2>
               <div className="space-y-4">
@@ -119,18 +127,18 @@ export default function SEOPage() {
                   "Quarterly strategy reviews and plan adjustments",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-[#F26522] shrink-0 mt-0.5" />
                     <span className="text-gray-700 text-sm">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-gray-50 rounded-2xl p-8">
-              <h3 className="font-black text-gray-900 text-xl mb-5">Average Client Results</h3>
+            <div className="bg-[#EFEFEF] rounded-2xl p-8">
+              <h3 className="font-black text-[#111827] text-xl mb-5">Average Client Results</h3>
               <div className="space-y-5">
                 {[
                   { metric: "+285%", label: "Average increase in organic traffic (12 months)", color: "text-blue-600" },
-                  { metric: "3–6 months", label: "Time to see meaningful ranking improvements", color: "text-amber-600" },
+                  { metric: "3–6 months", label: "Time to see meaningful ranking improvements", color: "text-[#F26522]" },
                   { metric: "50+", label: "High-intent keywords ranked per client", color: "text-green-600" },
                   { metric: "4.8/5", label: "Average client satisfaction score", color: "text-rose-600" },
                 ].map((stat) => (
@@ -143,21 +151,22 @@ export default function SEOPage() {
             </div>
           </div>
         </div>
+      </FadeIn>
       </section>
 
       <section className="py-20 bg-gray-950 text-center">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
+          <h2 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-white mb-4">
             Ready to Rank Higher on Google?
           </h2>
-          <p className="text-gray-400 text-lg mb-8">
+          <p className="text-[#6B7280] font-sans text-lg mb-8">
             Get a free SEO audit and find out exactly what&apos;s holding your website back.
           </p>
-          <Link href="/contact" className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg">
-            Get Free SEO Audit
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+          <TextRollButton href="/contact" className="inline-flex items-center gap-2 bg-[#F26522] hover:bg-[#e05a1a] text-white font-semibold px-8 py-4 rounded-lg transition-colors shadow-lg">Get Free SEO Audit
+            </TextRollButton>
         </div>
+      </FadeIn>
       </section>
     </>
   );

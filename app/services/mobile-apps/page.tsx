@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Smartphone, ArrowRight, CheckCircle2 } from "lucide-react";
+import FadeIn from "@/components/ui/FadeIn";
+import TextRollButton from "@/components/ui/TextRollButton";
+import SectionBadge from "@/components/ui/SectionBadge";
+import ExpandingCard from "@/components/ui/ExpandingCard";
 
 export const metadata: Metadata = {
   title: "Mobile App Development — GrowthSpare | Android & iOS",
@@ -33,17 +37,17 @@ export default function MobileAppsPage() {
   return (
     <>
       <section className="bg-gradient-to-br from-indigo-50 to-white py-16 md:py-20 border-b border-indigo-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 text-xs font-semibold px-3.5 py-2 rounded-full mb-6">
-                <Smartphone className="w-3.5 h-3.5" /> Mobile App Development
-              </span>
-              <h1 className="text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-5">
+              <SectionBadge icon={Smartphone} text="Mobile App Development
+              " />
+              <h1 className="axion-heading text-[clamp(1.5rem,4vw,3.2rem)] font-display font-bold text-[#111827] leading-tight mb-5">
                 Mobile Apps That{" "}
                 <span className="text-blue-600">Users Love.</span>
               </h1>
-              <p className="text-gray-500 text-lg leading-relaxed mb-7">
+              <p className="text-[#6B7280] font-sans text-lg leading-relaxed mb-7">
                 We build high-performance native and cross-platform mobile apps for Android and iOS.
                 From consumer apps to enterprise mobility solutions, we deliver mobile experiences
                 that drive engagement, retention, and revenue.
@@ -55,29 +59,33 @@ export default function MobileAppsPage() {
             <img src="https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Mobile App Development" className="w-full rounded-3xl shadow-xl object-cover aspect-video" />
           </div>
         </div>
+      </FadeIn>
       </section>
 
       <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-black text-gray-900 mb-3">Platforms & Technologies</h2>
-            <p className="text-gray-500 max-w-xl mx-auto">We choose the right tech stack based on your business needs, timeline, and budget.</p>
+            <h2 className="text-3xl font-black text-[#111827] mb-3">Platforms & Technologies</h2>
+            <p className="text-[#6B7280] font-sans max-w-xl mx-auto">We choose the right tech stack based on your business needs, timeline, and budget.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {platforms.map((p) => (
-              <div key={p.name} className="bg-indigo-50/50 border border-indigo-100 rounded-2xl p-7 hover:border-indigo-200 hover:shadow-sm transition-all duration-200">
+              <div key={p.name} className="bg-indigo-50/50 border border-indigo-100 rounded-2xl p-7 hover:border-indigo-200 hover:shadow-sm transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]">
                 <span className="text-3xl mb-4 block">{p.icon}</span>
-                <h3 className="font-bold text-gray-900 mb-2">{p.name}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{p.desc}</p>
+                <h3 className="font-bold text-[#111827] mb-2">{p.name}</h3>
+                <p className="text-[#6B7280] font-sans text-sm leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
         </div>
+      </FadeIn>
       </section>
 
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-[#EFEFEF]">
+        <FadeIn>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black text-gray-900 text-center mb-10">What&apos;s Included</h2>
+          <h2 className="text-3xl font-black text-[#111827] text-center mb-10">What&apos;s Included</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             {features.map((f) => (
               <div key={f} className="flex items-center gap-3 bg-white p-4 rounded-xl border border-gray-100">
@@ -87,16 +95,19 @@ export default function MobileAppsPage() {
             ))}
           </div>
         </div>
+      </FadeIn>
       </section>
 
       <section className="py-20 bg-gray-950 text-center">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn>
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <h2 className="text-3xl font-black text-white mb-4">Ready to Build Your Mobile App?</h2>
-          <p className="text-gray-400 text-lg mb-8">Get a free project scope and estimate from our mobile development team.</p>
+          <p className="text-[#6B7280] font-sans text-lg mb-8">Get a free project scope and estimate from our mobile development team.</p>
           <Link href="/contact" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors shadow-lg">
             Get Free Estimate <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
+      </FadeIn>
       </section>
     </>
   );

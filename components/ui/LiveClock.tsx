@@ -1,58 +1,33 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Clock } from "lucide-react";
 
-interface LiveClockProps {
-  location?: string;
-  timeZone?: string;
-  className?: string;
-}
-
-export default function LiveClock({
-  location = "New Delhi",
-  timeZone = "Asia/Kolkata",
-  className = "",
-}: LiveClockProps) {
-  const [timeStr, setTimeStr] = useState<string>("");
+export default function LiveClock() {
+  const [time, setTime] = useState("");
 
   useEffect(() => {
-    const updateTime = () => {
-      try {
-        const now = new Date();
-        const formatter = new Intl.DateTimeFormat("en-US", {
-          timeZone,
+    const update = () => {
+      setTime(
+        new Date().toLocaleTimeString("en-IN", {
           hour: "2-digit",
           minute: "2-digit",
           hour12: false,
-        });
-        setTimeStr(formatter.format(now));
-      } catch (e) {
-        const now = new Date();
-        const hrs = String(now.getHours()).padStart(2, "0");
-        const mins = String(now.getMinutes()).padStart(2, "0");
-        setTimeStr(`${hrs}:${mins}`);
-      }
+          timeZone: "Asia/Kolkata",
+        })
+      );
     };
+    update();
+    const id = setInterval(update, 1000);
+    return () => clearInterval(id);
+  }, []);
 
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, [timeZone]);
-
-  if (!timeStr) {
-    return (
-      <div className={`inline-flex items-center gap-1.5 text-xs sm:text-[13px] text-gray-600 ${className}`}>
-        <Clock className="w-3.5 h-3.5 shrink-0" />
-        <span>--:-- in {location}</span>
-      </div>
-    );
-  }
+  if (!time) return null;
 
   return (
-    <div className={`inline-flex items-center gap-1.5 text-xs sm:text-[13px] text-gray-600 ${className}`}>
-      <Clock className="w-3.5 h-3.5 shrink-0" />
-      <span>{timeStr} in {location}</span>
-    </div>
+    <span className="inline-flex items-center gap-1.5 text-[13px] text-gray-600">
+      <Clock size={14} />
+      <span>{time} in New Delhi</span>
+    </span>
   );
 }
