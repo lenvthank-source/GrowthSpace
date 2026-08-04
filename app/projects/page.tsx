@@ -139,7 +139,7 @@ export default function ProjectsPage() {
       <section className="bg-[#EFEFEF] py-20 md:py-32">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <FadeIn>
-            <SectionBadge number="01" label="Proven Work" />
+            <SectionBadge label="Proven Work" />
             <h1 className="axion-heading text-[#111827] font-display mt-6 mb-6">
               Real Campaigns.<br />Real Results.
             </h1>
@@ -170,20 +170,7 @@ export default function ProjectsPage() {
                       aspect="aspect-[4/3]"
                       variant="dark"
                       buttonLabel="View Stats"
-                    >
-                      <div className="absolute top-4 left-4 right-4 z-10">
-                        <div className="bg-[#111827]/80 backdrop-blur-sm px-4 py-3 rounded-xl flex items-center gap-3">
-                          <div className="flex gap-1.5">
-                            <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                            <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-                            <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
-                          </div>
-                          <div className="flex-1 text-gray-300 text-xs font-sans text-center">
-                            Campaign Dashboard — {project.client}
-                          </div>
-                        </div>
-                      </div>
-                    </ExpandingCard>
+                    />
                   </div>
 
                   {/* Content */}

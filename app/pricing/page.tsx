@@ -119,7 +119,7 @@ export default function PricingPage() {
       <section className="bg-[#EFEFEF] py-20 md:py-32">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
           <FadeIn>
-            <SectionBadge number="01" label="Transparent Pricing" />
+            <SectionBadge label="Transparent Pricing" />
             <h1 className="axion-heading text-[#111827] font-display mt-6 mb-6">
               Simple, Honest Pricing
             </h1>

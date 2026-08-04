@@ -48,7 +48,7 @@ export default function ContactPage() {
       <section className="bg-[#EFEFEF] py-20 md:py-32">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
           <FadeIn>
-            <SectionBadge number="01" label="Get in Touch" />
+            <SectionBadge label="Get in Touch" />
             <h1 className="axion-heading text-[#111827] font-display mt-6 mb-6">
               Let&apos;s Grow Your Business
             </h1>
@@ -129,7 +129,7 @@ export default function ContactPage() {
                       <div>
                         <p className="font-sans font-semibold text-[#111827] text-sm mb-1">Business Hours</p>
                         <p className="font-sans text-[#6B7280] text-sm leading-relaxed">
-                          Mon – Sat: 9:00 AM – 7:00 PM<br />
+                          Mon – Sat: 8:30 AM – 4:30 PM<br />
                           Sunday: Closed
                         </p>
                       </div>

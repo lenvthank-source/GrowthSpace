@@ -89,7 +89,7 @@ export default function AboutPage() {
       <section className="bg-[#EFEFEF] py-20 md:py-32">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <FadeIn>
-            <SectionBadge number="01" label="About GrowthSpare" />
+            <SectionBadge label="About GrowthSpare" />
             <div className="grid lg:grid-cols-2 gap-12 items-start mt-8">
               <div>
                 <h1 className="axion-heading text-[#111827] font-display mb-6">
