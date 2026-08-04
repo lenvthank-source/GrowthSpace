@@ -1,411 +1,160 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, TrendingUp, Cpu, Sparkles, CheckCircle2, Play, BarChart3, MousePointerClick, Users, Zap, Bot, Globe } from "lucide-react";
-
-const stats = [
-  { value: "50+", label: "Brands Grown" },
-  { value: "10+", label: "Years Experience" },
-  { value: "95%", label: "Client Retention" },
-  { value: "2.45M+", label: "Ad Spend Managed" },
-];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring" as const, stiffness: 100, damping: 15 },
-  },
-};
-
-const modes = [
-  {
-    id: "marketing",
-    label: "Growth & Marketing",
-    icon: TrendingUp,
-    color: "amber",
-    gradient: "from-amber-500 to-orange-500",
-    bg: "bg-amber-500",
-    light: "bg-amber-50",
-    border: "border-amber-200",
-    text: "text-amber-600",
-    tagline: "Acquire customers. Drive revenue.",
-    metrics: [
-      { icon: BarChart3, label: "Organic Traffic", value: "+340%", delta: "vs last quarter", color: "text-amber-600" },
-      { icon: MousePointerClick, label: "Ad Conversions", value: "4,320", delta: "+18% this month", color: "text-orange-500" },
-      { icon: Users, label: "Leads Generated", value: "2,100+", delta: "₹18.90 per lead", color: "text-amber-700" },
-    ],
-    services: ["SEO & Google Ads", "Meta Ads", "Branding"],
-  },
-  {
-    id: "technology",
-    label: "Technology & AI",
-    icon: Cpu,
-    color: "blue",
-    gradient: "from-blue-500 to-indigo-500",
-    bg: "bg-blue-500",
-    light: "bg-blue-50",
-    border: "border-blue-200",
-    text: "text-blue-600",
-    tagline: "Build systems. Automate operations.",
-    metrics: [
-      { icon: Globe, label: "Apps Deployed", value: "100+", delta: "web & mobile", color: "text-blue-600" },
-      { icon: Bot, label: "AI Workflows", value: "Active", delta: "24/7 automation", color: "text-indigo-500" },
-      { icon: Zap, label: "Efficiency Gain", value: "~60%", delta: "avg. across clients", color: "text-blue-700" },
-    ],
-    services: ["Web & Mobile Apps", "ERP / CRM", "AI Chatbots"],
-  },
-];
-
-function AnimatedMetricRow({
-  metric,
-  delay,
-}: {
-  metric: (typeof modes)[0]["metrics"][0];
-  delay: number;
-}) {
-  const Icon = metric.icon;
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: -10 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay, duration: 0.4 }}
-      className="flex items-center justify-between py-3 border-b border-gray-100 last:border-0"
-    >
-      <div className="flex items-center gap-3">
-        <div className={`w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center`}>
-          <Icon className={`w-4 h-4 ${metric.color}`} />
-        </div>
-        <div>
-          <p className="text-xs font-medium text-gray-500">{metric.label}</p>
-          <p className="text-[10px] text-gray-400">{metric.delta}</p>
-        </div>
-      </div>
-      <motion.span
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: delay + 0.1, type: "spring" as const, stiffness: 200 }}
-        className={`text-base font-display font-black ${metric.color}`}
-      >
-        {metric.value}
-      </motion.span>
-    </motion.div>
-  );
-}
-
-function HeroVisual() {
-  const [active, setActive] = useState(0);
-  const [tick, setTick] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActive((prev) => (prev + 1) % modes.length);
-      setTick((t) => t + 1);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const mode = modes[active];
-  const Icon = mode.icon;
-
-  return (
-    <div className="relative">
-      {/* Glow */}
-      <div
-        className={`absolute inset-0 blur-3xl rounded-[3rem] transition-all duration-1000 ${
-          active === 0
-            ? "bg-gradient-to-br from-amber-300/20 to-orange-200/10"
-            : "bg-gradient-to-br from-blue-300/20 to-indigo-200/10"
-        }`}
-      />
-
-      {/* Card shell */}
-      <div className="relative bg-white rounded-3xl shadow-2xl shadow-gray-300/40 border border-gray-100 overflow-hidden">
-        {/* Top accent bar */}
-        <motion.div
-          key={`bar-${active}`}
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.6 }}
-          className={`h-1 bg-gradient-to-r ${mode.gradient} origin-left`}
-        />
-
-        {/* Header */}
-        <div className="px-6 pt-5 pb-4 border-b border-gray-100">
-          <div className="flex items-center justify-between">
-            {/* Tab switcher */}
-            <div className="flex gap-1 p-1 bg-gray-100 rounded-xl">
-              {modes.map((m, i) => {
-                const MIcon = m.icon;
-                return (
-                  <button
-                    key={m.id}
-                    onClick={() => { setActive(i); setTick((t) => t + 1); }}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-300 ${
-                      active === i
-                        ? `bg-white shadow-sm ${m.text}`
-                        : "text-gray-400 hover:text-gray-600"
-                    }`}
-                  >
-                    <MIcon className="w-3.5 h-3.5" />
-                    <span className="hidden sm:inline">{i === 0 ? "Marketing" : "Technology"}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Live pulse */}
-            <div className="flex items-center gap-1.5">
-              <span className="relative flex h-2 w-2">
-                <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${mode.bg}`} />
-                <span className={`relative inline-flex rounded-full h-2 w-2 ${mode.bg}`} />
-              </span>
-              <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Live</span>
-            </div>
-          </div>
-
-          {/* Mode headline */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`header-${active}`}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.3 }}
-              className="mt-4 flex items-center gap-3"
-            >
-              <div className={`w-10 h-10 rounded-2xl bg-gradient-to-br ${mode.gradient} flex items-center justify-center shadow-lg`}>
-                <Icon className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <p className="font-display font-bold text-gray-900 text-sm">{mode.label}</p>
-                <p className={`text-xs ${mode.text}`}>{mode.tagline}</p>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Metrics */}
-        <div className="px-6 py-2">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`metrics-${active}-${tick}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-            >
-              {mode.metrics.map((metric, idx) => (
-                <AnimatedMetricRow key={metric.label} metric={metric} delay={idx * 0.08} />
-              ))}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Services chips */}
-        <div className="px-6 py-4 border-t border-gray-100 bg-gray-50/50">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`chips-${active}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="flex flex-wrap gap-2"
-            >
-              {mode.services.map((s, i) => (
-                <motion.span
-                  key={s}
-                  initial={{ opacity: 0, scale: 0.85 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.07 }}
-                  className={`inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full ${mode.light} ${mode.text} border ${mode.border}`}
-                >
-                  <CheckCircle2 className="w-3 h-3" />
-                  {s}
-                </motion.span>
-              ))}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Progress bar — auto-cycles */}
-        <div className="h-0.5 bg-gray-100">
-          <motion.div
-            key={`progress-${active}-${tick}`}
-            initial={{ width: "0%" }}
-            animate={{ width: "100%" }}
-            transition={{ duration: 4, ease: "linear" }}
-            className={`h-full bg-gradient-to-r ${mode.gradient}`}
-          />
-        </div>
-      </div>
-
-      {/* Floating badge */}
-      <motion.div
-        animate={{ y: [0, -6, 0] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-xl shadow-gray-200/60 border border-gray-100 px-4 py-2.5"
-      >
-        <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-0.5">Clients Served</p>
-        <p className="text-xl font-display font-black text-gray-900">50+</p>
-      </motion.div>
-
-      {/* Trust badge bottom left */}
-      <motion.div
-        animate={{ y: [0, 6, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-        className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-xl shadow-gray-200/60 border border-gray-100 px-4 py-2.5"
-      >
-        <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-0.5">Delhi NCR</p>
-        <p className="text-sm font-display font-black text-gray-900">Top Growth Partner</p>
-      </motion.div>
-    </div>
-  );
-}
+import { Menu, X, ArrowRight } from "lucide-react";
+import ShaderHeroBackground from "@/components/ui/ShaderHeroBackground";
+import TextRollButton from "@/components/ui/TextRollButton";
+import LiveClock from "@/components/ui/LiveClock";
 
 export default function HeroSection() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-white">
-      {/* Animated background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 grid-pattern opacity-40" />
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 0.35, scale: 1 }}
-          transition={{ duration: 2, ease: "easeOut" }}
-          className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-amber-200/50 to-orange-200/30 rounded-full blur-3xl"
-        />
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 0.25, scale: 1 }}
-          transition={{ duration: 2, delay: 0.3, ease: "easeOut" }}
-          className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-blue-200/40 to-indigo-200/30 rounded-full blur-3xl"
-        />
-        <div className="absolute top-20 left-1/4 w-2 h-2 bg-amber-400 rounded-full floating opacity-60" />
-        <div className="absolute top-40 right-1/3 w-1.5 h-1.5 bg-blue-400 rounded-full floating-delayed opacity-60" />
-        <div className="absolute bottom-40 left-1/3 w-2.5 h-2.5 bg-amber-300 rounded-full floating opacity-40" />
-      </div>
+    <section className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#EFEFEF]">
+      {/* Animated WebGL Shader Overlay */}
+      <ShaderHeroBackground />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"
-        >
-          {/* Left — Headline */}
-          <div className="space-y-8">
-            <motion.div variants={itemVariants}>
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/50 text-amber-700 text-sm font-semibold px-4 py-2 rounded-full">
-                <Sparkles className="w-4 h-4" />
-                Delhi NCR&apos;s Growth & Technology Partner
+      {/* Navigation (z-20, relative) */}
+      <header className="relative z-20 w-full max-w-[1440px] mx-auto p-2 sm:p-3 pt-4">
+        <nav aria-label="Main Navigation" className="w-full bg-white rounded-full p-[5px] shadow-sm border border-gray-200/60 flex items-center justify-between">
+          {/* LEFT: Logo & Nav Links */}
+          <div className="flex items-center gap-6">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gray-900 rounded-full flex items-center justify-center text-white text-[10px] sm:text-[11px] font-bold tracking-tight shadow-md group-hover:bg-[#F26522] transition-colors duration-300">
+                GS
               </div>
-            </motion.div>
+              <span className="font-bold text-gray-900 text-sm sm:text-base tracking-tight md:hidden lg:inline-block">
+                GrowthSpare
+              </span>
+            </Link>
 
-            <motion.div variants={itemVariants} className="space-y-4">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-black text-gray-900 leading-[1.1] tracking-tight">
-                <span className="block">More Customers.</span>
-                <span className="block text-gradient">Better Systems.</span>
-                <span className="block">Faster Growth.</span>
-              </h1>
-
-              <p className="text-lg md:text-xl text-gray-500 max-w-lg leading-relaxed">
-                Delhi Best Digital Marketing Agency &amp; AI Solutions, GrowthSpare combines performance marketing and custom technology to help businesses grow online and run smarter — all under one roof.
-              </p>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="group relative inline-flex items-center gap-2 bg-gray-900 text-white font-semibold px-7 py-4 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/20"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  Start Growing Today
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            {/* Desktop Nav Links */}
+            <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-900">
+              <Link href="/projects" className="hover:text-gray-500 transition-colors duration-300">
+                Projects
               </Link>
-
-              <Link
-                href="/projects"
-                className="group inline-flex items-center gap-2 border-2 border-gray-200 hover:border-gray-300 text-gray-700 font-semibold px-7 py-4 rounded-2xl transition-all duration-300 hover:bg-gray-50"
-              >
-                See Our Work
-                <Play className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <Link href="/about" className="hover:text-gray-500 transition-colors duration-300">
+                Studio
               </Link>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="pt-8 border-t border-gray-100">
-              <div className="grid grid-cols-4 gap-6">
-                {stats.map((stat, index) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8 + index * 0.1 }}
-                  >
-                    <p className="text-2xl md:text-3xl font-display font-black text-gray-900">
-                      {stat.value}
-                    </p>
-                    <p className="text-xs text-gray-400 font-medium mt-1">
-                      {stat.label}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+              <Link href="/services" className="hover:text-gray-500 transition-colors duration-300">
+                Services
+              </Link>
+              <Link href="/blog" className="hover:text-gray-500 transition-colors duration-300">
+                Journal
+              </Link>
+              <Link href="/contact" className="hover:text-gray-500 transition-colors duration-300">
+                Connect
+              </Link>
+            </div>
           </div>
 
-          {/* Right — Animated Visual */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative px-6 pb-6"
+          {/* RIGHT: Status Badge, Live Clock & CTA */}
+          <div className="hidden md:flex items-center gap-5">
+            <span className="text-xs text-gray-600 hidden lg:inline-block font-medium">
+              Taking on growth projects for 2026
+            </span>
+
+            <LiveClock location="New Delhi" timeZone="Asia/Kolkata" className="hidden sm:inline-flex" />
+
+            {/* Strategy Call Button with Text-Roll */}
+            <TextRollButton text="Book a strategy call" href="/contact" variant="dark" />
+          </div>
+
+          {/* MOBILE: Menu Toggle Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden w-9 h-9 bg-gray-900 text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
+            aria-label="Toggle navigation menu"
           >
-            <HeroVisual />
-          </motion.div>
-        </motion.div>
+            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+          </button>
+        </nav>
+      </header>
 
-        {/* Client logos marquee */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="mt-20 overflow-hidden"
-        >
-          <div className="text-center mb-6">
-            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">
-              Trusted by Industry Leaders
-            </p>
-          </div>
-          <div className="relative">
-            <div className="flex gap-12 animate-marquee">
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex flex-col justify-end transition-opacity duration-300">
+          <div className="bg-white rounded-2xl mx-3 mb-3 p-6 shadow-2xl animate-in slide-in-from-bottom duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
+            <div className="flex items-center justify-between pb-6 border-b border-gray-100 mb-6">
+              <LiveClock location="New Delhi" timeZone="Asia/Kolkata" />
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-900"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-4 mb-8">
               {[
-                "Aadiananta", "Xzen Italian Bathing", "Abasic Concept", "Modern School",
-                "Srigauri Fashion", "IELTSwithGagan", "Dektek Automation", "Ansa Interiors",
-                "Aadiananta", "Xzen Italian Bathing", "Abasic Concept", "Modern School",
-              ].map((brand, i) => (
-                <span key={i} className="text-sm font-bold text-gray-300 whitespace-nowrap">
-                  {brand}
-                </span>
+                { label: "Projects", href: "/projects" },
+                { label: "Studio", href: "/about" },
+                { label: "Services", href: "/services" },
+                { label: "Journal", href: "/blog" },
+                { label: "Connect", href: "/contact" },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-2xl font-medium text-gray-900 hover:text-[#F26522] transition-colors"
+                >
+                  {link.label}
+                </Link>
               ))}
             </div>
-            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent" />
-            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent" />
+
+            <TextRollButton
+              text="Start a project"
+              href="/contact"
+              variant="orange"
+              className="w-full justify-between"
+              onClick={() => setMobileMenuOpen(false)}
+            />
           </div>
-        </motion.div>
+        </div>
+      )}
+
+      {/* Hero Content (z-20) */}
+      <div className="relative z-20 max-w-[1440px] w-full mx-auto px-5 sm:px-8 lg:px-12 pb-14 sm:pb-16 lg:pb-20 pt-16">
+        <div className="max-w-4xl">
+          {/* Small label */}
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-gray-900 mb-5 sm:mb-8">
+            GrowthSpare Studio
+          </p>
+
+          {/* Headline H1 */}
+          <h1 className="text-[clamp(1.75rem,7vw,4.2rem)] sm:text-[clamp(2.5rem,5vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900 mb-6">
+            More Customers.<br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>
+            Better Systems.<br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>
+            Faster Growth.
+          </h1>
+
+          {/* SEO Description paragraph */}
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl leading-relaxed font-normal mb-8 sm:mb-12">
+            Delhi Best Digital Marketing Agency &amp; AI Solutions, GrowthSpare combines performance marketing and custom technology to help businesses grow online and run smarter — all under one roof.
+          </p>
+
+          {/* CTA Row */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
+            {/* Orange Button */}
+            <TextRollButton text="Start a project" href="/contact" variant="orange" />
+
+            {/* Certified Partner Badge */}
+            <div className="inline-flex items-center gap-2.5 bg-white border border-gray-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] rounded-[4px] px-3.5 py-2 transition-shadow duration-300">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 fill-current text-[#E8704E]" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z" />
+              </svg>
+              <span className="text-xs sm:text-sm font-medium text-gray-900">Certified Partner</span>
+              <span className="text-[10px] sm:text-[11px] font-bold bg-gray-900 text-white px-1.5 sm:px-2 py-0.5 rounded uppercase tracking-wider">
+                Featured
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

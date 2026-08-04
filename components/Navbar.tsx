@@ -64,6 +64,8 @@ export default function Navbar() {
     setActiveDropdown(null);
   }, [pathname]);
 
+  if (pathname === "/") return null;
+
   const navLinks = [
     { href: "/about", label: "About" },
     { href: "/projects", label: "Work" },
