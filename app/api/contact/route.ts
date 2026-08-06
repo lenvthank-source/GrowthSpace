@@ -22,14 +22,14 @@ export async function POST(req: Request) {
       .split(",")
       .map((e) => e.trim())
       .filter((e) => e.length > 0);
-    const toAdmin = adminEmails.length > 1 ? adminEmails : (adminEmails[0] || "info@growthspare.com");
+    // Standard RFC 2822 format: join as comma-separated string for multi-recipient compatibility
+    const toAdminString = adminEmails.length > 0 ? adminEmails.join(", ") : "info@growthspare.com";
 
     const fromEmail = process.env.SMTP_FROM || smtpUser || "no-reply@growthspare.com";
 
     // If SMTP credentials aren't set yet (e.g. initial deployment check)
     if (!smtpHost || !smtpUser || !smtpPass) {
       console.warn("SMTP credentials not configured in environment variables.");
-      // Return success gracefully in dev/preview mode so UX flow isn't broken
       return NextResponse.json({
         success: true,
         warning: "Form recorded locally. Configure SMTP_HOST, SMTP_USER, SMTP_PASS in Netlify for email delivery.",
@@ -51,12 +51,12 @@ export async function POST(req: Request) {
       },
     });
 
-    // 1. Admin Alert Email (To Agency / Self - Supports multiple recipients)
+    // 1. Admin Alert Email (To Agency / Self — clean subject line without emojis to pass spam filters)
     const adminMailOptions = {
       from: `"GrowthSpare Website" <${fromEmail}>`,
-      to: toAdmin,
+      to: toAdminString,
       replyTo: email,
-      subject: `🚨 New Lead: ${name} — ${service || "General Inquiry"}`,
+      subject: `[GrowthSpare Lead] New Inquiry: ${name} (${service || "General Inquiry"})`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -176,13 +176,42 @@ export async function POST(req: Request) {
       `,
     };
 
-    // Dispatch both emails concurrently
-    await Promise.all([
-      transporter.sendMail(adminMailOptions),
-      transporter.sendMail(clientMailOptions),
-    ]);
+    // Isolated dispatches for robust execution & detailed server log insights
+    let adminError = null;
+    let clientError = null;
+    let adminResponse = null;
+    let clientResponse = null;
 
-    return NextResponse.json({ success: true, message: "Emails sent successfully." });
+    try {
+      adminResponse = await transporter.sendMail(adminMailOptions);
+      console.log("Admin lead notification sent successfully:", adminResponse.messageId, "Accepted:", adminResponse.accepted);
+    } catch (err: any) {
+      console.error("Failed sending to ADMIN_EMAIL:", err);
+      adminError = err?.message || "Admin email delivery failed";
+    }
+
+    try {
+      clientResponse = await transporter.sendMail(clientMailOptions);
+      console.log("Client auto-responder sent successfully:", clientResponse.messageId, "Accepted:", clientResponse.accepted);
+    } catch (err: any) {
+      console.error("Failed sending to client:", err);
+      clientError = err?.message || "Client auto-responder delivery failed";
+    }
+
+    // If admin notification fails, return 500 so site logs/form displays the specific error
+    if (adminError && !clientResponse) {
+      return NextResponse.json(
+        { error: `Admin Email Delivery Error: ${adminError}` },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: "Form submitted successfully.",
+      adminSent: !adminError,
+      clientSent: !clientError,
+    });
   } catch (error: any) {
     console.error("Error sending contact email via SMTP:", error);
     let userMsg = error?.message || "Failed to send email. Please try again later.";

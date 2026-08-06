@@ -262,3 +262,58 @@
     transform: translateY(0);
   }
 }
+
+/* Hide Next.js dev indicator portal icon in dev mode */
+nextjs-portal,
+#nextjs-dev-tools,
+[data-nextjs-dialog-overlay] {
+  display: none !important;
+}
+
+/* Fluid Liquid Animations & Glossy Sheen Utilities */
+@keyframes fluidFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes liquidShimmer {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+
+.animate-fluid-gradient {
+  background-size: 200% 200%;
+  animation: fluidFlow 4s ease infinite;
+}
+
+.fluid-glossy-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.fluid-glossy-sheen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 9999px 9999px 0 0;
+  pointer-events: none;
+}
+
+.fluid-shimmer-sweep::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: liquidShimmer 3s infinite;
+  pointer-events: none;
+}
+
+

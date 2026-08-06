@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { CheckCircle2, Briefcase } from "lucide-react";
+import Link from "next/link";
+import { CheckCircle2, Briefcase, Smartphone } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
 import SectionBadge from "@/components/ui/SectionBadge";
 import TextRollButton from "@/components/ui/TextRollButton";
@@ -24,9 +25,10 @@ const team = [
   {
     name: "Arun Khosla",
     role: "Director",
-    bio: "Strategic advisor and Financial Consultant with extensive business experience. Guides company vision, partnerships, and long-term growth strategy.",
+    bio: "Strategic advisor and Financial Consultant with 38+ years of extensive business experience. Guides company vision, partnerships, and long-term growth strategy.",
     image: "/images/case-studies/arun.png",
     accent: "Director",
+    slug: "arun-khosla",
   },
   {
     name: "Animesh Khosla",
@@ -34,13 +36,15 @@ const team = [
     bio: "Visionary leader with deep expertise in growth strategy, performance marketing, and business development. Driving GrowthSpare's mission to deliver end-to-end growth solutions.",
     image: "/images/case-studies/animersh.png",
     accent: "Founder",
+    slug: "animesh-khosla",
   },
   {
     name: "Palak Katiyar",
-    role: "Operations Head",
-    bio: "Technology and operations expert overseeing project delivery, software development, and AI implementations. Ensures seamless execution across all initiatives.",
+    role: "CTO: Head of Product Engineering",
+    bio: "Technology and product engineering leader with 7+ years experience overseeing software architecture, custom web/mobile apps, ERP/CRM, and AI implementations.",
     image: "/images/case-studies/palak.png",
-    accent: "Operation Head",
+    accent: "CTO",
+    slug: "palak-katiyar",
   },
 ];
 
@@ -238,7 +242,14 @@ export default function AboutPage() {
                     <p className="font-sans text-[#F5A623] text-sm font-semibold mb-3">
                       {member.role}
                     </p>
-                    <p className="font-sans text-[#6B7280] text-sm leading-relaxed">{member.bio}</p>
+                    <p className="font-sans text-[#6B7280] text-sm leading-relaxed mb-6 flex-1">{member.bio}</p>
+                    <Link
+                      href={`/team/${member.slug}`}
+                      className="inline-flex items-center justify-center gap-2 text-xs font-bold text-[#111827] bg-[#EFEFEF] hover:bg-[#111827] hover:text-white px-4 py-2.5 rounded-xl transition-all duration-300 w-full mt-auto group/btn"
+                    >
+                      <Smartphone className="w-4 h-4 text-[#F5A623] group-hover/btn:scale-110 transition-transform" />
+                      <span>Digital Business Card</span>
+                    </Link>
                   </div>
                 </FadeIn>
               ))}
