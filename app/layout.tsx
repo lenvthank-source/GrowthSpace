@@ -8,6 +8,7 @@ import GlobalSchema from "@/components/schema/GlobalSchema";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 import AppShell from "@/components/AppShell";
+import GoogleAnalyticsTracker from "@/components/GoogleAnalyticsTracker";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -86,9 +87,9 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
-        {/* Google Tag (gtag.js) - Single Consolidated GA Tracking ID */}
+        {/* Google Tag (gtag.js) - Consolidated GA Tracking ID */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-WEVSM7ZB4K"
+          src="https://www.googletagmanager.com/gtag/js?id=G-VSM8RB2D66"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -96,9 +97,12 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-WEVSM7ZB4K');
+            gtag('config', 'G-VSM8RB2D66');
           `}
         </Script>
+
+        {/* Dynamic Route Pageview Tracker for Client Navigation (Blogs, Services, Team Cards) */}
+        <GoogleAnalyticsTracker gaId="G-VSM8RB2D66" />
 
         <GlobalSchema />
 
