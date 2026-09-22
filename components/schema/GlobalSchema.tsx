@@ -87,7 +87,44 @@ export default function GlobalSchema() {
           { "@type": "City", "name": "Noida" },
           { "@type": "City", "name": "Gurgaon" },
           { "@type": "State", "name": "Delhi NCR" }
-        ]
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Digital Marketing & AI Tech Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Technical SEO & Performance Marketing Audit",
+                "description": "Comprehensive website SEO and funnel audit identifying critical ranking bottlenecks."
+              },
+              "price": "4999",
+              "priceCurrency": "INR"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Starter Digital Growth Retainer",
+                "description": "Full SEO, GMB, and social media foundation management."
+              },
+              "price": "15000",
+              "priceCurrency": "INR"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "SoftwareApplication",
+                "name": "GrowthSpare AI Chatbots & Agents",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Web, Cloud"
+              },
+              "price": "19999",
+              "priceCurrency": "INR"
+            }
+          ]
+        }
       }
     ]
   };

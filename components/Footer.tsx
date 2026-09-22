@@ -10,26 +10,37 @@ const footerLinks = {
   solutions: [
     { label: "Growth Marketing", href: "/solutions/growth-marketing" },
     { label: "Technology & AI", href: "/solutions/technology-ai" },
-    { label: "Enterprise Solutions", href: "/services/erp" },
-    { label: "Startup Growth", href: "/industries" },
+    { label: "Real Estate Tech", href: "/solutions/real-estate" },
+    { label: "Healthcare & Clinic", href: "/solutions/healthcare" },
+    { label: "E-Commerce & D2C", href: "/solutions/ecommerce" },
+    { label: "Education / EdTech", href: "/solutions/education" },
+  ],
+  locations: [
+    { label: "Delhi NCR SEO", href: "/services/seo/delhi-ncr" },
+    { label: "Gurgaon SEO & PPC", href: "/services/seo/gurgaon" },
+    { label: "Noida AI & Marketing", href: "/services/seo/noida" },
+    { label: "Bangalore Tech Hub", href: "/services/seo/bangalore" },
+    { label: "Mumbai Enterprise", href: "/services/seo/mumbai" },
   ],
   marketing: [
     { label: "SEO Services", href: "/services/seo" },
-    { label: "Google Ads", href: "/services/ppc" },
+    { label: "Google Ads (PPC)", href: "/services/ppc" },
     { label: "Social Media", href: "/services/social-media" },
     { label: "Branding", href: "/services/branding" },
   ],
   technology: [
     { label: "Web Development", href: "/services/web-development" },
     { label: "Mobile Apps", href: "/services/mobile-apps" },
-    { label: "AI Chatbots", href: "/services/ai-chatbots" },
-    { label: "ERP / CRM", href: "/services/erp" },
+    { label: "AI Chatbots & Agents", href: "/services/ai-chatbots" },
+    { label: "AI Automation", href: "/services/ai-automation" },
+    { label: "ERP / CRM Systems", href: "/services/erp" },
   ],
   company: [
     { label: "About Us", href: "/about" },
     { label: "Case Studies", href: "/projects" },
-    { label: "Contact", href: "/contact" },
-    { label: "Insights", href: "/blog" },
+    { label: "Pricing & Plans", href: "/pricing" },
+    { label: "Contact Us", href: "/contact" },
+    { label: "Insights & Blog", href: "/blog" },
   ],
 };
 
@@ -84,7 +95,7 @@ export default function Footer() {
 
       {/* Main Footer */}
       <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-8">
           {/* Brand Column */}
           <div className="col-span-2">
             <Link href="/" className="inline-flex items-center gap-2.5 mb-6 group">
@@ -176,6 +187,21 @@ export default function Footer() {
               {footerLinks.technology.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-gray-400 hover:text-blue-400 text-sm transition-colors">{link.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Locations */}
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <MapPin className="w-3.5 h-3.5 text-green-500" />
+              <h3 className="text-[11px] font-bold uppercase tracking-widest text-white">Locations</h3>
+            </div>
+            <ul className="space-y-3">
+              {footerLinks.locations.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-gray-400 hover:text-green-400 text-sm transition-colors">{link.label}</Link>
                 </li>
               ))}
             </ul>

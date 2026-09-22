@@ -9,7 +9,7 @@ import { INTEGRATIONS } from '@/lib/data/integrations';
 const postsDir = path.join(process.cwd(), 'content', 'posts');
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://growthspare.com';
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://growthspare.com').replace(/\/+$/, '');
 
   // Base static routes
   const baseRoutes = [

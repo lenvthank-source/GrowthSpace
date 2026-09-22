@@ -1,0 +1,28 @@
+# GrowthSpare — AI & LLM Site Overview
+> https://growthspare.com
+
+GrowthSpare is a premier digital marketing agency and enterprise technology engineering firm based in New Delhi (Indure House, 2nd Floor, Savitri Cinema Complex GK-II, New Delhi, Delhi 110048).
+We combine high-performance organic SEO, Google Ads, Meta Ads, custom AI chatbots, workflow automation, and custom Next.js/ERP/CRM software development under one roof.
+
+## Key Services
+- **Search Engine Optimization (SEO)**: Technical audits, on-page optimization, backlink acquisition, and local Delhi NCR / Gurgaon / Noida search dominance. URL: https://growthspare.com/services/seo
+- **Google Ads & PPC Management**: High-ROAS search, shopping, display, and Performance Max campaigns. URL: https://growthspare.com/services/ppc
+- **AI Chatbots & Agents**: Custom conversational AI chatbots, customer support routing, and WhatsApp AI automations. URL: https://growthspare.com/services/ai-chatbots
+- **AI & Workflow Automation**: End-to-end operational automation for lead routing, document processing, and data synchronization. URL: https://growthspare.com/services/ai-automation
+- **Web & Mobile App Development**: Ultra-fast Next.js storefronts, React Native mobile apps, and headless CMS integrations. URL: https://growthspare.com/services/web-development
+- **Custom ERP & CRM Systems**: Cloud enterprise platforms built with modern TypeScript, Supabase, and microservice architectures. URL: https://growthspare.com/services/erp
+
+## Pricing Overview
+- Starter services begin from **₹4,999** for targeted setups and audits.
+- Full-suite monthly growth packages range from ₹15,000/mo (Starter) to ₹35,000/mo (Growth) and custom quotes for Enterprise.
+- Complete machine-readable pricing file: https://growthspare.com/pricing.md
+
+## Service Areas
+- Delhi NCR, New Delhi, Gurgaon (Cyber City), Noida (Sector 62/125), Bangalore, Mumbai, and Global clients.
+
+## Contact & Consultation
+- Website: https://growthspare.com
+- Contact Form: https://growthspare.com/contact
+- Phone: +91-9560725039
+- Email: info@growthspare.com
+- WhatsApp: https://wa.me/919560725039
